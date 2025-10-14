@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Olocus - Coming Soon">
+    <title>Olocus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="https://raw.codeberg.page/olocus/olocus-style-guide/images/olocus-icon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Color Palette */
+            --primary: #4CAF50;
+            --primary-dark: #388E3C;
+            --primary-light: #A5D6A7;
+            --accent: #009688;
+            --bg-light: #FAFAFA;
+            --text-primary: #212121;
+            --text-secondary: #616161;
+            --border: #E0E0E0;
+            --info: #2196F3;
+            
+            /* Spacing (4-point grid) */
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            --space-6: 24px;
+            --space-8: 32px;
+            --space-12: 48px;
+            
+            /* Border Radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            
+            /* Shadows */
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-6);
+        }
+
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: calc(var(--space-8) * 2) var(--space-12);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+
+        .logo {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            margin: 0 auto var(--space-6);
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 1.2;
+            color: var(--primary);
+            margin-bottom: var(--space-6);
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-8);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: var(--space-4) var(--space-12);
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            font-size: 16px;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .cta-button:focus {
+            outline: 2px solid var(--info);
+            outline-offset: 2px;
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        .social-links {
+            margin-top: var(--space-12);
+            display: flex;
+            gap: var(--space-6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .social-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            padding: var(--space-2);
+        }
+
+        .social-links a:hover {
+            color: var(--primary-dark);
+        }
+
+        .social-links a:focus {
+            outline: 2px solid var(--info);
+            outline-offset: 2px;
+            border-radius: var(--radius-sm);
+        }
+
+        .divider {
+            width: 48px;
+            height: 2px;
+            background: var(--primary-light);
+            margin: var(--space-8) auto;
+        }
+
+        @media (max-width: 600px) {
+            .logo {
+                max-width: 220px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+            
+            .container {
+                padding: var(--space-12) var(--space-6);
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <img src="https://raw.codeberg.page/olocus/olocus-style-guide/images/olocus-brandmark-light.svg" alt="Olocus" class="logo">
+        <div class="divider" role="presentation"></div>
+        <p>Something interesting is coming soon.</p>
+        <a href="mailto:hello@olocus.com" class="cta-button" aria-label="Contact us via email">Get in Touch</a>
+        
+        <nav class="social-links" aria-label="Social media links">
+            <a href="https://codeberg.org/olocus" target="_blank" rel="noopener noreferrer">Codeberg</a>
+        </nav>
+    </main>
+</body>
+</html>
