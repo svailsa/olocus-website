@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Olocus Privacy Policy - How we protect your privacy and handle your data">
+    <title>Privacy Policy - Olocus</title>
+    <link rel="icon" type="image/svg+xml" href="images/olocus-icon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Core Brand Palette */
+            --primary: #4CAF50;
+            --primary-dark: #388E3C;
+            --primary-light: #A5D6A7;
+            --accent: #009688;
+            --warning: #FFB300;
+            --error: #E53935;
+            --info: #2196F3;
+            --success: #66BB6A;
+            
+            /* Neutrals */
+            --bg-light: #FAFAFA;
+            --text-primary: #212121;
+            --text-secondary: #A8A8A8;
+            --border: #E0E0E0;
+            
+            /* Dark Mode */
+            --bg-dark: #121212;
+            --bg-dark-elevated: #1E1E1E;
+            --bg-dark-card: #2C2C2C;
+            --text-primary-dark: #EDEDED;
+            --border-dark: rgba(255, 255, 255, 0.12);
+            
+            /* Spacing (4-point grid) */
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            --space-6: 24px;
+            --space-8: 32px;
+            --space-12: 48px;
+            --space-16: 64px;
+            
+            /* Border Radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-primary-dark);
+            background: var(--bg-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-dark);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-4) var(--space-8);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 32px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: var(--space-8);
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--text-primary-dark);
+        }
+
+        .nav-menu a:focus {
+            outline: 2px solid var(--info);
+            outline-offset: 2px;
+            border-radius: var(--radius-sm);
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: white;
+            padding: var(--space-2) var(--space-6);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary-dark);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Legal Content */
+        .legal-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: calc(70px + var(--space-12)) var(--space-6) var(--space-16);
+        }
+
+        h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text-primary-dark);
+            margin-bottom: var(--space-3);
+        }
+
+        .last-updated {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: var(--space-12);
+            padding-bottom: var(--space-6);
+            border-bottom: 1px solid var(--border-dark);
+        }
+
+        h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.4;
+            color: var(--text-primary-dark);
+            margin-top: var(--space-12);
+            margin-bottom: var(--space-4);
+        }
+
+        h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--text-primary-dark);
+            margin-top: var(--space-8);
+            margin-bottom: var(--space-3);
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-4);
+        }
+
+        ul, ol {
+            margin-bottom: var(--space-6);
+            padding-left: var(--space-8);
+        }
+
+        li {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-2);
+            line-height: 1.8;
+        }
+
+        strong {
+            color: var(--text-primary-dark);
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: var(--bg-dark-elevated);
+            border-left: 4px solid var(--primary);
+            padding: var(--space-6);
+            margin: var(--space-8) 0;
+            border-radius: var(--radius-md);
+        }
+
+        .highlight-box p {
+            margin-bottom: var(--space-2);
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        table {
+            width: 100%;
+            margin: var(--space-6) 0;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: var(--bg-dark-elevated);
+            color: var(--text-primary-dark);
+            font-weight: 600;
+            text-align: left;
+            padding: var(--space-3) var(--space-4);
+            border: 1px solid var(--border-dark);
+        }
+
+        td {
+            color: var(--text-secondary);
+            padding: var(--space-3) var(--space-4);
+            border: 1px solid var(--border-dark);
+        }
+
+        .contact-info {
+            background: var(--bg-dark-card);
+            padding: var(--space-6);
+            border-radius: var(--radius-md);
+            margin: var(--space-8) 0;
+        }
+
+        .contact-info a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            padding: var(--space-12) var(--space-8) var(--space-8);
+            border-top: 1px solid var(--border-dark);
+            margin-top: var(--space-16);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-content p {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-2);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary-dark);
+            transition: all 0.3s ease;
+        }
+
+        /* TOC */
+        .toc {
+            background: var(--bg-dark-elevated);
+            padding: var(--space-6);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-8);
+        }
+
+        .toc h2 {
+            font-size: 18px;
+            margin-top: 0;
+            margin-bottom: var(--space-4);
+        }
+
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+
+        .toc li {
+            margin-bottom: var(--space-2);
+        }
+
+        .toc a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .toc a:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--bg-dark);
+                flex-direction: column;
+                padding: var(--space-8);
+                gap: var(--space-6);
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                border-bottom: 1px solid var(--border-dark);
+            }
+
+            .nav-menu.active {
+                transform: translateX(0);
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .legal-container {
+                padding: calc(70px + var(--space-8)) var(--space-4) var(--space-12);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="/">
+                <img src="images/olocus-brandmark-dark.svg" alt="Olocus" class="logo">
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/#how-it-works">How It Works</a></li>
+                <li><a href="/#value-props">Why Olocus</a></li>
+                <li><a href="/#use-cases">Use Cases</a></li>
+                <li><a href="/vision">Vision</a></li>
+            </ul>
+            <a href="mailto:hello@olocus.com" class="nav-cta">Get Early Access</a>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Legal Content -->
+    <div class="legal-container">
+        <h1>Privacy Policy</h1>
+        <p class="last-updated">Last Updated: 16 October 2025 | Effective Date: 16 October 2025</p>
+
+        <div class="highlight-box">
+            <p><strong>Our Privacy Commitment:</strong> At Olocus, privacy is fundamental to our mission. We've built a system where you maintain complete control of your personal data on your own device. We cannot access your location or behavioural data—only you can.</p>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#introduction">1. Introduction</a></li>
+                <li><a href="#controller">2. Data Controller Information</a></li>
+                <li><a href="#data-we-process">3. Personal Data We Process</a></li>
+                <li><a href="#how-we-collect">4. How We Collect Data</a></li>
+                <li><a href="#legal-basis">5. Legal Basis for Processing</a></li>
+                <li><a href="#how-we-use">6. How We Use Personal Data</a></li>
+                <li><a href="#sharing">7. Data Sharing and Disclosure</a></li>
+                <li><a href="#international">8. International Data Transfers</a></li>
+                <li><a href="#retention">9. Data Retention</a></li>
+                <li><a href="#security">10. Data Security</a></li>
+                <li><a href="#your-rights">11. Your Rights</a></li>
+                <li><a href="#specific-jurisdictions">12. Jurisdiction-Specific Rights</a></li>
+                <li><a href="#children">13. Children's Privacy</a></li>
+                <li><a href="#changes">14. Changes to This Policy</a></li>
+                <li><a href="#contact">15. Contact Us</a></li>
+            </ul>
+        </div>
+
+        <h2 id="introduction">1. Introduction</h2>
+        <p>Olocus Community Interest Company ("Olocus CIC," "we," "us," or "our") is committed to protecting your privacy and giving you control over your personal data. This Privacy Policy explains how we collect, use, disclose, and safeguard information when you use our services, website, and platform (collectively, the "Services").</p>
+        
+        <p>Our unique privacy-preserving architecture means that your location and behavioural data never leaves your device in raw form. We use zero-knowledge proofs and cryptographic techniques to enable you to prove facts about your data without revealing the data itself.</p>
+
+        <h2 id="controller">2. Data Controller Information</h2>
+        <div class="contact-info">
+            <p><strong>Company Name:</strong> Olocus Community Interest Company (CIC)</p>
+            <p><strong>Registered Address:</strong> 3 Fitzroy Place, Finnieston, Glasgow G3 7RH, Scotland</p>
+            <p><strong>Data Protection Officer:</strong> Mark Harper</p>
+            <p><strong>Email:</strong> <a href="mailto:compliance@olocus.com">compliance@olocus.com</a></p>
+        </div>
+
+        <h2 id="data-we-process">3. Personal Data We Process</h2>
+        
+        <h3>3.1 Data You Control (On Your Device)</h3>
+        <p>The following data remains exclusively on your device and under your control:</p>
+        <ul>
+            <li>Location data and movement patterns</li>
+            <li>Behavioural data and activity patterns</li>
+            <li>Raw interaction data with other users</li>
+            <li>Personal trust graph connections</li>
+        </ul>
+        
+        <div class="highlight-box">
+            <p><strong>Important:</strong> We do not have access to this data. It is stored encrypted on your device, and only you can decide if and how to use it through zero-knowledge proofs.</p>
+        </div>
+
+        <h3>3.2 Data We Process</h3>
+        <p>We only process limited personal data necessary to provide our Services:</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Types of Data</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Account Data</strong></td>
+                    <td>Email address, username, account settings</td>
+                    <td>Account management and communication</td>
+                </tr>
+                <tr>
+                    <td><strong>Verification Data</strong></td>
+                    <td>Cryptographic proofs, verification timestamps, co-signing records</td>
+                    <td>Enabling trust verification without accessing raw data</td>
+                </tr>
+                <tr>
+                    <td><strong>Transaction Data</strong></td>
+                    <td>Payment information (processed by third parties), earnings records</td>
+                    <td>Facilitating monetisation of anonymised insights</td>
+                </tr>
+                <tr>
+                    <td><strong>Technical Data</strong></td>
+                    <td>Device ID, app version, error logs</td>
+                    <td>Service improvement and troubleshooting</td>
+                </tr>
+                <tr>
+                    <td><strong>Business Contact Data</strong></td>
+                    <td>Name, email, company, role (for partners and developers)</td>
+                    <td>Managing commercial relationships</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="how-we-collect">4. How We Collect Data</h2>
+        
+        <h3>4.1 Information You Provide</h3>
+        <ul>
+            <li>When you create an account</li>
+            <li>When you contact us for support</li>
+            <li>When you participate in co-signing verification</li>
+            <li>When you choose to monetise anonymised insights</li>
+        </ul>
+
+        <h3>4.2 Information Collected Automatically</h3>
+        <ul>
+            <li>Technical information about your device and connection (via our platform)</li>
+            <li>Website analytics data (via Cloudflare, without personal identification)</li>
+            <li>Blockchain timestamps (via Polkadot)</li>
+        </ul>
+
+        <h3>4.3 Information from Third Parties</h3>
+        <p>We may receive limited information from:</p>
+        <ul>
+            <li>Other users during co-signing processes (cryptographic proofs only)</li>
+            <li>Business partners for commercial relationships</li>
+        </ul>
+
+        <h2 id="legal-basis">5. Legal Basis for Processing</h2>
+        <p>We process personal data based on the following legal grounds:</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Legal Basis</th>
+                    <th>Processing Activities</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Consent</strong></td>
+                    <td>
+                        <ul>
+                            <li>Processing verification data for trust graph creation</li>
+                            <li>Facilitating monetisation of anonymised insights</li>
+                            <li>Marketing communications (where applicable)</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Contract</strong></td>
+                    <td>
+                        <ul>
+                            <li>Account creation and management</li>
+                            <li>Providing core platform services</li>
+                            <li>Processing transactions</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Legitimate Interests</strong></td>
+                    <td>
+                        <ul>
+                            <li>Maintaining platform security and preventing fraud</li>
+                            <li>Improving our services</li>
+                            <li>Managing business relationships with partners</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Legal Obligations</strong></td>
+                    <td>
+                        <ul>
+                            <li>Complying with applicable laws</li>
+                            <li>Responding to legal requests</li>
+                            <li>Tax and accounting requirements</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="how-we-use">6. How We Use Personal Data</h2>
+        <p>We use the limited personal data we process to:</p>
+        <ul>
+            <li><strong>Provide Services:</strong> Enable account functionality and core platform features</li>
+            <li><strong>Process Verifications:</strong> Facilitate zero-knowledge proof generation and verification</li>
+            <li><strong>Enable Monetisation:</strong> Process payments for anonymised insights (with your explicit consent)</li>
+            <li><strong>Communicate:</strong> Send service updates, respond to inquiries, and provide support</li>
+            <li><strong>Improve Services:</strong> Analyse aggregated usage patterns and fix technical issues</li>
+            <li><strong>Ensure Security:</strong> Detect and prevent fraud, abuse, and security incidents</li>
+            <li><strong>Comply with Law:</strong> Meet legal, regulatory, and contractual obligations</li>
+        </ul>
+
+        <h2 id="sharing">7. Data Sharing and Disclosure</h2>
+        
+        <h3>7.1 We Do Not Sell Personal Data</h3>
+        <p>We never sell, rent, or trade your personal data to third parties.</p>
+
+        <h3>7.2 Limited Sharing Scenarios</h3>
+        <p>We may share personal data only in these limited circumstances:</p>
+        
+        <ul>
+            <li><strong>With Your Consent:</strong> When you explicitly authorise sharing for specific purposes</li>
+            <li><strong>Service Providers:</strong> With Cloudflare for hosting and infrastructure (under strict data processing agreements)</li>
+            <li><strong>Co-signing Participants:</strong> Exchange of cryptographic proofs only (no raw data)</li>
+            <li><strong>Legal Requirements:</strong> When required by law, court order, or governmental request</li>
+            <li><strong>Vital Interests:</strong> To protect the vital interests of you or another person</li>
+            <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or asset sale (with notice to you)</li>
+        </ul>
+
+        <h3>7.3 Anonymised Insights</h3>
+        <p>When you choose to monetise insights, we share only anonymised, aggregated data that cannot be traced back to you. This process requires your explicit consent and uses zero-knowledge proofs to ensure privacy.</p>
+
+        <h2 id="international">8. International Data Transfers</h2>
+        
+        <p>While our servers are located in the UK, EU, Australia, and New Zealand, we serve users globally. We ensure all international data transfers comply with applicable laws:</p>
+        
+        <ul>
+            <li>We do not transfer personal data outside the UK/EEA except where necessary to provide services to users in those locations</li>
+            <li>Any transfers are protected by appropriate safeguards such as Standard Contractual Clauses</li>
+            <li>Cloudflare processes data globally but under appropriate data protection agreements</li>
+        </ul>
+
+        <h2 id="retention">9. Data Retention</h2>
+        
+        <p>We retain personal data only as long as necessary for the purposes outlined in this policy:</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Data Category</th>
+                    <th>Retention Period</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Account Data</td>
+                    <td>Duration of account plus 30 days after deletion request</td>
+                </tr>
+                <tr>
+                    <td>Verification Data</td>
+                    <td>7 years from creation (for audit and dispute resolution)</td>
+                </tr>
+                <tr>
+                    <td>Transaction Records</td>
+                    <td>7 years (for tax and accounting requirements)</td>
+                </tr>
+                <tr>
+                    <td>Technical Logs</td>
+                    <td>90 days (unless needed for security investigation)</td>
+                </tr>
+                <tr>
+                    <td>Business Contact Data</td>
+                    <td>7 years after last commercial interaction</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="security">10. Data Security</h2>
+        
+        <p>We implement appropriate technical and organisational measures to protect personal data:</p>
+        
+        <ul>
+            <li><strong>Encryption:</strong> All data in transit is encrypted using TLS 1.3 or higher</li>
+            <li><strong>Access Controls:</strong> Strict access controls and authentication for all systems</li>
+            <li><strong>Zero-Knowledge Architecture:</strong> Core design prevents us from accessing your sensitive data</li>
+            <li><strong>Regular Audits:</strong> Security assessments and penetration testing</li>
+            <li><strong>Incident Response:</strong> Established procedures for security incident management</li>
+            <li><strong>Staff Training:</strong> Regular privacy and security training for all personnel</li>
+        </ul>
+
+        <div class="highlight-box">
+            <p><strong>Security by Design:</strong> Your location and behavioural data never leaves your device in raw form. We process only cryptographic proofs, ensuring your privacy even if our systems were compromised.</p>
+        </div>
+
+        <h2 id="your-rights">11. Your Rights</h2>
+        
+        <p>Under applicable data protection laws, you have the following rights:</p>
+        
+        <h3>11.1 Universal Rights</h3>
+        <ul>
+            <li><strong>Access:</strong> Request a copy of personal data we hold about you</li>
+            <li><strong>Rectification:</strong> Request correction of inaccurate personal data</li>
+            <li><strong>Erasure:</strong> Request deletion of your personal data ("right to be forgotten")</li>
+            <li><strong>Restriction:</strong> Request restriction of processing in certain circumstances</li>
+            <li><strong>Portability:</strong> Receive your data in a structured, machine-readable format</li>
+            <li><strong>Object:</strong> Object to processing based on legitimate interests</li>
+            <li><strong>Withdraw Consent:</strong> Withdraw consent at any time where processing is based on consent</li>
+            <li><strong>Complaint:</strong> Lodge a complaint with a supervisory authority</li>
+        </ul>
+
+        <h3>11.2 Exercising Your Rights</h3>
+        <p>To exercise any of these rights, contact us at <a href="mailto:compliance@olocus.com">compliance@olocus.com</a>. We will respond within 30 days of receiving your request. We may need to verify your identity before processing your request.</p>
+
+        <h2 id="specific-jurisdictions">12. Jurisdiction-Specific Rights</h2>
+        
+        <h3>12.1 UK and EEA Residents</h3>
+        <p>If you are located in the UK or European Economic Area, you have all rights under UK GDPR and EU GDPR as outlined in Section 11. You may lodge a complaint with the UK Information Commissioner's Office (ICO) or your local EU supervisory authority.</p>
+
+        <h3>12.2 California Residents (CCPA/CPRA)</h3>
+        <p>If you are a California resident, you have additional rights:</p>
+        <ul>
+            <li><strong>Right to Know:</strong> Details about personal information collected, used, disclosed, or sold</li>
+            <li><strong>Right to Delete:</strong> Request deletion of personal information</li>
+            <li><strong>Right to Opt-Out:</strong> Opt-out of the sale of personal information (Note: We do not sell personal information)</li>
+            <li><strong>Right to Non-Discrimination:</strong> Not be discriminated against for exercising privacy rights</li>
+            <li><strong>Right to Correct:</strong> Request correction of inaccurate personal information</li>
+            <li><strong>Right to Limit Use:</strong> Limit use and disclosure of sensitive personal information</li>
+        </ul>
+        
+        <div class="highlight-box">
+            <p><strong>California "Shine the Light" Law:</strong> We do not share personal information with third parties for their direct marketing purposes.</p>
+        </div>
+
+        <h3>12.3 Australian Residents</h3>
+        <p>If you are in Australia, you have rights under the Privacy Act 1988 (Cth) and Australian Privacy Principles, including access to and correction of personal information. Complaints may be lodged with the Office of the Australian Information Commissioner (OAIC).</p>
+
+        <h3>12.4 Other Jurisdictions</h3>
+        <p>If you reside in other jurisdictions, you may have additional rights under local privacy laws. Please contact us for specific information about your rights.</p>
+
+        <h2 id="children">13. Children's Privacy</h2>
+        <p>Our Services are not directed to individuals under 18 years of age. We do not knowingly collect personal data from children. If we become aware that we have collected personal data from a child without parental consent, we will take steps to delete that information.</p>
+
+        <h2 id="changes">14. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by:</p>
+        <ul>
+            <li>Posting the new policy on this page</li>
+            <li>Updating the "Last Updated" date</li>
+            <li>Sending you an email notification (for material changes)</li>
+        </ul>
+        <p>Your continued use of our Services after changes constitutes acceptance of the updated policy.</p>
+
+        <h2 id="contact">15. Contact Us</h2>
+        <p>For any questions, concerns, or requests regarding this Privacy Policy or our privacy practices, please contact:</p>
+        
+        <div class="contact-info">
+            <p><strong>Data Protection Officer:</strong> Mark Harper</p>
+            <p><strong>Email:</strong> <a href="mailto:compliance@olocus.com">compliance@olocus.com</a></p>
+            <p><strong>Postal Address:</strong><br>
+            Olocus Community Interest Company<br>
+            3 Fitzroy Place<br>
+            Finnieston<br>
+            Glasgow G3 7RH<br>
+            Scotland</p>
+        </div>
+
+        <p>We aim to resolve any privacy concerns you may have in a timely and appropriate manner. If you are not satisfied with our response, you have the right to lodge a complaint with the relevant supervisory authority:</p>
+        
+        <ul>
+            <li><strong>UK:</strong> Information Commissioner's Office (ICO) - <a href="https://ico.org.uk" target="_blank" rel="noopener">ico.org.uk</a></li>
+            <li><strong>EU:</strong> Your local data protection authority</li>
+            <li><strong>Australia:</strong> Office of the Australian Information Commissioner (OAIC) - <a href="https://www.oaic.gov.au" target="_blank" rel="noopener">oaic.gov.au</a></li>
+        </ul>
+
+        <div class="highlight-box">
+            <p><strong>Our Commitment:</strong> At Olocus, we believe privacy is a fundamental human right. Our technology is designed to prove this isn't just a principle—it's how we operate. Your data remains yours, always.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p><strong>Olocus: Trust, Owned by You</strong></p>
+            <p>A Community Interest Company building decentralised trust infrastructure since 2025.</p>
+            <p>&copy; 2025 Olocus CIC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(18, 18, 18, 0.98)';
+                nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                nav.style.background = 'rgba(18, 18, 18, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
