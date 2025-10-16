@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Olocus - Coming Soon">
-    <title>Olocus</title>
+    <meta name="description" content="Olocus - Own Your Trust. Shape Your Future. A decentralized protocol that turns your real-world interactions into verifiable, privacy-protected digital assets.">
+    <title>Olocus - Trust, Owned by You</title>
+    <link rel="icon" type="image/svg+xml" href="images/olocus-icon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="images/olocus-icon.svg">
     <style>
         * {
             margin: 0;
@@ -17,18 +17,31 @@
         }
 
         :root {
-            /* Color Palette */
+            /* Core Brand Palette */
             --primary: #4CAF50;
             --primary-dark: #388E3C;
             --primary-light: #A5D6A7;
             --accent: #009688;
+            --warning: #FFB300;
+            --error: #E53935;
+            --info: #2196F3;
+            --success: #66BB6A;
+            
+            /* Neutrals - Light Mode */
             --bg-light: #FAFAFA;
             --text-primary: #212121;
             --text-secondary: #616161;
             --border: #E0E0E0;
-            --info: #2196F3;
+            
+            /* Dark Mode Backgrounds */
+            --bg-dark: #121212;
+            --bg-dark-elevated: #1E1E1E;
+            --bg-dark-card: #2C2C2C;
+            --text-primary-dark: #EDEDED;
+            --border-dark: rgba(255, 255, 255, 0.12);
             
             /* Spacing (4-point grid) */
+            --space-1: 4px;
             --space-2: 8px;
             --space-3: 12px;
             --space-4: 16px;
@@ -40,146 +53,871 @@
             --radius-sm: 4px;
             --radius-md: 8px;
             --radius-lg: 16px;
+            --radius-full: 9999px;
             
             /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
             --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             font-size: 16px;
             line-height: 1.6;
-            color: var(--text-primary);
-            background-color: var(--bg-light);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: var(--space-6);
+            color: var(--text-primary-dark);
+            background: var(--bg-dark);
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 600px;
-            background: white;
-            padding: calc(var(--space-8) * 2) var(--space-12);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
-            text-align: center;
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-dark);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-4) var(--space-8);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
-            width: 100%;
-            max-width: 280px;
-            height: auto;
-            margin: 0 auto var(--space-6);
-            display: block;
+            height: 32px;
+            width: auto;
         }
 
-        h1 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 700;
-            font-size: 40px;
-            line-height: 1.2;
-            color: var(--primary);
-            margin-bottom: var(--space-6);
-        }
-
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-            color: var(--text-secondary);
-            margin-bottom: var(--space-8);
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: var(--space-4) var(--space-12);
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: var(--radius-md);
-            font-weight: 500;
-            font-size: 16px;
-            transition: background-color 0.2s ease, transform 0.2s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .cta-button:hover {
-            background: var(--primary-dark);
-            transform: translateY(-1px);
-        }
-
-        .cta-button:focus {
-            outline: 2px solid var(--info);
-            outline-offset: 2px;
-        }
-
-        .cta-button:active {
-            transform: translateY(0);
-        }
-
-        .social-links {
-            margin-top: var(--space-12);
+        .nav-menu {
             display: flex;
-            gap: var(--space-6);
-            justify-content: center;
-            align-items: center;
+            gap: var(--space-8);
+            list-style: none;
         }
 
-        .social-links a {
-            color: var(--accent);
+        .nav-menu a {
+            color: var(--text-secondary);
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
             transition: color 0.2s ease;
-            padding: var(--space-2);
         }
 
-        .social-links a:hover {
-            color: var(--primary-dark);
+        .nav-menu a:hover {
+            color: var(--text-primary-dark);
         }
 
-        .social-links a:focus {
+        .nav-menu a:focus {
             outline: 2px solid var(--info);
             outline-offset: 2px;
             border-radius: var(--radius-sm);
         }
 
-        .divider {
-            width: 48px;
-            height: 2px;
-            background: var(--primary-light);
-            margin: var(--space-8) auto;
+        .nav-cta {
+            background: var(--primary);
+            color: white;
+            padding: var(--space-2) var(--space-6);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            border: none;
         }
 
-        @media (max-width: 600px) {
-            .logo {
-                max-width: 220px;
+        .nav-cta:hover {
+            background: var(--primary-dark);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-cta:focus {
+            outline: 2px solid var(--info);
+            outline-offset: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-12) var(--space-8) var(--space-8);
+            position: relative;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-dark-elevated) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(76, 175, 80, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(40px, 8vw, 64px);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--space-6);
+            color: var(--text-primary-dark);
+        }
+
+        .hero .tagline {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 24px;
+            color: var(--primary-light);
+            margin-bottom: var(--space-6);
+            font-weight: 600;
+        }
+
+        .hero .subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto var(--space-12);
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: var(--space-6);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: var(--space-4) var(--space-8);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            display: inline-block;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:focus {
+            outline: 2px solid var(--info);
+            outline-offset: 2px;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            padding: var(--space-4) var(--space-8);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            border: 2px solid var(--accent);
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-secondary:focus {
+            outline: 2px solid var(--info);
+            outline-offset: 2px;
+        }
+
+        /* Value Props Section */
+        .value-props {
+            padding: var(--space-12) var(--space-8);
+            background: var(--bg-dark-elevated);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--space-12);
+        }
+
+        .section-header h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: var(--space-4);
+            color: var(--text-primary-dark);
+            line-height: 1.3;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .value-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-6);
+        }
+
+        .value-card {
+            background: var(--bg-dark-card);
+            padding: var(--space-8);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-dark);
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .value-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .value-card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: var(--space-3);
+            color: var(--text-primary-dark);
+            line-height: 1.4;
+        }
+
+        .value-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: var(--space-12) var(--space-8);
+            background: var(--bg-dark);
+        }
+
+        .steps-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: var(--space-12);
+            margin-bottom: var(--space-8);
+            padding: var(--space-8);
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: var(--border-dark);
+        }
+
+        .step-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--primary);
+            opacity: 0.5;
+            min-width: 80px;
+        }
+
+        .step-content h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: var(--space-3);
+            color: var(--text-primary-dark);
+            line-height: 1.4;
+        }
+
+        .step-content p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Use Cases */
+        .use-cases {
+            padding: var(--space-12) var(--space-8);
+            background: var(--bg-dark-elevated);
+        }
+
+        .cases-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-6);
+        }
+
+        .case-card {
+            background: var(--bg-dark-card);
+            padding: var(--space-8);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-dark);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .case-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .case-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .case-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .case-card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: var(--space-4);
+            color: var(--text-primary-dark);
+            line-height: 1.4;
+        }
+
+        .case-card ul {
+            list-style: none;
+            color: var(--text-secondary);
+            line-height: 2;
+        }
+
+        .case-card li::before {
+            content: '→';
+            color: var(--primary);
+            margin-right: var(--space-3);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: calc(var(--space-12) * 2) var(--space-8);
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-dark-elevated) 100%);
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(76, 175, 80, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: var(--space-6);
+            color: var(--text-primary-dark);
+            line-height: 1.2;
+        }
+
+        .cta-content p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-12);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            padding: var(--space-12) var(--space-8) var(--space-8);
+            border-top: 1px solid var(--border-dark);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-12);
+            margin-bottom: var(--space-12);
+        }
+
+        .footer-brand h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: var(--space-4);
+            color: var(--text-primary-dark);
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: var(--space-4);
+        }
+
+        .footer-column h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: var(--space-6);
+            color: var(--text-primary-dark);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: var(--space-3);
+        }
+
+        .footer-column a {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+
+        .footer-column a:focus {
+            outline: 2px solid var(--info);
+            outline-offset: 2px;
+            border-radius: var(--radius-sm);
+        }
+
+        .footer-bottom {
+            padding-top: var(--space-8);
+            border-top: 1px solid var(--border-dark);
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary-dark);
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--bg-dark);
+                flex-direction: column;
+                padding: var(--space-8);
+                gap: var(--space-6);
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                border-bottom: 1px solid var(--border);
             }
 
-            h1 {
-                font-size: 32px;
-            }
-            
-            .container {
-                padding: var(--space-12) var(--space-6);
+            .nav-menu.active {
+                transform: translateX(0);
             }
 
-            p {
-                font-size: 16px;
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.25rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cases-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .cta-content h2 {
+                font-size: 2.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <main class="container">
-        <img src="images/olocus-brandmark-light.svg" alt="Olocus" class="logo">
-        <div class="divider" role="presentation"></div>
-        <p>Something interesting is coming soon.</p>
-        <a href="mailto:hello@olocus.com" class="cta-button" aria-label="Contact us via email">Get in Touch</a>
-        
-    </main>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <img src="images/olocus-brandmark-light.svg" alt="Olocus" class="logo">
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#value-props">Why Olocus</a></li>
+                <li><a href="#use-cases">Use Cases</a></li>
+                <li><a href="#vision">Vision</a></li>
+            </ul>
+            <a href="mailto:hello@olocus.com" class="nav-cta">Get Early Access</a>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Own Your Trust.<br>Shape Your Future.</h1>
+            <p class="tagline">Privacy-first. User-owned. Future-proof.</p>
+            <p class="subtitle">
+                Olocus is redefining trust for the digital age with a decentralized protocol that turns your real-world interactions into verifiable, privacy-protected digital assets. Take control of your data, earn from it, and build a portable trust graph that empowers you across platforms.
+            </p>
+            <div class="hero-cta">
+                <a href="mailto:hello@olocus.com" class="btn-primary">Get Early Access</a>
+                <a href="#how-it-works" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Props -->
+    <section class="value-props" id="value-props">
+        <div class="section-header">
+            <h2>Why Choose Olocus?</h2>
+            <p>Join a movement to create a more equitable internet where individuals—not corporations—own and monetize their data.</p>
+        </div>
+        <div class="value-grid">
+            <div class="value-card">
+                <div class="value-icon">🔒</div>
+                <h3>Own Your Data</h3>
+                <p>Your location and behavior data stays on your device, protected by zero-knowledge proofs. No raw data ever leaves your control.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">💰</div>
+                <h3>Earn Passively</h3>
+                <p>Monetize your behaviors—like gym visits or eco-friendly commutes—for £20-400/year, with no effort beyond occasional co-signing.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🌍</div>
+                <h3>Portable Trust</h3>
+                <p>Build a cryptographically verified reputation that works across platforms, from dating to jobs to finance.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">📊</div>
+                <h3>Personal Insights</h3>
+                <p>Get free analytics on your time, activities, and sustainability, like a personal life dashboard—without paying a subscription.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🛡️</div>
+                <h3>Secure Your Story</h3>
+                <p>Immutable location proofs act as a digital alibi for legal, insurance, or personal needs.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">⚡</div>
+                <h3>High Accuracy</h3>
+                <p>Our proofs are 92-95% accurate, far surpassing data brokers (60-70%), with fraud rates kept low at 5-8%.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-header">
+            <h2>How Olocus Works</h2>
+            <p>Simple, secure, and powerful trust building</p>
+        </div>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">01</div>
+                <div class="step-content">
+                    <h3>Passive Tracking</h3>
+                    <p>Your device privately records location and behavior data, secured by hash chains and ZKPs. Everything stays encrypted on your device.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">02</div>
+                <div class="step-content">
+                    <h3>Co-Signing Trust</h3>
+                    <p>Verify real-world interactions with others through mutual co-signing, creating fraud-resistant proofs with only 5-8% fraud rate.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">03</div>
+                <div class="step-content">
+                    <h3>Earn & Control</h3>
+                    <p>Sell anonymized insights to buyers for fitness or sustainability programs and earn £20-400/year, with full control over what you share.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">04</div>
+                <div class="step-content">
+                    <h3>Portable Reputation</h3>
+                    <p>Use your verified trust graph across platforms for better opportunities in work, finance, or social connections.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">05</div>
+                <div class="step-content">
+                    <h3>Blockchain Security</h3>
+                    <p>Daily timestamps on a blockchain ensure integrity without storing personal data. No surveillance. No data leaks. Just trust you control.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="use-cases" id="use-cases">
+        <div class="section-header">
+            <h2>Real-World Applications</h2>
+            <p>Discover how Olocus transforms trust across industries</p>
+        </div>
+        <div class="cases-grid">
+            <div class="case-card">
+                <h3>Fitness & Wellness</h3>
+                <ul>
+                    <li>Prove gym habits for insurance discounts</li>
+                    <li>Verify workout routines for personal goals</li>
+                    <li>Share fitness achievements with communities</li>
+                </ul>
+            </div>
+            <div class="case-card">
+                <h3>Sustainability</h3>
+                <ul>
+                    <li>Verify eco-friendly commutes for carbon credits</li>
+                    <li>Prove sustainable behaviors for ESG programs</li>
+                    <li>Track and monetize your environmental impact</li>
+                </ul>
+            </div>
+            <div class="case-card">
+                <h3>Work & Finance</h3>
+                <ul>
+                    <li>Validate work patterns for gig economy reimbursements</li>
+                    <li>Build alternative credit scoring profiles</li>
+                    <li>Prove business travel for tax purposes</li>
+                </ul>
+            </div>
+            <div class="case-card">
+                <h3>Social & Web3</h3>
+                <ul>
+                    <li>Create bot-resistant social networks</li>
+                    <li>Enable safe dating with verified identities</li>
+                    <li>Build reputation for DAOs and communities</li>
+                </ul>
+            </div>
+            <div class="case-card">
+                <h3>Personal Security</h3>
+                <ul>
+                    <li>Maintain immutable location history for legal needs</li>
+                    <li>Create digital alibis for insurance claims</li>
+                    <li>Secure personal safety documentation</li>
+                </ul>
+            </div>
+            <div class="case-card">
+                <h3>Developer Platform</h3>
+                <ul>
+                    <li>APIs for Sybil resistance and reputation scoring</li>
+                    <li>Social recovery solutions for apps</li>
+                    <li>Interoperable trust infrastructure</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision CTA -->
+    <section class="cta-section" id="vision">
+        <div class="cta-content">
+            <h2>Building the Trust Layer for the Next Internet</h2>
+            <p>
+                In 10 years, we aim to empower 2-5 million users with a decentralized, privacy-preserving trust graph that redefines how we verify identity, reputation, and behavior online. Join us to create a world where individuals—not corporations—own their digital lives.
+            </p>
+            <a href="mailto:hello@olocus.com" class="btn-primary">Join the Movement</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Olocus</h3>
+                <p>Trust, Owned by You.</p>
+                <p>A Community Interest Company building decentralized trust infrastructure since 2025.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#value-props">Features</a></li>
+                    <li><a href="#use-cases">Use Cases</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#vision">Vision</a></li>
+                    <li><a href="mailto:hello@olocus.com">Contact</a></li>
+                    <li><a href="#">Privacy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Developers</h4>
+                <ul>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">API Reference</a></li>
+                    <li><a href="#">Open Source</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Olocus CIC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80; // Account for fixed nav
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('navMenu').classList.remove('active');
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(18, 18, 18, 0.98)';
+                nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                nav.style.background = 'rgba(18, 18, 18, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
