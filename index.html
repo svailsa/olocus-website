@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Olocus - Own Your Trust. Shape Your Future. A decentralized protocol that turns your real-world interactions into verifiable, privacy-protected digital assets.">
+    <meta name="description" content="Olocus - Own Your Trust. Shape Your Future. A decentralised protocol that turns your real-world interactions into verifiable, privacy-protected digital assets.">
     <title>Olocus - Trust, Owned by You</title>
     <link rel="icon" type="image/svg+xml" href="images/olocus-icon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +30,7 @@
             /* Neutrals - Light Mode */
             --bg-light: #FAFAFA;
             --text-primary: #212121;
-            --text-secondary: #616161;
+            --text-secondary: #A8A8A8;
             --border: #E0E0E0;
             
             /* Dark Mode Backgrounds */
@@ -660,7 +660,7 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <img src="images/olocus-brandmark-light.svg" alt="Olocus" class="logo">
+            <img src="images/olocus-brandmark-dark.svg" alt="Olocus" class="logo">
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#how-it-works">How It Works</a></li>
                 <li><a href="#value-props">Why Olocus</a></li>
@@ -682,7 +682,7 @@
             <h1>Own Your Trust.<br>Shape Your Future.</h1>
             <p class="tagline">Privacy-first. User-owned. Future-proof.</p>
             <p class="subtitle">
-                Olocus is redefining trust for the digital age with a decentralized protocol that turns your real-world interactions into verifiable, privacy-protected digital assets. Take control of your data, earn from it, and build a portable trust graph that empowers you across platforms.
+                Olocus is redefining trust for the digital age with a decentralised protocol that turns your real-world interactions into verifiable, privacy-protected digital assets. Take control of your data, earn from it, and build a portable trust graph that empowers you across platforms.
             </p>
             <div class="hero-cta">
                 <a href="mailto:hello@olocus.com" class="btn-primary">Get Early Access</a>
@@ -695,7 +695,7 @@
     <section class="value-props" id="value-props">
         <div class="section-header">
             <h2>Why Choose Olocus?</h2>
-            <p>Join a movement to create a more equitable internet where individuals—not corporations—own and monetize their data.</p>
+            <p>Join a movement to create a more equitable internet where individuals—not corporations—own and monetise their data.</p>
         </div>
         <div class="value-grid">
             <div class="value-card">
@@ -706,7 +706,7 @@
             <div class="value-card">
                 <div class="value-icon">💰</div>
                 <h3>Earn Passively</h3>
-                <p>Monetize your behaviors—like gym visits or eco-friendly commutes—for £20-400/year, with no effort beyond occasional co-signing.</p>
+                <p>Monetise your behaviours—like gym visits or eco-friendly commutes—for £20-400/year, with no effort beyond occasional co-signing.</p>
             </div>
             <div class="value-card">
                 <div class="value-icon">🌍</div>
@@ -756,7 +756,7 @@
                 <div class="step-number">03</div>
                 <div class="step-content">
                     <h3>Earn & Control</h3>
-                    <p>Sell anonymized insights to buyers for fitness or sustainability programs and earn £20-400/year, with full control over what you share.</p>
+                    <p>Sell anonymised insights to buyers for fitness or sustainability programmes and earn £20-400/year, with full control over what you share.</p>
                 </div>
             </div>
             <div class="step">
@@ -796,7 +796,7 @@
                 <ul>
                     <li>Verify eco-friendly commutes for carbon credits</li>
                     <li>Prove sustainable behaviors for ESG programs</li>
-                    <li>Track and monetize your environmental impact</li>
+                    <li>Track and monetise your environmental impact</li>
                 </ul>
             </div>
             <div class="case-card">
@@ -839,7 +839,7 @@
         <div class="cta-content">
             <h2>Building the Trust Layer for the Next Internet</h2>
             <p>
-                In 10 years, we aim to empower 2-5 million users with a decentralized, privacy-preserving trust graph that redefines how we verify identity, reputation, and behavior online. Join us to create a world where individuals—not corporations—own their digital lives.
+                In 10 years, we aim to empower 2-5 million users with a decentralised, privacy-preserving trust graph that redefines how we verify identity, reputation, and behaviour online. Join us to create a world where individuals—not corporations—own their digital lives.
             </p>
             <a href="mailto:hello@olocus.com" class="btn-primary">Join the Movement</a>
         </div>
@@ -851,7 +851,7 @@
             <div class="footer-brand">
                 <h3>Olocus</h3>
                 <p>Trust, Owned by You.</p>
-                <p>A Community Interest Company building decentralized trust infrastructure since 2025.</p>
+                <p>A Community Interest Company building decentralised trust infrastructure since 2025.</p>
             </div>
             <div class="footer-column">
                 <h4>Product</h4>
@@ -892,8 +892,13 @@
         // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                // Skip if href is just '#' or empty
+                if (!href || href === '#') {
+                    return;
+                }
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const target = document.querySelector(href);
                 if (target) {
                     const offset = 80; // Account for fixed nav
                     const targetPosition = target.offsetTop - offset;
