@@ -440,13 +440,23 @@
         .case-card ul {
             list-style: none;
             color: var(--text-secondary);
-            line-height: 2;
+            line-height: 1.6;
+            padding-left: 0;
+        }
+
+        .case-card li {
+            position: relative;
+            padding-left: calc(var(--space-4) + var(--space-2));
+            margin-bottom: var(--space-2);
+            line-height: 1.6;
         }
 
         .case-card li::before {
             content: '→';
             color: var(--primary);
-            margin-right: var(--space-3);
+            position: absolute;
+            left: 0;
+            top: 0;
         }
 
         /* CTA Section */
