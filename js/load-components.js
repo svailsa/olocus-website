@@ -46,8 +46,23 @@ function initializeNavScroll() {
     });
 }
 
+// Function to load common CSS if not already loaded
+function loadCommonCSS() {
+    // Check if common CSS is already loaded
+    const existingLink = document.querySelector('link[href="/css/common.css"]');
+    if (!existingLink) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = '/css/common.css';
+        document.head.appendChild(link);
+    }
+}
+
 // Load components when DOM is ready
 document.addEventListener('DOMContentLoaded', async function() {
+    // Load common CSS
+    loadCommonCSS();
+    
     // Load header and footer
     const headerLoaded = await loadComponent('header-container', '/header.html');
     await loadComponent('footer-container', '/footer.html');
