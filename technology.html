@@ -176,64 +176,107 @@
             margin: 48px 0;
         }
 
-        .architecture-flow {
+        /* Timeline Style Flow */
+        .verification-timeline {
+            position: relative;
+            padding: 48px 0;
+        }
+
+        .verification-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--accent));
+        }
+
+        .flow-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin: 48px 0;
-            flex-wrap: wrap;
-            gap: 24px;
-        }
-
-        .flow-step {
-            flex: 1;
-            min-width: 200px;
-            text-align: center;
             position: relative;
         }
 
-        .flow-icon {
-            width: 80px;
-            height: 80px;
+        .flow-content {
+            width: 45%;
+            background: var(--bg-dark-card);
+            border: 1px solid var(--border-dark);
+            border-radius: 16px;
+            padding: 32px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .flow-content:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.2);
+        }
+
+        .flow-item:nth-child(even) .flow-content {
+            margin-left: auto;
+        }
+
+        .flow-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 20px;
-            margin: 0 auto 16px;
+            border-radius: 50%;
+            border: 4px solid var(--bg-dark);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-        }
-
-        .flow-step h4 {
-            font-size: 1.125rem;
-            margin-bottom: 8px;
-            color: var(--text-primary-dark);
-        }
-
-        .flow-step p {
-            font-size: 0.875rem;
-            color: var(--text-secondary-dark);
-        }
-
-        .flow-arrow {
-            position: absolute;
-            right: -20px;
-            top: 35px;
-            color: var(--primary);
             font-size: 1.5rem;
+            z-index: 1;
+        }
+
+        .flow-content h4 {
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        .flow-content p {
+            color: var(--text-secondary-dark);
+            line-height: 1.6;
+        }
+
+        /* Responsive for flow */
+        @media (max-width: 768px) {
+            .verification-timeline::before {
+                left: 30px;
+            }
+
+            .flow-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .flow-content {
+                width: calc(100% - 70px);
+                margin-left: 70px !important;
+            }
+
+            .flow-marker {
+                left: 30px;
+            }
         }
 
         /* Battery Impact Section */
         .battery-info {
-            background: linear-gradient(135deg, rgba(255, 179, 0, 0.1), rgba(255, 179, 0, 0.05));
-            border: 1px solid rgba(255, 179, 0, 0.3);
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(0, 150, 136, 0.05));
+            border: 1px solid rgba(76, 175, 80, 0.3);
             border-radius: 16px;
             padding: 32px;
             margin: 48px 0;
         }
 
         .battery-info h3 {
-            color: var(--warning);
+            color: var(--primary);
             margin-bottom: 16px;
             display: flex;
             align-items: center;
@@ -363,21 +406,13 @@
             .tech-grid {
                 grid-template-columns: 1fr;
             }
-
-            .architecture-flow {
-                flex-direction: column;
-            }
-
-            .flow-arrow {
-                display: none;
-            }
         }
     </style>
 </head>
 <body>
     <nav>
         <div class="nav-container">
-            <img src="/images/olocus-logo-dark.svg" alt="Olocus" class="logo">
+            <img src="/images/olocus-brandmark-dark.svg" alt="Olocus" class="logo">
             <div class="nav-links">
                 <a href="/">Home</a>
                 <a href="/vision">Vision</a>
@@ -399,36 +434,42 @@
             <h2 class="section-title">How It Works</h2>
             
             <div class="architecture-section">
-                <h3 style="text-align: center; margin-bottom: 32px; color: var(--primary);">The Verification Flow</h3>
-                <div class="architecture-flow">
-                    <div class="flow-step">
-                        <div class="flow-icon">📱</div>
-                        <h4>Real Interaction</h4>
-                        <p>Meet someone in person or online</p>
-                        <div class="flow-arrow">→</div>
+                <h3 style="text-align: center; margin-bottom: 32px; color: var(--primary); font-size: 1.75rem;">The Verification Flow</h3>
+                <div class="verification-timeline">
+                    <div class="flow-item">
+                        <div class="flow-content">
+                            <h4>Step 1: Real Interaction</h4>
+                            <p>Begin with a genuine interaction, whether meeting someone in person at an event, collaborating on a project, or connecting through a professional network. Every verification starts with real human connection.</p>
+                        </div>
+                        <div class="flow-marker">📱</div>
                     </div>
-                    <div class="flow-step">
-                        <div class="flow-icon">🤝</div>
-                        <h4>Mutual Verification</h4>
-                        <p>Both parties co-sign the interaction</p>
-                        <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <div class="flow-content">
+                            <h4>Step 2: Mutual Verification</h4>
+                            <p>Both parties confirm the interaction through co-signing. This mutual agreement ensures that every attestation is genuine and prevents unilateral false claims about relationships or achievements.</p>
+                        </div>
+                        <div class="flow-marker">🤝</div>
                     </div>
-                    <div class="flow-step">
-                        <div class="flow-icon">🔐</div>
-                        <h4>ZK Proof Generation</h4>
-                        <p>Create privacy-preserving proof on device</p>
-                        <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <div class="flow-content">
+                            <h4>Step 3: ZK Proof Generation</h4>
+                            <p>Your device generates a zero-knowledge proof locally, creating cryptographic evidence of the interaction without revealing personal details. Your privacy remains protected whilst building verifiable trust.</p>
+                        </div>
+                        <div class="flow-marker">🔐</div>
                     </div>
-                    <div class="flow-step">
-                        <div class="flow-icon">⛓️</div>
-                        <h4>Blockchain Anchoring</h4>
-                        <p>Timestamp proof on Polkadot</p>
-                        <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <div class="flow-content">
+                            <h4>Step 4: Blockchain Anchoring</h4>
+                            <p>The proof is timestamped and anchored on Polkadot's parachain, creating an immutable record. No personal data is stored on-chain—only the cryptographic proof of your interaction.</p>
+                        </div>
+                        <div class="flow-marker">⛓️</div>
                     </div>
-                    <div class="flow-step">
-                        <div class="flow-icon">✨</div>
-                        <h4>Build Trust Score</h4>
-                        <p>Accumulate verifiable reputation</p>
+                    <div class="flow-item">
+                        <div class="flow-content">
+                            <h4>Step 5: Build Trust Score</h4>
+                            <p>Each verified interaction contributes to your portable trust score. Over time, you build a reputation that belongs to you, not platforms, opening doors to new opportunities and relationships.</p>
+                        </div>
+                        <div class="flow-marker">✨</div>
                     </div>
                 </div>
             </div>
