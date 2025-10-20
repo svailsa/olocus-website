@@ -191,6 +191,22 @@
             margin-bottom: var(--space-4);
         }
 
+        /* Link styling for better readability */
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        a:focus {
+            outline: 2px solid var(--info);
+            outline-offset: 2px;
+            border-radius: var(--radius-sm);
+        }
+
         ul, ol {
             margin-bottom: var(--space-6);
             padding-left: var(--space-8);
@@ -430,6 +446,8 @@
         <p>Olocus Community Interest Company ("Olocus CIC," "we," "us," or "our") is committed to protecting your privacy and giving you control over your personal data. This Privacy Policy explains how we collect, use, disclose, and safeguard information when you use our services, website, and platform (collectively, the "Services").</p>
         
         <p>Our unique privacy-preserving architecture means that your location and behavioural data never leaves your device in raw form. We use zero-knowledge proofs and cryptographic techniques to enable you to prove facts about your data without revealing the data itself.</p>
+        
+        <p>This Privacy Policy should be read in conjunction with our <a href="/terms">Terms and Conditions</a>, which govern your use of the Services.</p>
 
         <h2 id="controller">2. Data Controller Information</h2>
         <div class="contact-info">
@@ -755,7 +773,7 @@
         <div class="footer-content">
             <p><strong>Olocus: Trust, Owned by You</strong></p>
             <p>A Community Interest Company building decentralised trust infrastructure since 2025.</p>
-            <p>&copy; 2025 Olocus CIC. All rights reserved.</p>
+            <p>&copy; 2025 Olocus CIC. All rights reserved. | <a href="/terms">Terms of Use</a> | <a href="/privacy">Privacy Policy</a></p>
         </div>
     </footer>
 
