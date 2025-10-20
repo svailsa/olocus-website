@@ -105,8 +105,9 @@
 
         .nav-menu {
             display: flex;
-            gap: var(--space-8);
+            gap: 32px;
             list-style: none;
+            align-items: center;
         }
 
         .nav-menu a {
@@ -130,8 +131,8 @@
         .nav-cta {
             background: var(--primary);
             color: white;
-            padding: var(--space-2) var(--space-6);
-            border-radius: var(--radius-md);
+            padding: 8px 24px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             font-size: 14px;
@@ -140,43 +141,54 @@
 
         .nav-cta:hover {
             background: var(--primary-dark);
-            box-shadow: var(--shadow-md);
         }
 
         /* Article Content */
         article {
-            padding-top: calc(70px + var(--space-12));
-            padding-bottom: var(--space-16);
+            padding-top: 140px;
+            padding-bottom: 80px;
         }
 
         .article-container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 var(--space-6);
+            padding: 0 32px;
         }
 
         /* Hero Section */
         .article-hero {
             text-align: center;
-            margin-bottom: var(--space-16);
-            padding-bottom: var(--space-12);
-            border-bottom: 1px solid var(--border-dark);
+            margin-bottom: 80px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         h1 {
             font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            font-size: 40px;
+            font-size: 3rem;
             font-weight: 700;
             line-height: 1.2;
-            color: var(--text-primary-dark);
             margin-bottom: var(--space-6);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            /* Fallback for browsers that don't support background-clip: text */
+            color: var(--primary);
+        }
+        
+        @supports not (-webkit-background-clip: text) {
+            h1 {
+                background: none;
+                color: var(--primary);
+            }
         }
 
         .subtitle {
-            font-size: 18px;
+            font-size: 1.25rem;
             color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
+            line-height: 1.8;
         }
 
         /* Content Typography */
@@ -260,25 +272,6 @@
             margin: var(--space-12) 0;
         }
 
-        /* Back to Home Link */
-        .back-home {
-            display: inline-flex;
-            align-items: center;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
-            margin-bottom: var(--space-8);
-            transition: color 0.2s ease;
-        }
-
-        .back-home:hover {
-            color: var(--primary);
-        }
-
-        .back-home::before {
-            content: '←';
-            margin-right: var(--space-2);
-        }
 
         /* Footer */
         footer {
@@ -413,8 +406,6 @@
     <!-- Article Content -->
     <article>
         <div class="article-container">
-            <a href="/" class="back-home">Back to Home</a>
-            
             <div class="article-hero">
                 <h1>Our Vision: A Trust Graph Owned by You</h1>
                 <p class="subtitle">Building a future where trust is human, decentralised, and enduring</p>
