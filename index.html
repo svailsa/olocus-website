@@ -831,23 +831,8 @@
     <!-- Skip link for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
     
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <img src="images/olocus-brandmark-dark.svg" alt="Olocus" class="logo">
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#value-props">Why Olocus</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#use-cases">Use Cases</a></li>
-            </ul>
-            <a href="mailto:hello@olocus.com" class="nav-cta">Get Early Access</a>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
+    <!-- Header Container -->
+    <div id="header-container"></div>
 
     <!-- Hero Section -->
     <main id="main-content">
@@ -1083,7 +1068,7 @@
                         <span style="color: var(--warning);">🚀</span> When can I start using Olocus?
                     </h3>
                     <p style="color: var(--text-secondary); line-height: 1.7;">
-                        We're launching our alpha version in early 2025. Join our waiting list to be among the first to experience portable, privacy-preserving trust. Early adopters will help shape the platform's development and may receive special recognition in the community. Sign up at the top of this page to reserve your spot.
+                        We're launching our alpha version in early 2026. Join our waiting list to be among the first to experience portable, privacy-preserving trust. Early adopters will help shape the platform's development and may receive special recognition in the community. Sign up at the top of this page to reserve your spot.
                     </p>
                 </div>
             </div>
@@ -1098,86 +1083,10 @@
     </section>
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h3>Olocus</h3>
-                <p>Trust, Owned by You.</p>
-                <p>A Community Interest Company building decentralised trust infrastructure since 2025.</p>
-            </div>
-            <div class="footer-column">
-                <h4>Product</h4>
-                <ul>
-                    <li><a href="#value-props">Features</a></li>
-                    <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#use-cases">Use Cases</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="mailto:hello@olocus.com">Contact</a></li>
-                    <li><a href="/privacy">Privacy</a></li>
-                    <li><a href="/terms">Terms</a></li>
-                    <li><a href="/vision">Vision</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Developers</h4>
-                <ul>
-                    <li><a href="#">API Reference</a></li>
-                    <li><a href="#">Documentation</a></li>
-                    <li><a href="#">Open Source</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Olocus CIC. All rights reserved.</p>
-        </div>
-    </footer>
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
 
-    <script>
-        // Mobile menu toggle
-        document.getElementById('mobileMenuToggle').addEventListener('click', function() {
-            document.getElementById('navMenu').classList.toggle('active');
-        });
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                // Skip if href is just '#' or empty
-                if (!href || href === '#') {
-                    return;
-                }
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    const offset = 80; // Account for fixed nav
-                    const targetPosition = target.offsetTop - offset;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                    // Close mobile menu if open
-                    document.getElementById('navMenu').classList.remove('active');
-                }
-            });
-        });
-
-        // Add scroll effect to navigation
-        window.addEventListener('scroll', function() {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.style.background = 'rgba(18, 18, 18, 0.98)';
-                nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
-            } else {
-                nav.style.background = 'rgba(18, 18, 18, 0.95)';
-                nav.style.boxShadow = 'none';
-            }
-        });
-    </script>
+    <!-- Load common components -->
+    <script src="/js/load-components.js"></script>
 </body>
 </html>
