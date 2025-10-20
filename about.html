@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Olocus - A Community Interest Company building trust infrastructure for the digital age. Learn about our mission, values, and commitment to social benefit.">
+    <title>About - Olocus</title>
+    <link rel="icon" type="image/svg+xml" href="images/olocus-icon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Core Brand Palette */
+            --primary: #4CAF50;
+            --primary-dark: #388E3C;
+            --primary-light: #A5D6A7;
+            --accent: #009688;
+            --warning: #FFB300;
+            --error: #E53935;
+            --info: #2196F3;
+            --success: #66BB6A;
+            
+            /* Neutrals - Light Mode */
+            --bg-light: #FAFAFA;
+            --text-primary: #212121;
+            --text-secondary: #757575;
+            --border: #E0E0E0;
+            
+            /* Dark Mode Backgrounds */
+            --bg-dark: #121212;
+            --bg-dark-elevated: #1E1E1E;
+            --bg-dark-card: #2C2C2C;
+            --text-primary-dark: #EDEDED;
+            --text-secondary-dark: #A8A8A8;
+            --border-dark: rgba(255, 255, 255, 0.12);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-primary-dark);
+            background: var(--bg-dark);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-dark);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 32px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-primary-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 32px 80px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary-dark);
+            line-height: 1.8;
+        }
+
+        /* Content Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 48px;
+            text-align: center;
+        }
+
+        /* CIC Info Box */
+        .cic-box {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(0, 150, 136, 0.1));
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: 24px;
+            padding: 48px;
+            margin: 48px 0;
+        }
+
+        .cic-box h3 {
+            color: var(--primary);
+            font-size: 1.75rem;
+            margin-bottom: 24px;
+        }
+
+        .cic-box p {
+            color: var(--text-primary-dark);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        /* Values Grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin: 48px 0;
+        }
+
+        .value-card {
+            background: var(--bg-dark-elevated);
+            border: 1px solid var(--border-dark);
+            border-radius: 16px;
+            padding: 32px;
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .value-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            color: var(--text-primary-dark);
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .value-card p {
+            color: var(--text-secondary-dark);
+            line-height: 1.7;
+        }
+
+        /* Mission Statement */
+        .mission-section {
+            background: var(--bg-dark-elevated);
+            border-radius: 24px;
+            padding: 64px;
+            margin: 64px 0;
+            text-align: center;
+        }
+
+        .mission-section h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 24px;
+        }
+
+        .mission-section p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--text-primary-dark);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Asset Lock */
+        .asset-lock {
+            background: var(--bg-dark-card);
+            border: 2px solid var(--primary);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 48px 0;
+        }
+
+        .asset-lock h4 {
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .asset-lock ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .asset-lock li {
+            padding: 8px 0;
+            color: var(--text-secondary-dark);
+        }
+
+        .asset-lock li::before {
+            content: "✓";
+            color: var(--success);
+            margin-right: 12px;
+            font-weight: bold;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 48px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-dark);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 48px 0;
+            position: relative;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: var(--bg-dark-elevated);
+            border: 1px solid var(--border-dark);
+            border-radius: 16px;
+            padding: 32px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 4px solid var(--bg-dark);
+        }
+
+        .timeline-content h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .timeline-content h3 {
+            color: var(--text-primary-dark);
+            margin-bottom: 12px;
+        }
+
+        .timeline-content p {
+            color: var(--text-secondary-dark);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark-elevated);
+            border-top: 1px solid var(--border-dark);
+            padding: 48px 32px 24px;
+            margin-top: 96px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            margin-bottom: 32px;
+        }
+
+        .footer-section h4 {
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .footer-section a {
+            color: var(--text-secondary-dark);
+            text-decoration: none;
+            display: block;
+            padding: 4px 0;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-dark);
+            color: var(--text-secondary-dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 120px 24px 60px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .timeline-content {
+                width: calc(100% - 50px);
+                margin-left: 50px !important;
+            }
+
+            .timeline-marker {
+                left: 20px;
+            }
+
+            .mission-section {
+                padding: 40px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <img src="images/olocus-logo-dark.svg" alt="Olocus" class="logo">
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/vision">Vision</a>
+                <a href="/technology">Technology</a>
+                <a href="/about">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Building Trust for the Common Good</h1>
+        <p class="hero-subtitle">
+            Olocus is a Community Interest Company committed to creating trust infrastructure that benefits society, not shareholders. Our technology belongs to the community we serve.
+        </p>
+    </section>
+
+    <div class="container">
+        <section class="section">
+            <div class="cic-box">
+                <h3>What is a Community Interest Company?</h3>
+                <p>
+                    A Community Interest Company (CIC) is a special type of limited company that exists to benefit the community rather than private shareholders. As a CIC, Olocus has legally binding commitments that ensure we always act in the public interest.
+                </p>
+                <p>
+                    This means our profits are reinvested into improving the platform, reducing costs for users, and expanding access to trust infrastructure globally. We cannot be sold to the highest bidder or pivot to maximise shareholder returns at the expense of our users.
+                </p>
+                <p>
+                    <strong>Our structure ensures that Olocus will always remain true to its mission: democratising trust for everyone.</strong>
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Our Values</h2>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🌍</div>
+                    <h3>Community First</h3>
+                    <p>Every decision we make is evaluated on its benefit to our community. User welfare always comes before profit.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🔓</div>
+                    <h3>Open by Default</h3>
+                    <p>Our code is open source, our roadmap is public, and our community has a voice in our direction.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🛡️</div>
+                    <h3>Privacy is Sacred</h3>
+                    <p>We will never compromise on privacy. Your data belongs to you, and we build technology that enforces this principle.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">⚖️</div>
+                    <h3>Equitable Access</h3>
+                    <p>Trust infrastructure should be accessible to everyone, regardless of economic status or geographic location.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🔬</div>
+                    <h3>Evidence-Based</h3>
+                    <p>We make decisions based on data and research, not hype or speculation. Transparency in our methods builds trust.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">♻️</div>
+                    <h3>Sustainable Growth</h3>
+                    <p>We grow responsibly, ensuring long-term viability without exploiting users or burning through resources.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mission-section">
+            <h2>Our Mission</h2>
+            <p>
+                To create a world where trust is portable, verifiable, and owned by individuals—not corporations. We believe that by giving people control over their own reputation and verification data, we can reduce fraud, increase opportunity, and build more trustworthy digital interactions for everyone.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">The Asset Lock</h2>
+            
+            <div class="asset-lock">
+                <h4>🔐 Permanent Protection</h4>
+                <p style="margin-bottom: 24px; color: var(--text-primary-dark);">
+                    As a CIC, Olocus has an "asset lock" - a legal mechanism that permanently protects our assets for community benefit:
+                </p>
+                <ul>
+                    <li>Assets cannot be sold for private gain</li>
+                    <li>If Olocus ever closes, assets must transfer to another community organisation</li>
+                    <li>Profit distribution is capped by law</li>
+                    <li>Community benefit must be demonstrated annually</li>
+                    <li>Regular reporting to the CIC Regulator ensures accountability</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Our Journey</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>2024</h4>
+                        <h3>Foundation</h3>
+                        <p>Olocus CIC established with a mission to democratise trust. Initial protocol design and community building begins.</p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>2025</h4>
+                        <h3>Launch</h3>
+                        <p>Alpha release of the Olocus protocol. Early adopters begin building their portable trust profiles.</p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>2026</h4>
+                        <h3>Scale</h3>
+                        <p>Expanding globally with localised support. Introduction of advanced privacy features and developer tools.</p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>2030</h4>
+                        <h3>Vision</h3>
+                        <p>Become the global standard for decentralised trust. Enable new forms of collaboration and reduce fraud by 5-8% worldwide.</p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Governance</h2>
+            
+            <div class="cic-box">
+                <h3>Community-Led Direction</h3>
+                <p>
+                    While our founding team provides initial direction, Olocus is designed to be governed by its community. As we grow, we'll implement democratic governance mechanisms that give users a voice in:
+                </p>
+                <ul style="list-style: none; padding: 24px 0;">
+                    <li style="padding: 8px 0; color: var(--text-primary-dark);">• Protocol upgrades and feature prioritisation</li>
+                    <li style="padding: 8px 0; color: var(--text-primary-dark);">• Fee structures and economic parameters</li>
+                    <li style="padding: 8px 0; color: var(--text-primary-dark);">• Partnership decisions and integrations</li>
+                    <li style="padding: 8px 0; color: var(--text-primary-dark);">• Community fund allocation</li>
+                    <li style="padding: 8px 0; color: var(--text-primary-dark);">• Ethical guidelines and platform policies</li>
+                </ul>
+                <p>
+                    This transition to community governance will happen gradually, ensuring stability whilst empowering our users to shape the future of trust infrastructure.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Join Our Mission</h2>
+            
+            <div style="text-align: center; padding: 48px; background: var(--bg-dark-elevated); border-radius: 24px;">
+                <p style="font-size: 1.25rem; color: var(--text-primary-dark); margin-bottom: 32px;">
+                    Whether you're a developer, a community organiser, or someone who believes in our mission, there's a place for you at Olocus.
+                </p>
+                <div style="display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://codeberg.org/olocus" style="display: inline-block; padding: 12px 32px; background: var(--primary); color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">
+                        Contribute Code
+                    </a>
+                    <a href="https://discord.gg/olocus" style="display: inline-block; padding: 12px 32px; background: transparent; color: var(--primary); text-decoration: none; border: 2px solid var(--primary); border-radius: 8px; font-weight: 600;">
+                        Join Community
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Product</h4>
+                <a href="/">Home</a>
+                <a href="/vision">Vision</a>
+                <a href="/technology">Technology</a>
+                <a href="/about">About</a>
+            </div>
+            <div class="footer-section">
+                <h4>Developers</h4>
+                <a href="https://codeberg.org/olocus">Open Source</a>
+                <a href="https://docs.olocus.com">Documentation</a>
+                <a href="https://api.olocus.com">API Reference</a>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms & Conditions</a>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <a href="mailto:hello@olocus.com">Contact Us</a>
+                <a href="https://twitter.com/olocus">Twitter</a>
+                <a href="https://discord.gg/olocus">Discord</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Olocus CIC. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
