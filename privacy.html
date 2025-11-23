@@ -297,7 +297,8 @@
                 <li><a href="#specific-jurisdictions">12. Jurisdiction-Specific Rights</a></li>
                 <li><a href="#children">13. Children's Privacy</a></li>
                 <li><a href="#changes">14. Changes to This Policy</a></li>
-                <li><a href="#contact">15. Contact Us</a></li>
+                <li><a href="#app-store-privacy">15. Mobile App Store Privacy Disclosures</a></li>
+                <li><a href="#contact">16. Contact Us</a></li>
             </ul>
         </div>
 
@@ -321,14 +322,27 @@
         <h3>3.1 Data You Control (On Your Device)</h3>
         <p>The following data remains exclusively on your device and under your control:</p>
         <ul>
-            <li>Location data and movement patterns</li>
+            <li>Location data and movement patterns (including precise GPS coordinates)</li>
             <li>Behavioural data and activity patterns</li>
             <li>Raw interaction data with other users</li>
             <li>Personal trust graph connections</li>
         </ul>
         
+        <h3>3.1.1 Mobile Location Services</h3>
+        <p>Our mobile app may collect location information in the following circumstances:</p>
+        <ul>
+            <li><strong>Foreground Location:</strong> When you actively use the app for trust verification or co-signing activities</li>
+            <li><strong>Background Location:</strong> Only when you explicitly enable continuous verification features (with separate consent)</li>
+            <li><strong>Precise Location:</strong> GPS coordinates for accurate trust verification (never shared in raw form)</li>
+            <li><strong>Approximate Location:</strong> General area information for broader verification contexts</li>
+        </ul>
+        
         <div class="highlight-box">
-            <p><strong>Important:</strong> We do not have access to this data. It is stored encrypted on your device, and only you can decide if and how to use it through zero-knowledge proofs.</p>
+            <p><strong>Important:</strong> We do not have access to this data. It is stored encrypted on your device, and only you can decide if and how to use it through zero-knowledge proofs. Location data never leaves your device in raw form.</p>
+        </div>
+        
+        <div class="highlight-box">
+            <p><strong>Mobile Location Control:</strong> You can control location access at any time through your device settings. Disabling location services will limit verification functionality but will not affect your existing trust graph data.</p>
         </div>
 
         <h3>3.2 Data We Process</h3>
@@ -360,8 +374,13 @@
                 </tr>
                 <tr>
                     <td><strong>Technical Data</strong></td>
-                    <td>Device ID, app version, error logs</td>
+                    <td>Device ID, app version, error logs, IP address, operating system version</td>
                     <td>Service improvement and troubleshooting</td>
+                </tr>
+                <tr>
+                    <td><strong>Mobile Device Data</strong></td>
+                    <td>Device identifiers (non-advertising), app installation ID, push notification tokens, mobile device model</td>
+                    <td>Fraud prevention, service delivery, and app functionality (no advertising or tracking)</td>
                 </tr>
                 <tr>
                     <td><strong>Business Contact Data</strong></td>
@@ -394,6 +413,98 @@
             <li>Other users during co-signing processes (cryptographic proofs only)</li>
             <li>Business partners for commercial relationships</li>
         </ul>
+
+        <h3>4.4 Mobile App Permissions</h3>
+        <p>Our mobile application may request the following permissions to provide core functionality:</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Permission</th>
+                    <th>Purpose</th>
+                    <th>Required/Optional</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Location Services</strong></td>
+                    <td>Core trust verification and co-signing functionality</td>
+                    <td>Required for main features</td>
+                </tr>
+                <tr>
+                    <td><strong>Camera</strong></td>
+                    <td>QR code scanning for secure verification with other users</td>
+                    <td>Optional (for enhanced verification)</td>
+                </tr>
+                <tr>
+                    <td><strong>Push Notifications</strong></td>
+                    <td>Security alerts, verification requests, and important updates</td>
+                    <td>Optional (can be disabled)</td>
+                </tr>
+                <tr>
+                    <td><strong>Network Access</strong></td>
+                    <td>Secure communication with our servers for cryptographic proof verification</td>
+                    <td>Required</td>
+                </tr>
+                <tr>
+                    <td><strong>Local Storage</strong></td>
+                    <td>Encrypted storage of your personal trust data on your device</td>
+                    <td>Required</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="highlight-box">
+            <p><strong>Your Control:</strong> You can manage these permissions at any time through your device settings. Disabling certain permissions may limit app functionality, but your core data remains secure on your device.</p>
+        </div>
+
+        <h3>4.5 Permission Management</h3>
+        <p><strong>iOS Users:</strong> Manage permissions in Settings > Privacy & Security > [Permission Type] > Olocus</p>
+        <p><strong>Android Users:</strong> Manage permissions in Settings > Apps > Olocus > Permissions</p>
+        
+        <h3>4.6 Push Notifications</h3>
+        <p>Our mobile app may send push notifications for the following purposes:</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Notification Type</th>
+                    <th>Purpose</th>
+                    <th>Frequency</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Security Alerts</strong></td>
+                    <td>Account security issues, unauthorized access attempts</td>
+                    <td>As needed (critical only)</td>
+                </tr>
+                <tr>
+                    <td><strong>Verification Requests</strong></td>
+                    <td>Co-signing requests from other users</td>
+                    <td>User-initiated only</td>
+                </tr>
+                <tr>
+                    <td><strong>System Updates</strong></td>
+                    <td>Important app updates, service announcements</td>
+                    <td>Rarely (major updates only)</td>
+                </tr>
+                <tr>
+                    <td><strong>Trust Graph Updates</strong></td>
+                    <td>Significant changes to your trust network</td>
+                    <td>Optional (can be disabled)</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="highlight-box">
+            <p><strong>Notification Control:</strong> You can disable any or all push notifications through your device settings without affecting core app functionality. We do not send marketing or promotional notifications.</p>
+        </div>
+        
+        <h3>4.6.1 Notification Consent and Control</h3>
+        <p><strong>Initial Setup:</strong> We request notification permission during app setup, which you can decline</p>
+        <p><strong>iOS Control:</strong> Settings > Notifications > Olocus > Customize notification types</p>
+        <p><strong>Android Control:</strong> Settings > Apps > Olocus > Notifications > Manage categories</p>
 
         <h2 id="legal-basis">5. Legal Basis for Processing</h2>
         <p>We process personal data based on the following legal grounds:</p>
@@ -561,6 +672,31 @@
 
         <h3>11.2 Exercising Your Rights</h3>
         <p>To exercise any of these rights, contact us at <a href="mailto:compliance@olocus.com">compliance@olocus.com</a>. We will respond within 30 days of receiving your request. We may need to verify your identity before processing your request.</p>
+        
+        <h3>11.3 Mobile Device Privacy Controls</h3>
+        <p>When using our mobile applications, you can exercise many privacy rights directly through your device settings:</p>
+        
+        <h3>11.3.1 iOS Privacy Controls</h3>
+        <ul>
+            <li><strong>Location Services:</strong> Settings > Privacy & Security > Location Services > Olocus</li>
+            <li><strong>App Permissions:</strong> Settings > Olocus</li>
+            <li><strong>Notifications:</strong> Settings > Notifications > Olocus</li>
+            <li><strong>Privacy Dashboard:</strong> Settings > Privacy & Security > Privacy Report</li>
+            <li><strong>App Tracking:</strong> We do not request tracking permission as we do not track users across apps</li>
+        </ul>
+        
+        <h3>11.3.2 Android Privacy Controls</h3>
+        <ul>
+            <li><strong>App Permissions:</strong> Settings > Apps > Olocus > Permissions</li>
+            <li><strong>Location Services:</strong> Settings > Privacy > Permission Manager > Location > Olocus</li>
+            <li><strong>Notifications:</strong> Settings > Apps > Olocus > Notifications</li>
+            <li><strong>Privacy Dashboard:</strong> Settings > Privacy > Privacy Dashboard (Android 12+)</li>
+            <li><strong>Data Usage:</strong> Settings > Apps > Olocus > Storage & Cache</li>
+        </ul>
+        
+        <div class="highlight-box">
+            <p><strong>Device-Level Control:</strong> These device settings provide immediate control over data collection and app behavior. Changes take effect immediately and do not require contacting us.</p>
+        </div>
 
         <h2 id="specific-jurisdictions">12. Jurisdiction-Specific Rights</h2>
         
@@ -589,7 +725,35 @@
         <p>If you reside in other jurisdictions, you may have additional rights under local privacy laws. Please contact us for specific information about your rights.</p>
 
         <h2 id="children">13. Children's Privacy</h2>
-        <p>Our Services are not directed to individuals under 18 years of age. We do not knowingly collect personal data from children. If we become aware that we have collected personal data from a child without parental consent, we will take steps to delete that information.</p>
+        
+        <h3>13.1 Age Restrictions</h3>
+        <p>Our Services are not directed to individuals under 18 years of age. We do not knowingly collect personal data from children under 18. If we become aware that we have collected personal data from a child without appropriate consent, we will take steps to delete that information.</p>
+        
+        <h3>13.2 COPPA Compliance (Under 13)</h3>
+        <p>We comply with the Children's Online Privacy Protection Act (COPPA) for users under 13 years of age. We do not knowingly collect personal information from children under 13 without verifiable parental consent.</p>
+        
+        <h3>13.3 Mobile App Protections for Minors</h3>
+        <p>Our mobile applications include additional protections for users who may be minors:</p>
+        <ul>
+            <li>Age verification prompts during account registration</li>
+            <li>Restricted data collection for users who indicate they are under 18</li>
+            <li>Limited location services and permission requests for suspected minor accounts</li>
+            <li>Integration with parental control systems where available on mobile platforms</li>
+            <li>Enhanced privacy defaults for all users under 18</li>
+        </ul>
+        
+        <h3>13.4 Parental Rights and Controls</h3>
+        <p>Parents and guardians have the right to:</p>
+        <ul>
+            <li>Review personal information collected from their child</li>
+            <li>Request deletion of their child's personal information</li>
+            <li>Refuse to allow further collection of their child's information</li>
+            <li>Use device-level parental controls (Screen Time on iOS, Family Link on Android)</li>
+        </ul>
+        
+        <div class="highlight-box">
+            <p><strong>Parent Contact:</strong> If you are a parent or guardian and believe your child has provided personal information to our Services, please contact us immediately at <a href="mailto:compliance@olocus.com">compliance@olocus.com</a>.</p>
+        </div>
 
         <h2 id="changes">14. Changes to This Policy</h2>
         <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by:</p>
@@ -600,7 +764,70 @@
         </ul>
         <p>Your continued use of our Services after changes constitutes acceptance of the updated policy.</p>
 
-        <h2 id="contact">15. Contact Us</h2>
+        <h2 id="app-store-privacy">15. Mobile App Store Privacy Disclosures</h2>
+        
+        <h3>15.1 Apple App Store Privacy Labels</h3>
+        <p>In accordance with Apple's App Store Privacy Requirements, we disclose the following data collection practices for our iOS app:</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Privacy Label Category</th>
+                    <th>Olocus Collection</th>
+                    <th>Linked to User</th>
+                    <th>Used for Tracking</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Contact Info</strong></td>
+                    <td>Email address only</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td><strong>Location</strong></td>
+                    <td>Precise location (device only)</td>
+                    <td>No (stays on device)</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td><strong>Identifiers</strong></td>
+                    <td>Device ID (non-advertising)</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td><strong>Usage Data</strong></td>
+                    <td>App interaction data</td>
+                    <td>No (anonymized)</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td><strong>Diagnostics</strong></td>
+                    <td>Crash logs, performance data</td>
+                    <td>No</td>
+                    <td>No</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="highlight-box">
+            <p><strong>No Tracking:</strong> Our app does not track users across other companies' apps or websites. We do not collect advertising identifiers or engage in cross-app tracking.</p>
+        </div>
+
+        <h3>15.2 Google Play Data Safety</h3>
+        <p>In accordance with Google Play's Data Safety requirements, we provide the following disclosures for our Android app:</p>
+        
+        <ul>
+            <li><strong>Data Collection:</strong> We collect minimal data as outlined in this policy</li>
+            <li><strong>Data Sharing:</strong> We do not share personal data with third parties (except anonymized insights with explicit consent)</li>
+            <li><strong>Security Practices:</strong> Data is encrypted in transit and at rest</li>
+            <li><strong>Data Deletion:</strong> Users can request deletion of all data</li>
+            <li><strong>Sensitive Permissions:</strong> Location access is clearly justified and user-controlled</li>
+        </ul>
+
+        <h2 id="contact">16. Contact Us</h2>
         <p>For any questions, concerns, or requests regarding this Privacy Policy or our privacy practices, please contact:</p>
         
         <div class="contact-info">
