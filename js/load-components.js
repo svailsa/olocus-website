@@ -70,6 +70,59 @@ function detectIOSStandalone() {
     }
 }
 
+// Function to handle back to top button
+function initializeBackToTop() {
+    // Create back to top button
+    const backToTopBtn = document.createElement('button');
+    backToTopBtn.className = 'back-to-top';
+    backToTopBtn.innerHTML = `
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    `;
+    backToTopBtn.setAttribute('aria-label', 'Back to top');
+    document.body.appendChild(backToTopBtn);
+    
+    // Show/hide based on scroll
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+    
+    // Scroll to top on click
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// Function to handle scroll animations
+function initializeScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all elements with fade-in-up class
+    document.querySelectorAll('.fade-in-up').forEach(element => {
+        observer.observe(element);
+    });
+}
+
 // Load components when DOM is ready
 document.addEventListener('DOMContentLoaded', async function() {
     // Detect iOS standalone mode
@@ -77,6 +130,12 @@ document.addEventListener('DOMContentLoaded', async function() {
     
     // Load common CSS
     loadCommonCSS();
+    
+    // Initialize back to top button
+    initializeBackToTop();
+    
+    // Initialize scroll animations
+    initializeScrollAnimations();
     
     // Load header and footer
     const headerLoaded = await loadComponent('header-container', '/header.html');

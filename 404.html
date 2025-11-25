@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Page Not Found - Olocus</title>
+    <meta name="description" content="The page you're looking for doesn't exist. Let's get you back on track.">
+    <meta name="robots" content="noindex, follow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#121212">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #121212;
+            color: #EDEDED;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .error-container {
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        .error-code {
+            font-size: 120px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #4CAF50, #009688);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        h1 {
+            font-size: 32px;
+            margin-bottom: 16px;
+            color: #EDEDED;
+        }
+        
+        p {
+            font-size: 18px;
+            color: #A8A8A8;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .suggestions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #388E3C;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #4CAF50;
+            border: 2px solid #4CAF50;
+        }
+        
+        .btn-secondary:hover {
+            background: #4CAF50;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn:focus-visible {
+            outline: 2px solid #2196F3;
+            outline-offset: 2px;
+        }
+        
+        .quick-links {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        
+        .quick-links h2 {
+            font-size: 18px;
+            color: #A8A8A8;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .link-grid a {
+            color: #4CAF50;
+            text-decoration: none;
+            padding: 8px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .link-grid a:hover {
+            background: rgba(76, 175, 80, 0.1);
+            transform: translateX(4px);
+        }
+        
+        .link-grid a:focus-visible {
+            outline: 2px solid #2196F3;
+            outline-offset: 2px;
+        }
+        
+        .logo {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 30px;
+            opacity: 0.5;
+        }
+        
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 80px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            p {
+                font-size: 16px;
+            }
+            
+            .suggestions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="logo">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" stroke="#4CAF50" stroke-width="2" opacity="0.3"/>
+                <circle cx="50" cy="30" r="8" fill="#4CAF50"/>
+                <path d="M50 40V70" stroke="#4CAF50" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="50" cy="80" r="3" fill="#4CAF50"/>
+            </svg>
+        </div>
+        
+        <div class="error-code">404</div>
+        <h1>Page Not Found</h1>
+        <p>We couldn't find the page you're looking for. It might have been moved, deleted, or maybe it never existed.</p>
+        
+        <div class="suggestions">
+            <a href="/" class="btn btn-primary">Go to Homepage</a>
+            <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+        </div>
+        
+        <div class="quick-links">
+            <h2>Popular Pages</h2>
+            <div class="link-grid">
+                <a href="/about">About Olocus</a>
+                <a href="/technology">Technology</a>
+                <a href="/enterprise">For Enterprise</a>
+                <a href="/vision">Our Vision</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
