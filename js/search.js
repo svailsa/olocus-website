@@ -196,7 +196,13 @@
 
     function displaySearchResults(results, query) {
         const resultsContainer = document.getElementById('search-results');
+        const searchStatus = document.getElementById('search-status');
         console.log('Displaying results, container exists:', !!resultsContainer);
+        
+        // Announce results to screen readers
+        if (searchStatus) {
+            searchStatus.textContent = `${results.length} search result${results.length !== 1 ? 's' : ''} found for ${query}`;
+        }
         
         if (results.length === 0) {
             resultsContainer.innerHTML = `

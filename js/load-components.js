@@ -24,8 +24,59 @@ function initializeMobileMenu() {
     const navMenu = document.getElementById('navMenu');
     
     if (mobileMenuToggle && navMenu) {
+        // Handle click events
         mobileMenuToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
+            const isActive = navMenu.classList.toggle('active');
+            
+            // Update ARIA attributes
+            mobileMenuToggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+            
+            // Focus management
+            if (isActive) {
+                // Focus first menu item when opened
+                const firstLink = navMenu.querySelector('a, input, button');
+                if (firstLink) {
+                    setTimeout(() => firstLink.focus(), 100);
+                }
+            }
+        });
+        
+        // Handle keyboard events
+        mobileMenuToggle.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+        
+        // Close menu on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                mobileMenuToggle.focus();
+            }
+        });
+        
+        // Implement focus trap when menu is open
+        navMenu.addEventListener('keydown', function(e) {
+            if (!navMenu.classList.contains('active')) return;
+            
+            if (e.key === 'Tab') {
+                const focusableElements = navMenu.querySelectorAll(
+                    'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                );
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+                
+                if (e.shiftKey && document.activeElement === firstElement) {
+                    e.preventDefault();
+                    lastElement.focus();
+                } else if (!e.shiftKey && document.activeElement === lastElement) {
+                    e.preventDefault();
+                    firstElement.focus();
+                }
+            }
         });
     }
 }

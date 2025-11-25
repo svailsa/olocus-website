@@ -1,5 +1,35 @@
 /* Common styles for header and footer components */
 
+/* Screen reader only content */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Skip to main content link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary);
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 0 0 4px 0;
+    z-index: 2000;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
 /* Global focus-visible for better accessibility */
 *:focus {
     outline: none;
@@ -32,7 +62,7 @@ a:focus-visible {
     /* Neutrals */
     --bg-light: #FAFAFA;
     --text-primary: #212121;
-    --text-secondary: #A8A8A8;
+    --text-secondary: #B3B3B3; /* Improved contrast from #A8A8A8 */
     --border: #E0E0E0;
     
     /* Dark Mode */

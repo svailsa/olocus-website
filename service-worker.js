@@ -1,5 +1,5 @@
 // Service Worker for Olocus PWA
-const CACHE_NAME = 'olocus-v4'; // Force cache refresh for search.js fix
+const CACHE_NAME = 'olocus-v5'; // Updated with accessibility improvements
 const urlsToCache = [
   '/',
   '/favicon.ico',

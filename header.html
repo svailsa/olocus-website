@@ -1,15 +1,19 @@
+<!-- Skip to main content link -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- Navigation -->
-<nav id="navbar">
+<nav id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
-        <a href="/" aria-label="Olocus Home">
-            <img src="/images/olocus-brandmark-dark.svg" alt="Olocus" class="logo">
+        <a href="/" aria-label="Olocus - Go to homepage">
+            <img src="/images/olocus-brandmark-dark.svg" alt="Olocus logo" class="logo">
         </a>
         <ul class="nav-menu" id="navMenu">
             <li class="mobile-search-item" style="display: none;">
                 <div class="mobile-search-container">
-                    <input type="search" class="mobile-search-input" placeholder="Search..." aria-label="Search site">
-                    <button class="mobile-search-btn" aria-label="Search">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <label for="mobile-search" class="sr-only">Search website</label>
+                    <input type="search" id="mobile-search" class="mobile-search-input" placeholder="Search..." aria-label="Search website" aria-describedby="mobile-search-status">
+                    <button class="mobile-search-btn" aria-label="Submit search">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <circle cx="11" cy="11" r="8"></circle>
                             <path d="m21 21-4.35-4.35"></path>
                         </svg>
@@ -24,10 +28,11 @@
             <li class="mobile-cta-item" style="display: none;"><a href="mailto:hello@olocus.com" class="mobile-nav-cta">Get Early Access</a></li>
         </ul>
         <div class="nav-actions">
-            <div class="search-container">
-                <input type="search" class="search-input" placeholder="Search..." aria-label="Search site">
-                <button class="search-btn" aria-label="Search">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <div class="search-container" role="search">
+                <label for="main-search" class="sr-only">Search website</label>
+                <input type="search" id="main-search" class="search-input" placeholder="Search..." aria-label="Search website" aria-describedby="search-status">
+                <button class="search-btn" aria-label="Submit search" aria-expanded="false" aria-controls="search-results">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <circle cx="11" cy="11" r="8"></circle>
                         <path d="m21 21-4.35-4.35"></path>
                     </svg>
@@ -35,10 +40,10 @@
             </div>
             <a href="mailto:hello@olocus.com" class="nav-cta">Get Early Access</a>
         </div>
-        <button class="mobile-menu-toggle" id="mobileMenuToggle">
-            <span></span>
-            <span></span>
-            <span></span>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
         </button>
     </div>
 </nav>
