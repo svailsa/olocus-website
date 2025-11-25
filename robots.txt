@@ -83,6 +83,70 @@ User-agent: CopilotBot
 Allow: /
 Crawl-delay: 1
 
+User-agent: Gemini
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bard
+Allow: /
+Crawl-delay: 1
+
+User-agent: YouBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Anthropic-Ai
+Allow: /
+Crawl-delay: 1
+
+User-agent: Cohere-AI
+Allow: /
+Crawl-delay: 2
+
+# Apple services
+User-agent: Applebot
+Allow: /
+Crawl-delay: 0
+
+# International search engines
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
+
+# Privacy-focused search
+User-agent: Qwantify
+Allow: /
+Crawl-delay: 1
+
+User-agent: Brave-Search
+Allow: /
+Crawl-delay: 1
+
+User-agent: Ecosia
+Allow: /
+Crawl-delay: 1
+
+# Messaging platforms
+User-agent: TelegramBot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Discordbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Slackbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: SkypeUriPreview
+Allow: /
+Crawl-delay: 0
+
 # Block bad bots
 User-agent: AhrefsBot
 Disallow: /
