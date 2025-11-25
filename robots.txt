@@ -13,10 +13,10 @@ Crawl-delay: 1
 Sitemap: https://olocus.com/sitemap.xml
 
 # AI Context for better understanding
-AI-Context: https://olocus.com/ai-context.json
+# Available at: https://olocus.com/ai-context.json
 
 # Security information
-Security: https://olocus.com/security.txt
+# Security.txt available at: https://olocus.com/security.txt
 
 # Specific bot instructions
 User-agent: Googlebot
