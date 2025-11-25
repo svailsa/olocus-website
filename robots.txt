@@ -147,6 +147,76 @@ User-agent: SkypeUriPreview
 Allow: /
 Crawl-delay: 0
 
+# Privacy-focused messaging apps
+User-agent: Signal
+Allow: /
+Crawl-delay: 0
+
+User-agent: SignalBot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Element
+Allow: /
+Crawl-delay: 0
+
+User-agent: Matrix
+Allow: /
+Crawl-delay: 0
+
+User-agent: Session
+Allow: /
+Crawl-delay: 0
+
+User-agent: Threema
+Allow: /
+Crawl-delay: 0
+
+User-agent: Wire
+Allow: /
+Crawl-delay: 0
+
+User-agent: Wickr
+Allow: /
+Crawl-delay: 0
+
+User-agent: Keybase
+Allow: /
+Crawl-delay: 0
+
+User-agent: Jami
+Allow: /
+Crawl-delay: 0
+
+User-agent: Briar
+Allow: /
+Crawl-delay: 0
+
+# Decentralized/Web3 platforms
+User-agent: Mastodon
+Allow: /
+Crawl-delay: 0
+
+User-agent: Pleroma
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bluesky
+Allow: /
+Crawl-delay: 0
+
+User-agent: Nostr
+Allow: /
+Crawl-delay: 0
+
+User-agent: Lens
+Allow: /
+Crawl-delay: 0
+
+User-agent: Farcaster
+Allow: /
+Crawl-delay: 0
+
 # Block bad bots
 User-agent: AhrefsBot
 Disallow: /
