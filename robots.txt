@@ -67,6 +67,22 @@ User-agent: PerplexityBot
 Allow: /
 Crawl-delay: 2
 
+User-agent: Grok
+Allow: /
+Crawl-delay: 1
+
+User-agent: GrokBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Copilot
+Allow: /
+Crawl-delay: 1
+
+User-agent: CopilotBot
+Allow: /
+Crawl-delay: 1
+
 # Block bad bots
 User-agent: AhrefsBot
 Disallow: /
