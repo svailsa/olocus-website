@@ -78,48 +78,62 @@
     function setupSearch() {
         console.log('Setting up search functionality...');
         console.log('Search index loaded with', searchIndex.length, 'pages');
+        
+        // Create search results container first
+        createSearchResultsContainer();
+        
+        // Desktop search elements
         const searchInput = document.querySelector('.search-input');
         const searchBtn = document.querySelector('.search-btn');
+        
+        // Mobile search elements
         const mobileSearchInput = document.querySelector('.mobile-search-input');
         const mobileSearchBtn = document.querySelector('.mobile-search-btn');
         
-        console.log('Search elements found:', {searchInput: !!searchInput, searchBtn: !!searchBtn});
+        console.log('Search elements found:', {
+            desktop: {input: !!searchInput, btn: !!searchBtn},
+            mobile: {input: !!mobileSearchInput, btn: !!mobileSearchBtn}
+        });
         
+        // Setup desktop search
         if (searchInput && searchBtn) {
-            // Create search results container
-            createSearchResultsContainer();
-                
-                // Handle search input
-                searchInput.addEventListener('input', debounce(handleSearch, 300));
-                searchInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        handleSearch();
-                    }
-                });
-                
-                // Handle search button click
-                searchBtn.addEventListener('click', handleSearch);
-                
-                // Setup mobile search if present
-                if (mobileSearchInput && mobileSearchBtn) {
-                    mobileSearchInput.addEventListener('input', debounce(handleMobileSearch, 300));
-                    mobileSearchInput.addEventListener('keypress', function(e) {
-                        if (e.key === 'Enter') {
-                            handleMobileSearch();
-                        }
-                    });
-                    mobileSearchBtn.addEventListener('click', handleMobileSearch);
+            searchInput.addEventListener('input', debounce(handleSearch, 300));
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    handleSearch();
                 }
-                
-                // Close search results when clicking outside
-                document.addEventListener('click', function(e) {
-                    const searchContainer = document.querySelector('.search-container');
-                    const resultsContainer = document.getElementById('search-results');
-                    if (!searchContainer.contains(e.target) && resultsContainer) {
-                        resultsContainer.style.display = 'none';
-                    }
-                });
+            });
+            searchBtn.addEventListener('click', handleSearch);
+        }
+        
+        // Setup mobile search (independent of desktop)
+        if (mobileSearchInput && mobileSearchBtn) {
+            console.log('Setting up mobile search handlers');
+            mobileSearchInput.addEventListener('input', debounce(handleMobileSearch, 300));
+            mobileSearchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    handleMobileSearch();
+                }
+            });
+            mobileSearchBtn.addEventListener('click', handleMobileSearch);
+        }
+        
+        // Close search results when clicking outside
+        document.addEventListener('click', function(e) {
+            const searchContainers = document.querySelectorAll('.search-container, .mobile-search-container');
+            const resultsContainer = document.getElementById('search-results');
+            
+            let clickedInside = false;
+            searchContainers.forEach(container => {
+                if (container && container.contains(e.target)) {
+                    clickedInside = true;
+                }
+            });
+            
+            if (!clickedInside && resultsContainer && !resultsContainer.contains(e.target)) {
+                resultsContainer.style.display = 'none';
             }
+        });
     }
     
     // Make setupSearch available globally
@@ -162,17 +176,32 @@
     function handleMobileSearch() {
         const mobileSearchInput = document.querySelector('.mobile-search-input');
         const query = mobileSearchInput.value.toLowerCase().trim();
-        performSearch(query);
+        console.log('Mobile search for:', query);
+        performSearch(query, true); // Pass mobile flag
     }
     
-    function performSearch(query) {
+    function performSearch(query, isMobile = false) {
         const resultsContainer = document.getElementById('search-results');
-        console.log('Results container exists:', !!resultsContainer);
+        console.log('Results container exists:', !!resultsContainer, 'Mobile:', isMobile);
         
         if (!resultsContainer) {
             console.error('Search results container not found!');
             createSearchResultsContainer();
-            return performSearch(query); // Retry after creating container
+            return performSearch(query, isMobile); // Retry after creating container
+        }
+        
+        // Adjust position for mobile
+        if (isMobile && window.innerWidth < 768) {
+            resultsContainer.style.top = '120px'; // Below mobile menu
+            resultsContainer.style.left = '10px';
+            resultsContainer.style.right = '10px';
+            resultsContainer.style.width = 'auto';
+        } else {
+            // Reset to desktop position
+            resultsContainer.style.top = '70px';
+            resultsContainer.style.left = 'auto';
+            resultsContainer.style.right = '20px';
+            resultsContainer.style.width = '400px';
         }
         
         if (!query) {

@@ -1,5 +1,5 @@
 // Service Worker for Olocus PWA
-const CACHE_NAME = 'olocus-v5'; // Updated with accessibility improvements
+const CACHE_NAME = 'olocus-v6'; // Fixed mobile search functionality
 const urlsToCache = [
   '/',
   '/favicon.ico',
