@@ -1,11 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <meta name="description" content="Olocus - Own Your Trust. Shape Your Future. A decentralised protocol that turns your real-world interactions into verifiable, privacy-protected digital assets.">
+    <meta name="keywords" content="privacy, location verification, zero-knowledge proofs, decentralized identity, trust protocol, blockchain, Web3, self-sovereign identity">
+    <meta name="author" content="Olocus CIC">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://olocus.com/">
+    <meta property="og:title" content="Olocus - Trust, Owned by You">
+    <meta property="og:description" content="Own your trust. Shape your future. A decentralised protocol that turns real-world interactions into verifiable, privacy-protected digital assets.">
+    <meta property="og:image" content="https://olocus.com/images/olocus-og-image.png">
+    <meta property="og:site_name" content="Olocus">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://olocus.com/">
+    <meta name="twitter:title" content="Olocus - Trust, Owned by You">
+    <meta name="twitter:description" content="Own your trust. Shape your future. A decentralised protocol that turns real-world interactions into verifiable, privacy-protected digital assets.">
+    <meta name="twitter:image" content="https://olocus.com/images/olocus-og-image.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://olocus.com/">
+    
     <title>Olocus - Trust, Owned by You</title>
     <link rel="icon" type="image/svg+xml" href="images/olocus-icon.svg">
+    <link rel="apple-touch-icon" href="images/olocus-icon.png">
+    <link rel="manifest" href="/manifest.json">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Inter:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -602,17 +626,78 @@
             }
         }
     </style>
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://olocus.com/#organization",
+          "name": "Olocus",
+          "alternateName": "Olocus CIC",
+          "url": "https://olocus.com",
+          "logo": "https://olocus.com/images/olocus-icon.svg",
+          "description": "Privacy-preserving location infrastructure and decentralised trust protocol",
+          "email": "hello@olocus.com",
+          "foundingDate": "2025",
+          "sameAs": [
+            "https://github.com/olocus",
+            "https://twitter.com/olocus"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://olocus.com/#website",
+          "url": "https://olocus.com",
+          "name": "Olocus",
+          "description": "Privacy-preserving location infrastructure",
+          "publisher": {
+            "@id": "https://olocus.com/#organization"
+          },
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://olocus.com/#webpage",
+          "url": "https://olocus.com/",
+          "name": "Olocus - Trust, Owned by You",
+          "isPartOf": {
+            "@id": "https://olocus.com/#website"
+          },
+          "about": {
+            "@id": "https://olocus.com/#organization"
+          },
+          "description": "Olocus is a decentralised protocol that turns real-world interactions into verifiable, privacy-protected digital assets.",
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Olocus Protocol",
+          "applicationCategory": "Privacy Software",
+          "operatingSystem": "iOS, Android",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "description": "Privacy-preserving location verification and trust building application"
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
-    <!-- Skip link for accessibility -->
+    <!-- Skip links for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#footer-container" class="skip-link">Skip to footer</a>
     
     <!-- Header Container -->
     <div id="header-container"></div>
 
     <!-- Hero Section -->
-    <main id="main-content">
-    <section class="hero">
+    <main id="main-content" role="main" aria-label="Main content">
+    <section class="hero" aria-label="Hero section" role="banner">
         <div class="hero-content">
             <h1>Privacy-preserving location infrastructure</h1>
             <p class="tagline">Privacy-first. User-owned. Future-proof.</p>
@@ -627,7 +712,7 @@
     </section>
 
     <!-- Value Props -->
-    <section class="value-props" id="value-props">
+    <section class="value-props" id="value-props" aria-label="Value propositions" role="region">
         <div class="section-header">
             <h2>Why Choose Olocus?</h2>
             <p>Join a movement to create a more equitable internet where individuals—not corporations—own and monetise their data.</p>
@@ -695,7 +780,7 @@
     </section>
 
     <!-- How It Works -->
-    <section class="how-it-works" id="how-it-works">
+    <section class="how-it-works" id="how-it-works" aria-label="How Olocus works" role="region">
         <div class="section-header">
             <h2>How Olocus Works</h2>
             <p>Simple, secure, and powerful trust building</p>
@@ -740,7 +825,7 @@
     </section>
 
     <!-- Use Cases -->
-    <section class="use-cases" id="use-cases">
+    <section class="use-cases" id="use-cases" aria-label="Use cases" role="region">
         <div class="section-header">
             <h2>Real-World Applications</h2>
             <p>Discover how Olocus transforms trust across industries</p>
@@ -798,7 +883,7 @@
     </section>
 
     <!-- Enterprise Section -->
-    <section class="enterprise-section" id="enterprise" style="padding: 80px 32px; background: var(--bg-dark);">
+    <section class="enterprise-section" id="enterprise" aria-label="Enterprise solutions" role="region" style="padding: 80px 32px; background: var(--bg-dark);">
         <div style="max-width: 1200px; margin: 0 auto;">
             <div style="text-align: center; margin-bottom: 48px;">
                 <span style="display: inline-block; background: rgba(76, 175, 80, 0.1); border: 1px solid rgba(76, 175, 80, 0.3); color: var(--primary); padding: 8px 16px; border-radius: 999px; font-size: 14px; font-weight: 500; margin-bottom: 24px; letter-spacing: 0.5px;">ENTERPRISE SOLUTIONS</span>
@@ -905,7 +990,7 @@
     </section>
 
     <!-- Vision CTA -->
-    <section class="cta-section" id="vision">
+    <section class="cta-section" id="vision" aria-label="Vision and call to action" role="region">
         <div class="cta-content">
             <h2>Building the Trust Layer for the Next Internet</h2>
             <p>
@@ -916,7 +1001,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" style="padding: 80px 32px; background: var(--bg-dark-elevated);">
+    <section id="faq" aria-label="Frequently asked questions" role="region" itemscope itemtype="https://schema.org/FAQPage" style="padding: 80px 32px; background: var(--bg-dark-elevated);">
         <div style="max-width: 900px; margin: 0 auto;">
             <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.5rem; font-weight: 700; text-align: center; margin-bottom: 48px; color: var(--text-primary-dark);">
                 Frequently Asked Questions
@@ -924,8 +1009,8 @@
             
             <div style="display: flex; flex-direction: column; gap: 24px;">
                 <!-- Battery Impact Question -->
-                <div style="background: var(--bg-dark-card); border: 1px solid var(--border-dark); border-radius: 16px; padding: 24px;">
-                    <h3 style="font-size: 1.25rem; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <div style="background: var(--bg-dark-card); border: 1px solid var(--border-dark); border-radius: 16px; padding: 24px;" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <h3 style="font-size: 1.25rem; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;" itemprop="name">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: none; stroke: var(--primary); stroke-width: 2;">
                             <path d="M11 7H6.83L9 2.65 6 10h4.17L8 14.35z"/>
                             <path d="M15 7V3.5C15 2.67 14.33 2 13.5 2h-7C5.67 2 5 2.67 5 3.5V20.5c0 .83.67 1.5 1.5 1.5h7c.83 0 1.5-.67 1.5-1.5V7h-4z"/>

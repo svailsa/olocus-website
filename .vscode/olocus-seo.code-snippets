@@ -1,0 +1,242 @@
+{
+  // SEO & AI Bot Optimization Snippets for Olocus Website
+  
+  "Olocus HTML Page Template": {
+    "prefix": "olocus-page",
+    "body": [
+      "<!DOCTYPE html>",
+      "<html lang=\"en\" itemscope itemtype=\"https://schema.org/WebPage\">",
+      "<head>",
+      "    <meta charset=\"UTF-8\">",
+      "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover\">",
+      "    ",
+      "    <!-- Primary Meta Tags -->",
+      "    <meta name=\"title\" content=\"${1:Page Title} - Olocus\">",
+      "    <meta name=\"description\" content=\"${2:Page description (155 chars max)}\">",
+      "    <meta name=\"keywords\" content=\"${3:keywords, comma, separated}\">",
+      "    <meta name=\"author\" content=\"Olocus CIC\">",
+      "    <meta name=\"robots\" content=\"index, follow\">",
+      "    ",
+      "    <!-- Open Graph / Facebook -->",
+      "    <meta property=\"og:type\" content=\"website\">",
+      "    <meta property=\"og:url\" content=\"https://olocus.com/${4:page-url}\">",
+      "    <meta property=\"og:title\" content=\"${1:Page Title} - Olocus\">",
+      "    <meta property=\"og:description\" content=\"${2}\">",
+      "    <meta property=\"og:image\" content=\"https://olocus.com/images/${4}-og-image.png\">",
+      "    <meta property=\"og:site_name\" content=\"Olocus\">",
+      "    ",
+      "    <!-- Twitter -->",
+      "    <meta name=\"twitter:card\" content=\"summary_large_image\">",
+      "    <meta name=\"twitter:url\" content=\"https://olocus.com/${4}\">",
+      "    <meta name=\"twitter:title\" content=\"${1:Page Title} - Olocus\">",
+      "    <meta name=\"twitter:description\" content=\"${2}\">",
+      "    <meta name=\"twitter:image\" content=\"https://olocus.com/images/${4}-og-image.png\">",
+      "    ",
+      "    <!-- Canonical URL -->",
+      "    <link rel=\"canonical\" href=\"https://olocus.com/${4}\">",
+      "    ",
+      "    <title>${1:Page Title} - Olocus</title>",
+      "    $0",
+      "</head>",
+      "<body>",
+      "    <!-- Content -->",
+      "</body>",
+      "</html>"
+    ],
+    "description": "Creates a new Olocus HTML page with all required SEO tags"
+  },
+
+  "Open Graph Meta Tags": {
+    "prefix": "og-meta",
+    "body": [
+      "<!-- Open Graph / Facebook -->",
+      "<meta property=\"og:type\" content=\"${1|website,article,product|}\">",
+      "<meta property=\"og:url\" content=\"https://olocus.com/${2:page-url}\">",
+      "<meta property=\"og:title\" content=\"${3:Title}\">",
+      "<meta property=\"og:description\" content=\"${4:Description}\">",
+      "<meta property=\"og:image\" content=\"https://olocus.com/images/${5:image.png}\">",
+      "<meta property=\"og:site_name\" content=\"Olocus\">"
+    ],
+    "description": "Add Open Graph meta tags"
+  },
+
+  "Twitter Card Meta Tags": {
+    "prefix": "twitter-meta",
+    "body": [
+      "<!-- Twitter -->",
+      "<meta name=\"twitter:card\" content=\"summary_large_image\">",
+      "<meta name=\"twitter:url\" content=\"https://olocus.com/${1:page-url}\">",
+      "<meta name=\"twitter:title\" content=\"${2:Title}\">",
+      "<meta name=\"twitter:description\" content=\"${3:Description}\">",
+      "<meta name=\"twitter:image\" content=\"https://olocus.com/images/${4:image.png}\">"
+    ],
+    "description": "Add Twitter Card meta tags"
+  },
+
+  "JSON-LD Organization Schema": {
+    "prefix": "schema-org",
+    "body": [
+      "<script type=\"application/ld+json\">",
+      "{",
+      "  \"@context\": \"https://schema.org\",",
+      "  \"@type\": \"Organization\",",
+      "  \"@id\": \"https://olocus.com/#organization\",",
+      "  \"name\": \"Olocus\",",
+      "  \"alternateName\": \"Olocus CIC\",",
+      "  \"url\": \"https://olocus.com\",",
+      "  \"logo\": \"https://olocus.com/images/olocus-icon.svg\",",
+      "  \"description\": \"Privacy-preserving location infrastructure and decentralised trust protocol\",",
+      "  \"email\": \"hello@olocus.com\",",
+      "  \"foundingDate\": \"2025\",",
+      "  \"sameAs\": [",
+      "    \"https://github.com/olocus\",",
+      "    \"https://twitter.com/olocus\"",
+      "  ]",
+      "}",
+      "</script>"
+    ],
+    "description": "Add Organization structured data"
+  },
+
+  "JSON-LD WebPage Schema": {
+    "prefix": "schema-page",
+    "body": [
+      "<script type=\"application/ld+json\">",
+      "{",
+      "  \"@context\": \"https://schema.org\",",
+      "  \"@type\": \"WebPage\",",
+      "  \"@id\": \"https://olocus.com/${1:page-url}#webpage\",",
+      "  \"url\": \"https://olocus.com/${1:page-url}\",",
+      "  \"name\": \"${2:Page Title}\",",
+      "  \"isPartOf\": {",
+      "    \"@id\": \"https://olocus.com/#website\"",
+      "  },",
+      "  \"about\": {",
+      "    \"@id\": \"https://olocus.com/#organization\"",
+      "  },",
+      "  \"description\": \"${3:Page description}\",",
+      "  \"inLanguage\": \"en-US\"",
+      "}",
+      "</script>"
+    ],
+    "description": "Add WebPage structured data"
+  },
+
+  "JSON-LD Article Schema": {
+    "prefix": "schema-article",
+    "body": [
+      "{",
+      "  \"@type\": \"Article\",",
+      "  \"headline\": \"${1:Article Title}\",",
+      "  \"description\": \"${2:Article description}\",",
+      "  \"author\": {",
+      "    \"@type\": \"Organization\",",
+      "    \"name\": \"Olocus\"",
+      "  },",
+      "  \"datePublished\": \"${3:2025-11-25}\",",
+      "  \"dateModified\": \"${4:2025-11-25}\",",
+      "  \"publisher\": {",
+      "    \"@id\": \"https://olocus.com/#organization\"",
+      "  }",
+      "}"
+    ],
+    "description": "Add Article structured data"
+  },
+
+  "JSON-LD FAQ Schema": {
+    "prefix": "schema-faq",
+    "body": [
+      "{",
+      "  \"@type\": \"FAQPage\",",
+      "  \"mainEntity\": [",
+      "    {",
+      "      \"@type\": \"Question\",",
+      "      \"name\": \"${1:Question text?}\",",
+      "      \"acceptedAnswer\": {",
+      "        \"@type\": \"Answer\",",
+      "        \"text\": \"${2:Answer text}\"",
+      "      }",
+      "    }$0",
+      "  ]",
+      "}"
+    ],
+    "description": "Add FAQ structured data"
+  },
+
+  "Accessible Section": {
+    "prefix": "section-aria",
+    "body": [
+      "<section class=\"${1:section-class}\" id=\"${2:section-id}\" aria-label=\"${3:Section description}\" role=\"region\">",
+      "    <div class=\"container\">",
+      "        <h2>${4:Section Heading}</h2>",
+      "        $0",
+      "    </div>",
+      "</section>"
+    ],
+    "description": "Create an accessible section with ARIA labels"
+  },
+
+  "Skip Links": {
+    "prefix": "skip-links",
+    "body": [
+      "<!-- Skip links for accessibility -->",
+      "<a href=\"#main-content\" class=\"skip-link\">Skip to main content</a>",
+      "<a href=\"#footer-container\" class=\"skip-link\">Skip to footer</a>"
+    ],
+    "description": "Add skip links for accessibility"
+  },
+
+  "Main Content Wrapper": {
+    "prefix": "main-content",
+    "body": [
+      "<main id=\"main-content\" role=\"main\" aria-label=\"Main content\">",
+      "    $0",
+      "</main>"
+    ],
+    "description": "Create main content wrapper with accessibility attributes"
+  },
+
+  "SEO Image": {
+    "prefix": "img-seo",
+    "body": [
+      "<img src=\"${1:image-path}\" ",
+      "     alt=\"${2:Descriptive alt text}\"",
+      "     width=\"${3:width}\"",
+      "     height=\"${4:height}\"",
+      "     loading=\"lazy\"",
+      "     decoding=\"async\">"
+    ],
+    "description": "Image tag with SEO best practices"
+  },
+
+  "Meta Tags Bundle": {
+    "prefix": "meta-all",
+    "body": [
+      "<!-- Primary Meta Tags -->",
+      "<meta name=\"title\" content=\"${1:Page Title} - Olocus\">",
+      "<meta name=\"description\" content=\"${2:Page description}\">",
+      "<meta name=\"keywords\" content=\"${3:keywords}\">",
+      "<meta name=\"author\" content=\"Olocus CIC\">",
+      "<meta name=\"robots\" content=\"index, follow\">",
+      "",
+      "<!-- Open Graph / Facebook -->",
+      "<meta property=\"og:type\" content=\"website\">",
+      "<meta property=\"og:url\" content=\"https://olocus.com/${4:page-url}\">",
+      "<meta property=\"og:title\" content=\"${1:Page Title} - Olocus\">",
+      "<meta property=\"og:description\" content=\"${2:Page description}\">",
+      "<meta property=\"og:image\" content=\"https://olocus.com/images/${5:og-image.png}\">",
+      "<meta property=\"og:site_name\" content=\"Olocus\">",
+      "",
+      "<!-- Twitter -->",
+      "<meta name=\"twitter:card\" content=\"summary_large_image\">",
+      "<meta name=\"twitter:url\" content=\"https://olocus.com/${4:page-url}\">",
+      "<meta name=\"twitter:title\" content=\"${1:Page Title} - Olocus\">",
+      "<meta name=\"twitter:description\" content=\"${2:Page description}\">",
+      "<meta name=\"twitter:image\" content=\"https://olocus.com/images/${5:og-image.png}\">",
+      "",
+      "<!-- Canonical URL -->",
+      "<link rel=\"canonical\" href=\"https://olocus.com/${4:page-url}\">"
+    ],
+    "description": "Complete set of SEO meta tags"
+  }
+}

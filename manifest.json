@@ -1,0 +1,56 @@
+{
+  "name": "Olocus - Privacy-Preserving Location Infrastructure",
+  "short_name": "Olocus",
+  "description": "Own your trust. Shape your future. A decentralised protocol that turns real-world interactions into verifiable, privacy-protected digital assets.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#4CAF50",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/olocus-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["privacy", "security", "finance", "lifestyle"],
+  "screenshots": [
+    {
+      "src": "/images/screenshot-1.png",
+      "sizes": "1280x720",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Enterprise Solutions",
+      "short_name": "Enterprise",
+      "description": "Learn about Olocus for enterprises",
+      "url": "/enterprise",
+      "icons": [{ "src": "/images/enterprise-icon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Technology",
+      "short_name": "Tech",
+      "description": "Explore our technology",
+      "url": "/technology",
+      "icons": [{ "src": "/images/tech-icon.png", "sizes": "96x96" }]
+    }
+  ],
+  "lang": "en-US",
+  "dir": "ltr"
+}

@@ -4,12 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <meta name="description" content="Olocus Privacy Policy - How we protect your privacy and handle your data">
+    <meta name="keywords" content="privacy policy, data protection, GDPR compliance, user privacy, data handling, zero-knowledge proofs, privacy-preserving technology, mobile app privacy">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Olocus CIC">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://olocus.com/privacy">
+    <meta property="og:title" content="Privacy Policy - Olocus">
+    <meta property="og:description" content="Learn how Olocus protects your privacy and handles your data. Our privacy-first approach ensures your personal data remains under your control.">
+    <meta property="og:image" content="https://olocus.com/images/olocus-privacy-og.png">
+    <meta property="og:site_name" content="Olocus">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://olocus.com/privacy">
+    <meta name="twitter:title" content="Privacy Policy - Olocus">
+    <meta name="twitter:description" content="Learn how Olocus protects your privacy and handles your data. Our privacy-first approach ensures your personal data remains under your control.">
+    <meta name="twitter:image" content="https://olocus.com/images/olocus-privacy-og.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://olocus.com/privacy">
+    
     <title>Privacy Policy - Olocus</title>
     <link rel="icon" type="image/svg+xml" href="images/olocus-icon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/common.css">
+    
+    <!-- Structured Data JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Privacy Policy",
+      "description": "Olocus Privacy Policy - How we protect your privacy and handle your data",
+      "url": "https://olocus.com/privacy",
+      "mainEntity": {
+        "@type": "PrivacyPolicy",
+        "name": "Olocus Privacy Policy",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Olocus Community Interest Company",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "3 Fitzroy Place, Finnieston",
+            "addressLocality": "Glasgow",
+            "postalCode": "G3 7RH",
+            "addressCountry": "GB"
+          },
+          "email": "compliance@olocus.com"
+        },
+        "dateModified": "2025-10-16",
+        "effectiveDate": "2025-10-16",
+        "jurisdiction": ["GB", "EU", "US", "CA", "AU"],
+        "applicableLaw": "UK GDPR, EU GDPR, CCPA, PIPEDA, Privacy Act 1988",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Data Protection Officer",
+          "name": "Mark Harper",
+          "email": "compliance@olocus.com"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://olocus.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Privacy Policy",
+            "item": "https://olocus.com/privacy"
+          }
+        ]
+      }
+    }
+    </script>
     <style>
         * {
             margin: 0;
@@ -265,14 +341,15 @@
         }
     </style>
 </head>
-<body>
+<body itemscope itemtype="https://schema.org/WebPage">
     <!-- Navigation -->
     <!-- Header Container -->
     <div id="header-container"></div>
 
     <!-- Legal Content -->
-    <div class="legal-container">
-        <h1>Privacy Policy</h1>
+    <main id="main" role="main">
+    <div class="legal-container" aria-label="Privacy policy content">
+        <h1 itemprop="name">Privacy Policy</h1>
         <p class="last-updated">Last Updated: 16 October 2025 | Effective Date: 16 October 2025</p>
 
         <div class="highlight-box">
@@ -302,6 +379,7 @@
             </ul>
         </div>
 
+        <section aria-label="Introduction">
         <h2 id="introduction">1. Introduction</h2>
         <p>Olocus Community Interest Company ("Olocus CIC," "we," "us," or "our") is committed to protecting your privacy and giving you control over your personal data. This Privacy Policy explains how we collect, use, disclose, and safeguard information when you use our services, website, and platform (collectively, the "Services").</p>
         
@@ -309,6 +387,9 @@
         
         <p>This Privacy Policy should be read in conjunction with our <a href="/terms">Terms and Conditions</a>, which govern your use of the Services.</p>
 
+        </section>
+        
+        <section aria-label="Data controller information">
         <h2 id="controller">2. Data Controller Information</h2>
         <div class="contact-info">
             <p><strong>Company Name:</strong> Olocus Community Interest Company (CIC)</p>
@@ -317,6 +398,9 @@
             <p><strong>Email:</strong> <a href="mailto:compliance@olocus.com">compliance@olocus.com</a></p>
         </div>
 
+        </section>
+        
+        <section aria-label="Personal data processing">
         <h2 id="data-we-process">3. Personal Data We Process</h2>
         
         <h3>3.1 Data You Control (On Your Device)</h3>
@@ -390,6 +474,9 @@
             </tbody>
         </table>
 
+        </section>
+        
+        <section aria-label="Data collection methods">
         <h2 id="how-we-collect">4. How We Collect Data</h2>
         
         <h3>4.1 Information You Provide</h3>
@@ -506,6 +593,9 @@
         <p><strong>iOS Control:</strong> Settings > Notifications > Olocus > Customize notification types</p>
         <p><strong>Android Control:</strong> Settings > Apps > Olocus > Notifications > Manage categories</p>
 
+        </section>
+        
+        <section aria-label="Legal basis for processing">
         <h2 id="legal-basis">5. Legal Basis for Processing</h2>
         <p>We process personal data based on the following legal grounds:</p>
         
@@ -560,6 +650,9 @@
             </tbody>
         </table>
 
+        </section>
+        
+        <section aria-label="How we use personal data">
         <h2 id="how-we-use">6. How We Use Personal Data</h2>
         <p>We use the limited personal data we process to:</p>
         <ul>
@@ -572,6 +665,9 @@
             <li><strong>Comply with Law:</strong> Meet legal, regulatory, and contractual obligations</li>
         </ul>
 
+        </section>
+        
+        <section aria-label="Data sharing and disclosure">
         <h2 id="sharing">7. Data Sharing and Disclosure</h2>
         
         <h3>7.1 We Do Not Sell Personal Data</h3>
@@ -592,6 +688,9 @@
         <h3>7.3 Anonymised Insights</h3>
         <p>When you choose to monetise insights, we share only anonymised, aggregated data that cannot be traced back to you. This process requires your explicit consent and uses zero-knowledge proofs to ensure privacy.</p>
 
+        </section>
+        
+        <section aria-label="International data transfers">
         <h2 id="international">8. International Data Transfers</h2>
         
         <p>While our servers are located in the UK, EU, Australia, and New Zealand, we serve users globally. We ensure all international data transfers comply with applicable laws:</p>
@@ -602,6 +701,9 @@
             <li>Cloudflare processes data globally but under appropriate data protection agreements</li>
         </ul>
 
+        </section>
+        
+        <section aria-label="Data retention">
         <h2 id="retention">9. Data Retention</h2>
         
         <p>We retain personal data only as long as necessary for the purposes outlined in this policy:</p>
@@ -637,6 +739,9 @@
             </tbody>
         </table>
 
+        </section>
+        
+        <section aria-label="Data security">
         <h2 id="security">10. Data Security</h2>
         
         <p>We implement appropriate technical and organisational measures to protect personal data:</p>
@@ -654,6 +759,9 @@
             <p><strong>Security by Design:</strong> Your location and behavioural data never leaves your device in raw form. We process only cryptographic proofs, ensuring your privacy even if our systems were compromised.</p>
         </div>
 
+        </section>
+        
+        <section aria-label="Your privacy rights">
         <h2 id="your-rights">11. Your Rights</h2>
         
         <p>Under applicable data protection laws, you have the following rights:</p>
@@ -698,6 +806,9 @@
             <p><strong>Device-Level Control:</strong> These device settings provide immediate control over data collection and app behavior. Changes take effect immediately and do not require contacting us.</p>
         </div>
 
+        </section>
+        
+        <section aria-label="Jurisdiction-specific rights">
         <h2 id="specific-jurisdictions">12. Jurisdiction-Specific Rights</h2>
         
         <h3>12.1 UK and EEA Residents</h3>
@@ -724,6 +835,9 @@
         <h3>12.4 Other Jurisdictions</h3>
         <p>If you reside in other jurisdictions, you may have additional rights under local privacy laws. Please contact us for specific information about your rights.</p>
 
+        </section>
+        
+        <section aria-label="Children's privacy protection">
         <h2 id="children">13. Children's Privacy</h2>
         
         <h3>13.1 Age Restrictions</h3>
@@ -755,6 +869,9 @@
             <p><strong>Parent Contact:</strong> If you are a parent or guardian and believe your child has provided personal information to our Services, please contact us immediately at <a href="mailto:compliance@olocus.com">compliance@olocus.com</a>.</p>
         </div>
 
+        </section>
+        
+        <section aria-label="Policy changes">
         <h2 id="changes">14. Changes to This Policy</h2>
         <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by:</p>
         <ul>
@@ -764,6 +881,9 @@
         </ul>
         <p>Your continued use of our Services after changes constitutes acceptance of the updated policy.</p>
 
+        </section>
+        
+        <section aria-label="Mobile app store privacy disclosures">
         <h2 id="app-store-privacy">15. Mobile App Store Privacy Disclosures</h2>
         
         <h3>15.1 Apple App Store Privacy Labels</h3>
@@ -827,6 +947,9 @@
             <li><strong>Sensitive Permissions:</strong> Location access is clearly justified and user-controlled</li>
         </ul>
 
+        </section>
+        
+        <section aria-label="Contact information">
         <h2 id="contact">16. Contact Us</h2>
         <p>For any questions, concerns, or requests regarding this Privacy Policy or our privacy practices, please contact:</p>
         
@@ -856,8 +979,9 @@
 
         <div class="highlight-box">
             <p><strong>Our Commitment:</strong> At Olocus, we believe privacy is a fundamental human right. Our technology is designed to prove this isn't just a principle—it's how we operate. Your data remains yours, always.</p>
-        </div>
+        </section>
     </div>
+    </main>
 
     <!-- Footer -->
     <!-- Footer Container -->

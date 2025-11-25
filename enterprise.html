@@ -4,6 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <meta name="description" content="Olocus Enterprise - The future of location intelligence is verification, not surveillance. Privacy-preserving infrastructure for enterprise location verification.">
+    <meta name="keywords" content="enterprise location verification, privacy-preserving location, zero-knowledge proofs, verification without surveillance, location intelligence, cryptographic verification, GDPR compliance, data privacy">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Olocus CIC">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="https://olocus.com/enterprise">
+    <meta property="og:title" content="Olocus Enterprise - Verification Without Surveillance">
+    <meta property="og:description" content="Transform liability into trust with privacy-preserving location verification. Eliminate location data from your breach surface forever.">
+    <meta property="og:image" content="https://olocus.com/images/olocus-enterprise-og.png">
+    <meta property="og:site_name" content="Olocus">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://olocus.com/enterprise">
+    <meta name="twitter:title" content="Olocus Enterprise - Verification Without Surveillance">
+    <meta name="twitter:description" content="Transform liability into trust with privacy-preserving location verification. Eliminate location data from your breach surface forever.">
+    <meta name="twitter:image" content="https://olocus.com/images/olocus-enterprise-og.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://olocus.com/enterprise">
+    
     <title>Olocus Enterprise - Verification Without Surveillance</title>
     <link rel="icon" type="image/svg+xml" href="images/olocus-icon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,6 +33,52 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Inter:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="/css/common.css">
+    
+    <!-- Structured Data JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Olocus Enterprise",
+      "description": "Privacy-preserving location verification infrastructure for enterprises. Transform liability into trust through cryptographic verification without surveillance.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Olocus"
+      },
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "Olocus Community Interest Company",
+        "url": "https://olocus.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "3 Fitzroy Place, Finnieston",
+          "addressLocality": "Glasgow",
+          "postalCode": "G3 7RH",
+          "addressCountry": "GB"
+        }
+      },
+      "category": "Enterprise Software",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "GBP",
+          "price": "Contact for pricing"
+        }
+      },
+      "applicationCategory": "Privacy Technology",
+      "operatingSystem": "Cross-platform",
+      "featureList": [
+        "Zero-knowledge location verification",
+        "GDPR compliance by design",
+        "Cryptographic proofs",
+        "No location data storage",
+        "Cross-party verification",
+        "Historical verification capability"
+      ]
+    }
+    </script>
     <style>
         * {
             margin: 0;
@@ -466,16 +534,17 @@
         }
     </style>
 </head>
-<body>
+<body itemscope itemtype="https://schema.org/WebPage">
     <a href="#main" class="skip-link">Skip to main content</a>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <main id="main" role="main">
+    <section class="hero" aria-label="Enterprise solution overview">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge">ENTERPRISE SOLUTION</div>
-                <h1>The Future of Location Intelligence<br>is Verification, Not Surveillance</h1>
-                <p class="subtitle">
+                <h1 itemprop="name">The Future of Location Intelligence<br>is Verification, Not Surveillance</h1>
+                <p class="subtitle" itemprop="description">
                     As privacy regulations tighten and data breaches proliferate, enterprises need a new approach.
                     Olocus provides trust without visibility through cryptographic verification.
                 </p>
@@ -489,7 +558,7 @@
     </section>
 
     <!-- Value Propositions Section -->
-    <section id="value-props" class="value-props">
+    <section id="value-props" class="value-props" aria-label="Value propositions">
         <div class="container">
             <div class="section-header">
                 <h2>Transform Liability into Trust</h2>
@@ -603,7 +672,7 @@
     </section>
 
     <!-- Comparison Section -->
-    <section class="comparison">
+    <section class="comparison" aria-label="Traditional vs Olocus comparison">
         <div class="container">
             <div class="section-header">
                 <h2>Breaking the Surveillance-Trust Tradeoff</h2>
@@ -683,7 +752,7 @@
     </section>
 
     <!-- Why Section -->
-    <section class="why-section">
+    <section class="why-section" aria-label="Why existing solutions fail">
         <div class="container">
             <div class="why-content">
                 <h2>Why Existing Solutions Fail</h2>
@@ -710,7 +779,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
+    <section class="cta-section" aria-label="Call to action">
         <div class="container">
             <h2>Ready for the Future of Location Intelligence?</h2>
             <p>Join forward-thinking enterprises already transitioning from surveillance to verification.</p>
@@ -720,6 +789,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <script>
