@@ -77,6 +77,7 @@
     // Initialize search - will be called from load-components.js after header loads
     function setupSearch() {
         console.log('Setting up search functionality...');
+        console.log('Search index loaded with', searchIndex.length, 'pages');
         const searchInput = document.querySelector('.search-input');
         const searchBtn = document.querySelector('.search-btn');
         const mobileSearchInput = document.querySelector('.mobile-search-input');
@@ -129,23 +130,25 @@
             const resultsDiv = document.createElement('div');
             resultsDiv.id = 'search-results';
             resultsDiv.className = 'search-results-container';
-            resultsDiv.style.cssText = `
-                position: fixed;
-                top: 70px;
-                right: 20px;
-                width: 400px;
-                max-width: 90vw;
-                max-height: 70vh;
-                overflow-y: auto;
-                background: var(--bg-dark-elevated);
-                border: 1px solid var(--border-dark);
-                border-radius: 8px;
-                box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-                z-index: 1001;
-                display: none;
-                padding: 16px;
-            `;
+            
+            // Use individual style properties instead of cssText
+            resultsDiv.style.position = 'fixed';
+            resultsDiv.style.top = '70px';
+            resultsDiv.style.right = '20px';
+            resultsDiv.style.width = '400px';
+            resultsDiv.style.maxWidth = '90vw';
+            resultsDiv.style.maxHeight = '70vh';
+            resultsDiv.style.overflowY = 'auto';
+            resultsDiv.style.background = '#1E1E1E'; // Use explicit color
+            resultsDiv.style.border = '1px solid rgba(255, 255, 255, 0.12)';
+            resultsDiv.style.borderRadius = '8px';
+            resultsDiv.style.boxShadow = '0 10px 40px rgba(0,0,0,0.5)';
+            resultsDiv.style.zIndex = '1001';
+            resultsDiv.style.display = 'none';
+            resultsDiv.style.padding = '16px';
+            
             document.body.appendChild(resultsDiv);
+            console.log('Search results container created');
         }
     }
 
@@ -164,6 +167,13 @@
     
     function performSearch(query) {
         const resultsContainer = document.getElementById('search-results');
+        console.log('Results container exists:', !!resultsContainer);
+        
+        if (!resultsContainer) {
+            console.error('Search results container not found!');
+            createSearchResultsContainer();
+            return performSearch(query); // Retry after creating container
+        }
         
         if (!query) {
             resultsContainer.style.display = 'none';
@@ -178,12 +188,15 @@
             return inTitle || inContent || inKeywords;
         });
         
+        console.log('Search results found:', results.length);
+        
         // Display results
         displaySearchResults(results, query);
     }
 
     function displaySearchResults(results, query) {
         const resultsContainer = document.getElementById('search-results');
+        console.log('Displaying results, container exists:', !!resultsContainer);
         
         if (results.length === 0) {
             resultsContainer.innerHTML = `
