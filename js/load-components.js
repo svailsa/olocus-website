@@ -149,13 +149,16 @@ document.addEventListener('DOMContentLoaded', async function() {
     const headerLoaded = await loadComponent('header-container', '/header.html');
     await loadComponent('footer-container', '/footer.html');
     
-    // Load search functionality after header loads
+    // Load search functionality and initialize after header loads
     if (headerLoaded) {
         loadSearchScript();
-    }
-    
-    // Initialize functionality after header loads
-    if (headerLoaded) {
+        // Call setupSearch after search.js loads
+        setTimeout(() => {
+            if (window.setupSearch) {
+                window.setupSearch();
+            }
+        }, 100);
+        
         initializeMobileMenu();
         initializeNavScroll();
     }

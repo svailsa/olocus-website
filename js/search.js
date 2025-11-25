@@ -74,22 +74,19 @@
         }
     ];
 
-    // Initialize search when DOM is ready
-    document.addEventListener('DOMContentLoaded', function() {
-        setupSearch();
-    });
-
+    // Initialize search - will be called from load-components.js after header loads
     function setupSearch() {
-        // Wait for header to load, then setup search
-        setTimeout(() => {
-            const searchInput = document.querySelector('.search-input');
-            const searchBtn = document.querySelector('.search-btn');
-            const mobileSearchInput = document.querySelector('.mobile-search-input');
-            const mobileSearchBtn = document.querySelector('.mobile-search-btn');
-            
-            if (searchInput && searchBtn) {
-                // Create search results container
-                createSearchResultsContainer();
+        console.log('Setting up search functionality...');
+        const searchInput = document.querySelector('.search-input');
+        const searchBtn = document.querySelector('.search-btn');
+        const mobileSearchInput = document.querySelector('.mobile-search-input');
+        const mobileSearchBtn = document.querySelector('.mobile-search-btn');
+        
+        console.log('Search elements found:', {searchInput: !!searchInput, searchBtn: !!searchBtn});
+        
+        if (searchInput && searchBtn) {
+            // Create search results container
+            createSearchResultsContainer();
                 
                 // Handle search input
                 searchInput.addEventListener('input', debounce(handleSearch, 300));
@@ -122,8 +119,10 @@
                     }
                 });
             }
-        }, 500);
     }
+    
+    // Make setupSearch available globally
+    window.setupSearch = setupSearch;
 
     function createSearchResultsContainer() {
         if (!document.getElementById('search-results')) {
@@ -153,6 +152,7 @@
     function handleSearch() {
         const searchInput = document.querySelector('.search-input');
         const query = searchInput.value.toLowerCase().trim();
+        console.log('Searching for:', query);
         performSearch(query);
     }
     
