@@ -451,6 +451,59 @@ footer {
     .mobile-menu-toggle {
         display: flex;
     }
+    
+    /* Show mobile search and CTA only in mobile menu when active */
+    .nav-menu .mobile-search-item {
+        display: block !important;
+        width: 100%;
+        padding: 0 !important;
+        margin-bottom: 16px;
+    }
+    
+    .mobile-search-container {
+        position: relative;
+        display: flex;
+        width: 100%;
+    }
+    
+    .mobile-search-input {
+        flex: 1;
+        padding: 10px 40px 10px 16px;
+        border: 1px solid var(--border-dark);
+        border-radius: 8px;
+        background: var(--bg-dark-card);
+        color: var(--text-primary-dark);
+        font-size: 16px;
+    }
+    
+    .mobile-search-btn {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        padding: 8px;
+        cursor: pointer;
+    }
+    
+    .nav-menu .mobile-cta-item {
+        display: block !important;
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid var(--border-dark);
+    }
+    
+    .mobile-nav-cta {
+        background: var(--primary) !important;
+        color: white !important;
+        padding: 10px 24px !important;
+        border-radius: 8px !important;
+        text-align: center !important;
+        display: block !important;
+        font-weight: 600 !important;
+    }
 
     .footer-content {
         grid-template-columns: 1fr;
