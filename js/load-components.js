@@ -123,6 +123,14 @@ function initializeScrollAnimations() {
     });
 }
 
+// Function to load search functionality
+function loadSearchScript() {
+    const script = document.createElement('script');
+    script.src = '/js/search.js';
+    script.async = true;
+    document.head.appendChild(script);
+}
+
 // Load components when DOM is ready
 document.addEventListener('DOMContentLoaded', async function() {
     // Detect iOS standalone mode
@@ -140,6 +148,11 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Load header and footer
     const headerLoaded = await loadComponent('header-container', '/header.html');
     await loadComponent('footer-container', '/footer.html');
+    
+    // Load search functionality after header loads
+    if (headerLoaded) {
+        loadSearchScript();
+    }
     
     // Initialize functionality after header loads
     if (headerLoaded) {
