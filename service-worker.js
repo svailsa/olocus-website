@@ -1,9 +1,10 @@
 // Service Worker for Olocus PWA
-const CACHE_NAME = 'olocus-v1';
+const CACHE_NAME = 'olocus-v2'; // Updated to force cache refresh
 const urlsToCache = [
   '/',
   '/css/common.css',
   '/js/load-components.js',
+  '/js/search.js', // Added search.js to cache
   '/images/olocus-icon.svg',
   '/images/olocus-brandmark-dark.svg',
   '/index.html',
@@ -13,7 +14,9 @@ const urlsToCache = [
   '/enterprise.html',
   '/privacy.html',
   '/terms.html',
-  '/manifest.json'
+  '/manifest.json',
+  '/header.html',
+  '/footer.html'
 ];
 
 // Install event - cache resources
