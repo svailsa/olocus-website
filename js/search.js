@@ -282,7 +282,7 @@
     }
 
     // Mobile responsive adjustments
-    if (window.innerWidth < 768px) {
+    if (window.innerWidth < 768) {
         const style = document.createElement('style');
         style.textContent = `
             @media (max-width: 768px) {
