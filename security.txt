@@ -1,0 +1,42 @@
+# Olocus Security Policy
+# For security researchers and ethical hackers
+
+Contact: mailto:security@olocus.com
+Contact: mailto:hello@olocus.com
+Expires: 2026-12-31T23:59:00.000Z
+Encryption: https://olocus.com/pgp-key.txt
+Acknowledgments: https://olocus.com/security/acknowledgments
+Preferred-Languages: en
+Canonical: https://olocus.com/.well-known/security.txt
+Policy: https://olocus.com/security-policy
+
+# Our Commitment
+# We take security seriously at Olocus. As a privacy-first platform,
+# protecting user data is our highest priority. We welcome security
+# researchers to responsibly disclose vulnerabilities.
+
+# Scope
+# - olocus.com and all subdomains
+# - Olocus mobile applications (iOS/Android)
+# - Olocus API endpoints
+
+# Safe Harbor
+# We consider security research conducted in accordance with this policy
+# as authorized conduct and will not pursue legal action.
+
+# Response Time
+# - Critical: 24 hours
+# - High: 3 business days  
+# - Medium: 7 business days
+# - Low: 14 business days
+
+# Rewards
+# We offer acknowledgment and potential rewards for valid security reports.
+# Severity and impact determine reward eligibility.
+
+# Please DO NOT:
+# - Perform actions that could harm the reliability/integrity of our services
+# - Access, modify, or delete user data
+# - Perform social engineering or phishing attacks
+
+# Hash: [This file's SHA-256 hash will be here]

@@ -64,4 +64,12 @@
     <priority>0.5</priority>
   </url>
   
+  <!-- Security Acknowledgments -->
+  <url>
+    <loc>https://olocus.com/security/acknowledgments</loc>
+    <lastmod>2025-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 </urlset>

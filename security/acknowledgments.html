@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Security Acknowledgments - Olocus">
+    <meta name="description" content="Recognizing security researchers who have helped make Olocus safer through responsible disclosure of vulnerabilities.">
+    <meta name="keywords" content="security, acknowledgments, responsible disclosure, bug bounty, security researchers, vulnerability disclosure">
+    <meta name="author" content="Olocus CIC">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Performance optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    
+    <!-- Enhanced mobile experience -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#4CAF50">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://olocus.com/security-acknowledgments">
+    <meta property="og:title" content="Security Acknowledgments - Olocus">
+    <meta property="og:description" content="Recognizing security researchers who have helped make Olocus safer.">
+    <meta property="og:image" content="https://olocus.com/images/security-og-image.png">
+    <meta property="og:site_name" content="Olocus">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://olocus.com/security-acknowledgments">
+    <meta name="twitter:title" content="Security Acknowledgments - Olocus">
+    <meta name="twitter:description" content="Recognizing security researchers who have helped make Olocus safer.">
+    <meta name="twitter:image" content="https://olocus.com/images/security-og-image.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://olocus.com/security-acknowledgments">
+    <link rel="alternate" hreflang="en" href="https://olocus.com/security-acknowledgments">
+    <link rel="alternate" hreflang="x-default" href="https://olocus.com/security-acknowledgments">
+    
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/svg+xml" href="/images/olocus-icon.svg">
+    <link rel="apple-touch-icon" href="/images/olocus-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    
+    <title>Security Acknowledgments - Olocus</title>
+    
+    <!-- Fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Inter:wght@400;500&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Inter:wght@400;500&display=swap" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet"></noscript>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/common.css">
+    
+    <style>
+        :root {
+            --primary: #4CAF50;
+            --primary-dark: #388E3C;
+            --primary-light: #A5D6A7;
+            --success: #66BB6A;
+            --warning: #FFB300;
+            --info: #2196F3;
+            --bg-dark: #121212;
+            --bg-dark-elevated: #1E1E1E;
+            --bg-dark-card: #2C2C2C;
+            --text-primary-dark: #EDEDED;
+            --text-secondary: #A8A8A8;
+            --border-dark: rgba(255, 255, 255, 0.12);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            padding: 120px 0 60px;
+            background: linear-gradient(135deg, #1E1E1E 0%, #121212 100%);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #fff 0%, #a8a8a8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            padding: 60px 0;
+        }
+
+        .intro-card {
+            background: var(--bg-dark-elevated);
+            border: 1px solid var(--border-dark);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 48px;
+        }
+
+        .intro-card h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .hall-of-fame {
+            margin-bottom: 60px;
+        }
+
+        .hall-of-fame h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .researchers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .researcher-card {
+            background: var(--bg-dark-card);
+            border: 1px solid var(--border-dark);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .researcher-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .researcher-name {
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--text-primary-dark);
+            margin-bottom: 8px;
+        }
+
+        .researcher-handle {
+            color: var(--primary);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .vulnerability-details {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .severity-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .severity-critical {
+            background: rgba(229, 57, 53, 0.2);
+            color: #FF5252;
+            border: 1px solid rgba(229, 57, 53, 0.3);
+        }
+
+        .severity-high {
+            background: rgba(255, 179, 0, 0.2);
+            color: var(--warning);
+            border: 1px solid rgba(255, 179, 0, 0.3);
+        }
+
+        .severity-medium {
+            background: rgba(33, 150, 243, 0.2);
+            color: var(--info);
+            border: 1px solid rgba(33, 150, 243, 0.3);
+        }
+
+        .severity-low {
+            background: rgba(76, 175, 80, 0.2);
+            color: var(--success);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        .year-section {
+            margin-bottom: 48px;
+        }
+
+        .year-header {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-dark);
+        }
+
+        .placeholder {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--bg-dark-elevated);
+            border-radius: 16px;
+            border: 1px dashed var(--border-dark);
+        }
+
+        .placeholder h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: var(--text-primary-dark);
+        }
+
+        .placeholder p {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .report-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .report-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        .disclosure-info {
+            background: var(--bg-dark-elevated);
+            border-left: 4px solid var(--primary);
+            padding: 24px;
+            margin: 32px 0;
+            border-radius: 8px;
+        }
+
+        .disclosure-info h3 {
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .disclosure-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .disclosure-info li {
+            padding: 8px 0;
+            color: var(--text-secondary);
+        }
+
+        .disclosure-info li:before {
+            content: '✓';
+            color: var(--success);
+            font-weight: bold;
+            margin-right: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .researchers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Security Acknowledgments",
+      "description": "Recognizing security researchers who have helped make Olocus safer",
+      "url": "https://olocus.com/security-acknowledgments",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Olocus",
+        "url": "https://olocus.com"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "Security Research",
+        "description": "Responsible vulnerability disclosure program"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Olocus",
+        "url": "https://olocus.com"
+      }
+    }
+    </script>
+</head>
+<body>
+    <!-- Skip links for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header Container -->
+    <div id="header-container"></div>
+    
+    <!-- Main Content -->
+    <main id="main-content" role="main" aria-label="Security Acknowledgments">
+        
+        <!-- Hero Section -->
+        <section class="hero" aria-label="Hero section">
+            <div class="container">
+                <h1>Security Hall of Fame</h1>
+                <p>Recognizing the security researchers who help keep Olocus and our users safe</p>
+            </div>
+        </section>
+        
+        <!-- Content Section -->
+        <section class="content-section">
+            <div class="container">
+                
+                <!-- Introduction -->
+                <div class="intro-card">
+                    <h2>Thank You, Security Researchers</h2>
+                    <p>
+                        We deeply appreciate the security research community's efforts in helping us maintain the highest 
+                        standards of security and privacy. This page acknowledges researchers who have responsibly disclosed 
+                        vulnerabilities, helping us protect our users' data and trust.
+                    </p>
+                    <p style="margin-top: 16px;">
+                        As a privacy-first platform, security is fundamental to our mission. Every vulnerability found and 
+                        fixed makes Olocus stronger and our users safer.
+                    </p>
+                </div>
+
+                <!-- Hall of Fame -->
+                <div class="hall-of-fame">
+                    <h2>2025 Researchers</h2>
+                    
+                    <!-- Placeholder for when no vulnerabilities have been reported yet -->
+                    <div class="placeholder">
+                        <h3>🛡️ No Vulnerabilities Reported Yet</h3>
+                        <p>
+                            We're proud that no security vulnerabilities have been reported so far, but we know that 
+                            security is an ongoing effort. We welcome security researchers to help us maintain this record.
+                        </p>
+                        <a href="mailto:security@olocus.com" class="report-btn">Report a Vulnerability</a>
+                    </div>
+                    
+                    <!-- Example structure for future entries (commented out) -->
+                    <!--
+                    <div class="year-section">
+                        <div class="year-header">2025</div>
+                        <div class="researchers-grid">
+                            <div class="researcher-card">
+                                <div class="researcher-name">John Doe</div>
+                                <div class="researcher-handle">@johndoe</div>
+                                <div class="vulnerability-details">Cross-Site Scripting (XSS) in user profile</div>
+                                <div class="vulnerability-details">Reported: March 2025 | Fixed: March 2025</div>
+                                <span class="severity-badge severity-medium">Medium</span>
+                            </div>
+                            
+                            <div class="researcher-card">
+                                <div class="researcher-name">Jane Smith</div>
+                                <div class="researcher-handle">@janesmith</div>
+                                <div class="vulnerability-details">Authentication bypass vulnerability</div>
+                                <div class="vulnerability-details">Reported: April 2025 | Fixed: April 2025</div>
+                                <span class="severity-badge severity-high">High</span>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+                </div>
+
+                <!-- Responsible Disclosure Information -->
+                <div class="disclosure-info">
+                    <h3>Responsible Disclosure Program</h3>
+                    <p style="margin-bottom: 16px;">
+                        We encourage responsible disclosure of security vulnerabilities. If you discover a security issue, 
+                        please report it to us privately so we can fix it before it's publicly disclosed.
+                    </p>
+                    <ul>
+                        <li>Report vulnerabilities to security@olocus.com</li>
+                        <li>Include detailed steps to reproduce the issue</li>
+                        <li>Allow us reasonable time to fix the issue (30-90 days depending on severity)</li>
+                        <li>Do not access or modify user data</li>
+                        <li>Do not disrupt our services</li>
+                        <li>Eligible reports may receive rewards and recognition</li>
+                    </ul>
+                </div>
+
+                <!-- Severity Levels -->
+                <div class="intro-card">
+                    <h2>Vulnerability Severity Levels</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 24px;">
+                        <div>
+                            <span class="severity-badge severity-critical">Critical</span>
+                            <p style="margin-top: 8px; font-size: 14px;">Remote code execution, data breach</p>
+                        </div>
+                        <div>
+                            <span class="severity-badge severity-high">High</span>
+                            <p style="margin-top: 8px; font-size: 14px;">Authentication bypass, privilege escalation</p>
+                        </div>
+                        <div>
+                            <span class="severity-badge severity-medium">Medium</span>
+                            <p style="margin-top: 8px; font-size: 14px;">XSS, CSRF, information disclosure</p>
+                        </div>
+                        <div>
+                            <span class="severity-badge severity-low">Low</span>
+                            <p style="margin-top: 8px; font-size: 14px;">Minor issues, best practice violations</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="intro-card" style="text-align: center;">
+                    <h2>Report a Security Issue</h2>
+                    <p style="margin-bottom: 24px;">
+                        Found a vulnerability? Please report it responsibly and help us keep Olocus secure.
+                    </p>
+                    <a href="mailto:security@olocus.com" class="report-btn">Contact Security Team</a>
+                    <p style="margin-top: 24px; font-size: 14px; color: var(--text-secondary);">
+                        For more information, see our <a href="/security.txt" style="color: var(--primary);">security.txt</a> file.
+                    </p>
+                </div>
+                
+            </div>
+        </section>
+        
+    </main>
+    
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+    
+    <!-- Load common components -->
+    <script src="/js/load-components.js"></script>
+</body>
+</html>
