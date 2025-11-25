@@ -6,7 +6,7 @@
   "display": "standalone",
   "display_override": ["window-controls-overlay", "minimal-ui", "standalone", "fullscreen"],
   "background_color": "#121212",
-  "theme_color": "#4CAF50",
+  "theme_color": "#121212",
   "orientation": "portrait-primary",
   "edge_side_panel": {
     "preferred_width": 480
