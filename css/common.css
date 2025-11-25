@@ -95,6 +95,24 @@ nav {
 .logo {
     height: 32px;
     width: auto;
+    display: block;
+    transition: opacity 0.2s ease;
+}
+
+.nav-container > a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.nav-container > a:hover .logo {
+    opacity: 0.8;
+}
+
+.nav-container > a:focus {
+    outline: 2px solid var(--info);
+    outline-offset: 4px;
+    border-radius: 4px;
 }
 
 .nav-menu {
