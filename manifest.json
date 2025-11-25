@@ -4,9 +4,17 @@
   "description": "Own your trust. Shape your future. A decentralised protocol that turns real-world interactions into verifiable, privacy-protected digital assets.",
   "start_url": "/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "minimal-ui", "standalone", "fullscreen"],
   "background_color": "#121212",
   "theme_color": "#4CAF50",
   "orientation": "portrait-primary",
+  "edge_side_panel": {
+    "preferred_width": 480
+  },
+  "handle_links": "preferred",
+  "launch_handler": {
+    "client_mode": ["navigate-existing", "navigate-new"]
+  },
   "icons": [
     {
       "src": "/images/olocus-icon.svg",

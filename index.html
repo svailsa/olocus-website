@@ -26,6 +26,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="theme-color" content="#4CAF50">
     
+    <!-- Android-specific PWA enhancements -->
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#4CAF50">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#4CAF50">
+    <meta name="mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-start-url" content="/">
+    <meta name="mobile-web-app-title" content="Olocus">
+    <link rel="mask-icon" href="/images/olocus-icon.svg" color="#4CAF50">
+    <!-- Chrome Android specific -->
+    <meta name="msapplication-navbutton-color" content="#4CAF50">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- Android app banner criteria verification -->
+    <meta name="google-site-verification" content="">
+    <!-- Maskable icon support verification -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/icon-512.png">
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://olocus.com/">
@@ -57,6 +73,14 @@
     <link rel="prefetch" href="/technology">
     <link rel="stylesheet" href="/css/common.css">
     <style>
+        /* Prevent zoom issues on iOS Chrome */
+        html {
+            -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
+            text-size-adjust: 100%;
+            height: 100%;
+            height: -webkit-fill-available; /* Better height handling for Chrome iOS */
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -122,6 +146,10 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+            /* Prevent double-tap zoom on iOS */
+            touch-action: manipulation;
         }
 
         /* Focus management for accessibility */
@@ -149,12 +177,40 @@
         /* Hero Section */
         .hero {
             min-height: 100vh;
+            min-height: -webkit-fill-available; /* Chrome iOS fix */
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: var(--space-12) var(--space-8) var(--space-8);
+            padding: calc(80px + var(--space-12)) var(--space-8) var(--space-8); /* Account for fixed nav */
             position: relative;
             background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-dark-elevated) 100%);
+            box-sizing: border-box;
+        }
+        
+        /* Chrome on iOS specific fix */
+        @supports (-webkit-touch-callout: none) {
+            .hero {
+                min-height: -webkit-fill-available;
+                padding-top: calc(80px + env(safe-area-inset-top) + var(--space-12));
+            }
+        }
+        
+        /* Specific Chrome iOS fixes using detection class */
+        .chrome-ios .hero {
+            min-height: calc(var(--vh, 1vh) * 100);
+            padding-top: calc(90px + env(safe-area-inset-top) + var(--space-8));
+        }
+        
+        .chrome-ios body {
+            /* Prevent zoom on form focus */
+            font-size: 16px !important;
+        }
+        
+        @media (max-width: 768px) {
+            .chrome-ios .hero {
+                padding-top: calc(110px + env(safe-area-inset-top));
+                min-height: calc(var(--vh, 1vh) * 100 - 65px);
+            }
         }
 
         .hero::before {
@@ -595,8 +651,17 @@
         
         /* Responsive Design */
         @media (max-width: 768px) {
+            /* Fix hero padding for mobile to prevent content under nav */
+            .hero {
+                padding-top: calc(100px + env(safe-area-inset-top) + var(--space-8));
+                min-height: calc(100vh - 65px);
+                min-height: calc(-webkit-fill-available - 65px);
+            }
+            
             .hero h1 {
                 font-size: clamp(2rem, 6vw, 3rem);
+                /* Ensure text doesn't go under navigation */
+                margin-top: 0;
             }
 
             .hero .tagline {
@@ -1123,6 +1188,29 @@
 
     <!-- Load common components -->
     <script src="/js/load-components.js"></script>
+    
+    <!-- Chrome iOS Detection and Fixes -->
+    <script>
+        (function() {
+            // Detect Chrome on iOS
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            const isChrome = /CriOS/.test(navigator.userAgent); // Chrome on iOS uses CriOS in user agent
+            
+            if (isIOS && isChrome) {
+                document.documentElement.classList.add('chrome-ios');
+                
+                // Fix viewport height for Chrome iOS
+                function setViewportHeight() {
+                    const vh = window.innerHeight * 0.01;
+                    document.documentElement.style.setProperty('--vh', `${vh}px`);
+                }
+                
+                setViewportHeight();
+                window.addEventListener('resize', setViewportHeight);
+                window.addEventListener('orientationchange', setViewportHeight);
+            }
+        })();
+    </script>
     
     <!-- PWA Initialization -->
     <script src="/js/pwa-init.js"></script>
