@@ -126,7 +126,7 @@ function initializeScrollAnimations() {
 // Function to load search functionality
 function loadSearchScript() {
     const script = document.createElement('script');
-    script.src = '/js/search.js';
+    script.src = '/js/search.js?v=' + Date.now(); // Add cache-busting parameter
     script.async = true;
     document.head.appendChild(script);
 }
