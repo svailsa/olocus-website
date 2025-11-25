@@ -217,7 +217,7 @@ User-agent: Farcaster
 Allow: /
 Crawl-delay: 0
 
-# Block bad bots
+# Block bad bots - SEO scrapers that waste resources
 User-agent: AhrefsBot
 Disallow: /
 
@@ -229,6 +229,158 @@ Disallow: /
 
 User-agent: DotBot
 Disallow: /
+
+User-agent: Moz
+Disallow: /
+
+User-agent: Rogerbot
+Disallow: /
+
+User-agent: SiteAuditBot
+Disallow: /
+
+User-agent: Screaming Frog SEO Spider
+Disallow: /
+
+# Content scrapers and copyright violators
+User-agent: HTTrack
+Disallow: /
+
+User-agent: WebCopier
+Disallow: /
+
+User-agent: WebStripper
+Disallow: /
+
+User-agent: SiteSnagger
+Disallow: /
+
+User-agent: TeleportPro
+Disallow: /
+
+User-agent: Offline Explorer
+Disallow: /
+
+User-agent: SiteSucker
+Disallow: /
+
+User-agent: WebZIP
+Disallow: /
+
+User-agent: Wget
+Disallow: /
+
+User-agent: EmailCollector
+Disallow: /
+
+User-agent: EmailSiphon
+Disallow: /
+
+# AI scrapers with poor reputation
+User-agent: CCBot
+Disallow: /
+
+User-agent: ChatGPT-User-Scraper
+Disallow: /
+
+User-agent: GPTBot-Unofficial
+Disallow: /
+
+# Aggressive/misbehaving crawlers
+User-agent: megaindex.ru
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: ZoominfoBot
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Scrapy
+Disallow: /
+
+User-agent: SerpstatBot
+Disallow: /
+
+User-agent: SEOkicks
+Disallow: /
+
+User-agent: SEOkicks-Robot
+Disallow: /
+
+User-agent: semanticbot
+Disallow: /
+
+User-agent: BacklinkCrawler
+Disallow: /
+
+User-agent: OpenLinkProfiler
+Disallow: /
+
+User-agent: SpyFu
+Disallow: /
+
+User-agent: LinkpadBot
+Disallow: /
+
+User-agent: CognitiveSEO
+Disallow: /
+
+# Security scanners and vulnerability probes
+User-agent: Nikto
+Disallow: /
+
+User-agent: SQLMap
+Disallow: /
+
+User-agent: Joomscan
+Disallow: /
+
+User-agent: WPScan
+Disallow: /
+
+User-agent: Nessus
+Disallow: /
+
+User-agent: OpenVAS
+Disallow: /
+
+User-agent: Acunetix
+Disallow: /
+
+# Click fraud and ad bots
+User-agent: ClickBot
+Disallow: /
+
+User-agent: AdBot
+Disallow: /
+
+User-agent: TrafficBot
+Disallow: /
+
+# Generic bad patterns
+User-agent: *bot*
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Disallow: /.env
+Disallow: /.git/
+Disallow: /config/
+Disallow: /backup/
+Disallow: /temp/
+Disallow: /tmp/
+Disallow: /.well-known/security.txt
 
 # Allow search engines to index images
 User-agent: Googlebot-Image
