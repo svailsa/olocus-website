@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="description" content="Olocus Enterprise - The future of location intelligence is verification, not surveillance. Privacy-preserving infrastructure for enterprise location verification.">
+    <title>Olocus Enterprise - Verification Without Surveillance</title>
+    <link rel="icon" type="image/svg+xml" href="images/olocus-icon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Inter:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/css/common.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Core Brand Palette */
+            --primary: #4CAF50;
+            --primary-dark: #388E3C;
+            --primary-light: #A5D6A7;
+            --accent: #009688;
+            --warning: #FFB300;
+            --error: #E53935;
+            --info: #2196F3;
+            --success: #66BB6A;
+            
+            /* Neutrals - Light Mode */
+            --bg-light: #FAFAFA;
+            --text-primary: #212121;
+            --text-secondary: #A8A8A8;
+            --border: #E0E0E0;
+            
+            /* Dark Mode Backgrounds */
+            --bg-dark: #121212;
+            --bg-dark-elevated: #1E1E1E;
+            --bg-dark-card: #2C2C2C;
+            --text-primary-dark: #EDEDED;
+            --border-dark: rgba(255, 255, 255, 0.12);
+            
+            /* Spacing (4-point grid) */
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            --space-6: 24px;
+            --space-8: 32px;
+            --space-12: 48px;
+            
+            /* Border Radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --radius-full: 9999px;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-primary-dark);
+            background: var(--bg-dark);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Focus management for accessibility */
+        :focus {
+            outline: 2px solid var(--info);
+            outline-offset: 2px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, #1E1E1E 0%, #121212 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            opacity: 0.05;
+            top: -250px;
+            right: -250px;
+            animation: pulse 10s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.05; }
+            50% { transform: scale(1.1); opacity: 0.08; }
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            padding: var(--space-12) 0;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: var(--space-6);
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(36px, 5vw, 64px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: var(--space-6);
+            background: linear-gradient(135deg, #fff 0%, #a8a8a8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(18px, 2.5vw, 24px);
+            line-height: 1.4;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-12);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero .tagline {
+            font-size: 20px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: var(--space-8);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--space-4);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary-dark);
+            border: 2px solid var(--border-dark);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-dark-elevated);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Value Propositions Section */
+        .value-props {
+            padding: 80px 0;
+            background: var(--bg-dark-elevated);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: var(--space-4);
+            color: var(--text-primary-dark);
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .props-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-8);
+            margin-bottom: 60px;
+        }
+
+        .prop-card {
+            background: var(--bg-dark-card);
+            border: 1px solid var(--border-dark);
+            border-radius: var(--radius-lg);
+            padding: var(--space-8);
+            transition: all 0.3s ease;
+        }
+
+        .prop-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary);
+        }
+
+        .prop-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--space-4);
+        }
+
+        .prop-card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: var(--space-3);
+            color: var(--text-primary-dark);
+        }
+
+        .prop-card .current-state,
+        .prop-card .olocus-state {
+            margin: var(--space-4) 0;
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+        }
+
+        .prop-card .current-state {
+            background: rgba(229, 57, 53, 0.1);
+            border-left: 4px solid var(--error);
+        }
+
+        .prop-card .olocus-state {
+            background: rgba(76, 175, 80, 0.1);
+            border-left: 4px solid var(--primary);
+        }
+
+        .prop-card .state-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            margin-bottom: var(--space-2);
+        }
+
+        .prop-card .current-state .state-label {
+            color: var(--error);
+        }
+
+        .prop-card .olocus-state .state-label {
+            color: var(--primary);
+        }
+
+        .prop-card .value {
+            margin-top: var(--space-4);
+            padding-top: var(--space-4);
+            border-top: 1px solid var(--border-dark);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Comparison Section */
+        .comparison {
+            padding: 80px 0;
+            background: var(--bg-dark);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-8);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .comparison-card {
+            padding: var(--space-8);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-dark);
+        }
+
+        .comparison-card.current {
+            background: rgba(229, 57, 53, 0.05);
+            border-color: rgba(229, 57, 53, 0.3);
+        }
+
+        .comparison-card.olocus {
+            background: rgba(76, 175, 80, 0.05);
+            border-color: rgba(76, 175, 80, 0.3);
+        }
+
+        .comparison-card h3 {
+            font-size: 28px;
+            margin-bottom: var(--space-6);
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        .comparison-card.current h3 {
+            color: var(--error);
+        }
+
+        .comparison-card.olocus h3 {
+            color: var(--primary);
+        }
+
+        .comparison-list {
+            list-style: none;
+        }
+
+        .comparison-list li {
+            padding: var(--space-3) 0;
+            border-bottom: 1px solid var(--border-dark);
+            display: flex;
+            align-items: start;
+            gap: var(--space-3);
+        }
+
+        .comparison-list li:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-list .icon {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Why Section */
+        .why-section {
+            padding: 80px 0;
+            background: var(--bg-dark-elevated);
+        }
+
+        .why-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .why-content h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: var(--space-6);
+            color: var(--text-primary-dark);
+        }
+
+        .why-content .highlight {
+            font-size: 24px;
+            line-height: 1.6;
+            color: var(--primary);
+            font-weight: 600;
+            margin: var(--space-8) 0;
+        }
+
+        .why-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-6);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--bg-dark-card) 0%, var(--bg-dark) 100%);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(36px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: var(--space-4);
+            color: var(--text-primary-dark);
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-8);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .props-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">ENTERPRISE SOLUTION</div>
+                <h1>The Future of Location Intelligence<br>is Verification, Not Surveillance</h1>
+                <p class="subtitle">
+                    As privacy regulations tighten and data breaches proliferate, enterprises need a new approach.
+                    Olocus provides trust without visibility through cryptographic verification.
+                </p>
+                <p class="tagline">Eliminate location data from your breach surface. Forever.</p>
+                <div class="cta-buttons">
+                    <a href="mailto:enterprise@olocus.com" class="btn btn-primary">Contact Sales</a>
+                    <a href="#value-props" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Propositions Section -->
+    <section id="value-props" class="value-props">
+        <div class="container">
+            <div class="section-header">
+                <h2>Transform Liability into Trust</h2>
+                <p>Stop collecting location data. Start verifying location claims.</p>
+            </div>
+
+            <div class="props-grid">
+                <!-- Liability Reduction -->
+                <div class="prop-card">
+                    <div class="prop-number">1</div>
+                    <h3>Liability Reduction</h3>
+                    <div class="current-state">
+                        <div class="state-label">Current State</div>
+                        <p>To verify a field technician visited 5 client sites, you must collect and store complete daily movement history for all technicians.</p>
+                    </div>
+                    <div class="olocus-state">
+                        <div class="state-label">With Olocus</div>
+                        <p>Receive 5 cryptographic visit attestations. No raw location data to breach, secure, or delete. Data liability remains with user.</p>
+                    </div>
+                    <div class="value">
+                        <strong>Value:</strong> Eliminate location data from breach surface area, GDPR Article 30 processing records, and data retention obligations.
+                    </div>
+                </div>
+
+                <!-- Compliance by Design -->
+                <div class="prop-card">
+                    <div class="prop-number">2</div>
+                    <h3>Compliance by Design</h3>
+                    <div class="current-state">
+                        <div class="state-label">Current State</div>
+                        <p>Regulators scrutinize whether collecting full location histories complies with data minimization, purpose limitation, and proportionality requirements.</p>
+                    </div>
+                    <div class="olocus-state">
+                        <div class="state-label">With Olocus</div>
+                        <p>Verification-based architecture demonstrates technical commitment to privacy principles. Only collect the proof, never the data.</p>
+                    </div>
+                    <div class="value">
+                        <strong>Value:</strong> Regulatory defensibility, reduced audit overhead, competitive differentiation in privacy-conscious markets.
+                    </div>
+                </div>
+
+                <!-- Trust-Based User Growth -->
+                <div class="prop-card">
+                    <div class="prop-number">3</div>
+                    <h3>Trust-Based User Growth</h3>
+                    <div class="current-state">
+                        <div class="state-label">Current State</div>
+                        <p>Location permission grant rates declining. "Always allow" nearly extinct. Users trained to distrust location requests.</p>
+                    </div>
+                    <div class="olocus-state">
+                        <div class="state-label">With Olocus</div>
+                        <p>Reframe from "let us track you" to "prove things about yourself while keeping your data." Higher opt-in rates through privacy preservation.</p>
+                    </div>
+                    <div class="value">
+                        <strong>Value:</strong> Expanded addressable user base, higher conversion rates, reduced user churn from privacy concerns.
+                    </div>
+                </div>
+
+                <!-- Fraud Reduction -->
+                <div class="prop-card">
+                    <div class="prop-number">4</div>
+                    <h3>Fraud Reduction Without Surveillance</h3>
+                    <div class="current-state">
+                        <div class="state-label">Current State</div>
+                        <p>Choose between trusting unverifiable claims (fraud exposure) or implementing invasive tracking (user trust/compliance issues).</p>
+                    </div>
+                    <div class="olocus-state">
+                        <div class="state-label">With Olocus</div>
+                        <p>Cryptographic tamper-resistance and hash chain continuity make spoofing significantly harder without creating surveillance relationship.</p>
+                    </div>
+                    <div class="value">
+                        <strong>Value:</strong> Reduced fraud losses, maintained user trust, defensible verification for disputes.
+                    </div>
+                </div>
+
+                <!-- Cross-Party Verification -->
+                <div class="prop-card">
+                    <div class="prop-number">5</div>
+                    <h3>Cross-Party Verification</h3>
+                    <div class="current-state">
+                        <div class="state-label">Current State</div>
+                        <p>Verifying interactions requires bilateral data sharing (security/privacy exposure) or relying on unverifiable attestations.</p>
+                    </div>
+                    <div class="olocus-state">
+                        <div class="state-label">With Olocus</div>
+                        <p>Neutral verification layer. Both parties can verify co-location/handoff without accessing each other's infrastructure.</p>
+                    </div>
+                    <div class="value">
+                        <strong>Value:</strong> New verification use cases, reduced integration complexity, maintained competitive separation.
+                    </div>
+                </div>
+
+                <!-- Historical Verification -->
+                <div class="prop-card">
+                    <div class="prop-number">6</div>
+                    <h3>Historical Verification Capability</h3>
+                    <div class="current-state">
+                        <div class="state-label">Current State</div>
+                        <p>Can only verify locations already being tracked. After-the-fact verification requires investigation or trusting memory/documents.</p>
+                    </div>
+                    <div class="olocus-state">
+                        <div class="state-label">With Olocus</div>
+                        <p>Users maintain self-sovereign records. Selective disclosure enables retroactive proof without prior surveillance.</p>
+                    </div>
+                    <div class="value">
+                        <strong>Value:</strong> Claims verification, dispute resolution, audit compliance—all without maintaining surveillance infrastructure.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison">
+        <div class="container">
+            <div class="section-header">
+                <h2>Breaking the Surveillance-Trust Tradeoff</h2>
+                <p>Current solutions assume you need to have the data to trust the data. Olocus proves otherwise.</p>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-card current">
+                    <h3>❌ Traditional Model</h3>
+                    <ul class="comparison-list">
+                        <li>
+                            <span class="icon">📍</span>
+                            <span>Collect everything, store everything</span>
+                        </li>
+                        <li>
+                            <span class="icon">🔓</span>
+                            <span>100GB+ location data exposed to breaches</span>
+                        </li>
+                        <li>
+                            <span class="icon">💸</span>
+                            <span>$500K+/year compliance costs</span>
+                        </li>
+                        <li>
+                            <span class="icon">👎</span>
+                            <span>15-20% user opt-in rates</span>
+                        </li>
+                        <li>
+                            <span class="icon">⚖️</span>
+                            <span>Unlimited legal liability</span>
+                        </li>
+                        <li>
+                            <span class="icon">🐌</span>
+                            <span>18-24 months to deploy</span>
+                        </li>
+                        <li>
+                            <span class="icon">🚫</span>
+                            <span>No cross-party verification</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="comparison-card olocus">
+                    <h3>✅ Olocus Model</h3>
+                    <ul class="comparison-list">
+                        <li>
+                            <span class="icon">🔐</span>
+                            <span>Verify claims, never collect data</span>
+                        </li>
+                        <li>
+                            <span class="icon">🛡️</span>
+                            <span>0GB data exposure (proofs only)</span>
+                        </li>
+                        <li>
+                            <span class="icon">💰</span>
+                            <span>90% reduction in compliance costs</span>
+                        </li>
+                        <li>
+                            <span class="icon">👍</span>
+                            <span>60-70% projected opt-in rates</span>
+                        </li>
+                        <li>
+                            <span class="icon">✨</span>
+                            <span>Zero data liability</span>
+                        </li>
+                        <li>
+                            <span class="icon">⚡</span>
+                            <span>2-4 weeks integration</span>
+                        </li>
+                        <li>
+                            <span class="icon">🤝</span>
+                            <span>Native cross-party verification</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Section -->
+    <section class="why-section">
+        <div class="container">
+            <div class="why-content">
+                <h2>Why Existing Solutions Fail</h2>
+                <p class="highlight">
+                    Current location tools are designed for collection, not verification.
+                </p>
+                <p>
+                    GPS tracking apps, MDM solutions, beacon systems—they all share the same fundamental flaw: 
+                    they assume the verifier needs to <strong>have the data</strong> to <strong>trust the data</strong>.
+                </p>
+                <p>
+                    This creates an impossible tradeoff: more data visibility means more trust but less privacy. 
+                    There's no middle ground in the surveillance model.
+                </p>
+                <p class="highlight">
+                    Olocus breaks this tradeoff by separating verification from collection.
+                </p>
+                <p>
+                    Our cryptographic proofs provide maximum trust with maximum privacy. Users maintain their data, 
+                    enterprises get verification, and nobody needs to compromise.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready for the Future of Location Intelligence?</h2>
+            <p>Join forward-thinking enterprises already transitioning from surveillance to verification.</p>
+            <div class="cta-buttons">
+                <a href="mailto:enterprise@olocus.com" class="btn btn-primary">Schedule a Demo</a>
+                <a href="/docs/enterprise-whitepaper.pdf" class="btn btn-secondary">Download Whitepaper</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <script>
+        fetch('/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('beforeend', data);
+            });
+    </script>
+
+    <!-- Navigation -->
+    <script>
+        fetch('/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('afterbegin', data);
+                // Initialize mobile menu after header loads
+                const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+                const navMenu = document.getElementById('navMenu');
+                
+                if (mobileMenuToggle && navMenu) {
+                    mobileMenuToggle.addEventListener('click', () => {
+                        navMenu.classList.toggle('active');
+                        mobileMenuToggle.classList.toggle('active');
+                    });
+                }
+            });
+    </script>
+</body>
+</html>
