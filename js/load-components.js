@@ -58,8 +58,23 @@ function loadCommonCSS() {
     }
 }
 
+// Function to detect iOS standalone mode
+function detectIOSStandalone() {
+    // Check if running as iOS webapp
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const isStandalone = window.navigator.standalone === true || 
+                        window.matchMedia('(display-mode: standalone)').matches;
+    
+    if (isIOS && isStandalone) {
+        document.documentElement.classList.add('pwa-standalone');
+    }
+}
+
 // Load components when DOM is ready
 document.addEventListener('DOMContentLoaded', async function() {
+    // Detect iOS standalone mode
+    detectIOSStandalone();
+    
     // Load common CSS
     loadCommonCSS();
     

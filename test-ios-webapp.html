@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>iOS WebApp Test - Olocus</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #121212;
+            color: white;
+            padding: 20px;
+        }
+        .status-box {
+            background: #2C2C2C;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .status-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(76, 175, 80, 0.1);
+            border-left: 3px solid #4CAF50;
+            border-radius: 4px;
+        }
+        .value {
+            color: #4CAF50;
+            font-family: monospace;
+        }
+        h1 {
+            margin-top: calc(20px + env(safe-area-inset-top));
+        }
+    </style>
+</head>
+<body>
+    <h1>iOS WebApp Status Check</h1>
+    
+    <div class="status-box">
+        <h2>Safe Area Insets</h2>
+        <div class="status-item">
+            Top: <span class="value" id="safeTop">Checking...</span>
+        </div>
+        <div class="status-item">
+            Bottom: <span class="value" id="safeBottom">Checking...</span>
+        </div>
+        <div class="status-item">
+            Left: <span class="value" id="safeLeft">Checking...</span>
+        </div>
+        <div class="status-item">
+            Right: <span class="value" id="safeRight">Checking...</span>
+        </div>
+    </div>
+    
+    <div class="status-box">
+        <h2>WebApp Status</h2>
+        <div class="status-item">
+            Is iOS: <span class="value" id="isIOS">Checking...</span>
+        </div>
+        <div class="status-item">
+            Standalone Mode: <span class="value" id="standalone">Checking...</span>
+        </div>
+        <div class="status-item">
+            Display Mode: <span class="value" id="displayMode">Checking...</span>
+        </div>
+        <div class="status-item">
+            PWA Class Applied: <span class="value" id="pwaClass">Checking...</span>
+        </div>
+    </div>
+    
+    <div class="status-box">
+        <h2>Viewport Info</h2>
+        <div class="status-item">
+            Window Height: <span class="value" id="windowHeight">Checking...</span>
+        </div>
+        <div class="status-item">
+            Screen Height: <span class="value" id="screenHeight">Checking...</span>
+        </div>
+        <div class="status-item">
+            Viewport Meta: <span class="value" id="viewportMeta">Checking...</span>
+        </div>
+    </div>
+    
+    <div class="status-box">
+        <h2>Instructions</h2>
+        <p>To test iOS WebApp mode:</p>
+        <ol>
+            <li>Open this page in Safari on iOS</li>
+            <li>Tap the share button</li>
+            <li>Select "Add to Home Screen"</li>
+            <li>Open the app from your home screen</li>
+            <li>Check if the navigation no longer overlaps the status bar</li>
+        </ol>
+    </div>
+
+    <script>
+        // Function to get computed CSS value
+        function getSafeAreaValue(property) {
+            const testEl = document.createElement('div');
+            testEl.style.position = 'fixed';
+            testEl.style.top = '0';
+            testEl.style.height = `env(${property})`;
+            document.body.appendChild(testEl);
+            const value = getComputedStyle(testEl).height;
+            document.body.removeChild(testEl);
+            return value || '0px';
+        }
+        
+        // Update safe area values
+        document.getElementById('safeTop').textContent = getSafeAreaValue('safe-area-inset-top');
+        document.getElementById('safeBottom').textContent = getSafeAreaValue('safe-area-inset-bottom');
+        document.getElementById('safeLeft').textContent = getSafeAreaValue('safe-area-inset-left');
+        document.getElementById('safeRight').textContent = getSafeAreaValue('safe-area-inset-right');
+        
+        // Check iOS
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        document.getElementById('isIOS').textContent = isIOS ? 'Yes' : 'No';
+        
+        // Check standalone
+        const isStandalone = window.navigator.standalone === true || 
+                           window.matchMedia('(display-mode: standalone)').matches;
+        document.getElementById('standalone').textContent = isStandalone ? 'Yes' : 'No';
+        
+        // Check display mode
+        let displayMode = 'browser';
+        if (window.matchMedia('(display-mode: standalone)').matches) displayMode = 'standalone';
+        else if (window.matchMedia('(display-mode: fullscreen)').matches) displayMode = 'fullscreen';
+        else if (window.matchMedia('(display-mode: minimal-ui)').matches) displayMode = 'minimal-ui';
+        document.getElementById('displayMode').textContent = displayMode;
+        
+        // Check PWA class
+        if (isIOS && isStandalone) {
+            document.documentElement.classList.add('pwa-standalone');
+        }
+        document.getElementById('pwaClass').textContent = 
+            document.documentElement.classList.contains('pwa-standalone') ? 'Yes' : 'No';
+        
+        // Window dimensions
+        document.getElementById('windowHeight').textContent = window.innerHeight + 'px';
+        document.getElementById('screenHeight').textContent = screen.height + 'px';
+        
+        // Viewport meta
+        const viewportMeta = document.querySelector('meta[name="viewport"]');
+        document.getElementById('viewportMeta').textContent = 
+            viewportMeta ? viewportMeta.content : 'Not found';
+    </script>
+</body>
+</html>

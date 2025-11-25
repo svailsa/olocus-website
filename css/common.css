@@ -38,6 +38,39 @@ nav {
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-dark);
     transition: all 0.3s ease;
+    
+    /* iOS Safe Area Support */
+    padding-top: env(safe-area-inset-top);
+    padding-top: constant(safe-area-inset-top); /* iOS 11.0-11.2 */
+}
+
+/* Standalone PWA mode adjustments */
+@supports (display-mode: standalone) {
+    @media (display-mode: standalone) {
+        nav {
+            padding-top: calc(16px + env(safe-area-inset-top));
+            padding-top: calc(16px + constant(safe-area-inset-top));
+        }
+        
+        /* Adjust mobile menu in standalone mode */
+        @media (max-width: 768px) {
+            .nav-menu {
+                top: calc(81px + env(safe-area-inset-top));
+                top: calc(81px + constant(safe-area-inset-top));
+            }
+        }
+    }
+}
+
+/* iOS PWA specific - detected via JavaScript */
+.pwa-standalone nav {
+    padding-top: calc(16px + env(safe-area-inset-top));
+    padding-top: calc(16px + constant(safe-area-inset-top));
+}
+
+.pwa-standalone .nav-menu {
+    top: calc(81px + env(safe-area-inset-top)) !important;
+    top: calc(81px + constant(safe-area-inset-top)) !important;
 }
 
 .nav-container {
@@ -47,6 +80,16 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+/* Adjust container padding in standalone mode */
+@supports (display-mode: standalone) {
+    @media (display-mode: standalone) {
+        .nav-container {
+            padding-top: 16px;
+            padding-bottom: 16px;
+        }
+    }
 }
 
 .logo {
@@ -200,7 +243,9 @@ footer {
 
     .nav-menu {
         position: fixed;
-        top: 65px;
+        /* Calculate top position with safe area */
+        top: calc(65px + env(safe-area-inset-top));
+        top: calc(65px + constant(safe-area-inset-top)); /* iOS 11.0-11.2 */
         left: 0;
         right: 0;
         background: rgba(18, 18, 18, 0.98);
