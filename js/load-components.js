@@ -175,10 +175,13 @@ function initializeScrollAnimations() {
 }
 
 // Function to load search functionality
-function loadSearchScript() {
+function loadSearchScript(callback) {
     const script = document.createElement('script');
     script.src = '/js/search.js?v=' + Date.now(); // Add cache-busting parameter
     script.async = true;
+    script.onload = function() {
+        if (callback) callback();
+    };
     document.head.appendChild(script);
 }
 
@@ -202,14 +205,12 @@ document.addEventListener('DOMContentLoaded', async function() {
     
     // Load search functionality and initialize after header loads
     if (headerLoaded) {
-        loadSearchScript();
-        // Call setupSearch after search.js loads
-        setTimeout(() => {
+        loadSearchScript(function() {
             if (window.setupSearch) {
                 window.setupSearch();
             }
-        }, 100);
-        
+        });
+
         initializeMobileMenu();
         initializeNavScroll();
     }

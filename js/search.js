@@ -282,7 +282,10 @@
         resultsContainer.querySelectorAll('.search-result-item').forEach(item => {
             item.addEventListener('click', function() {
                 resultsContainer.style.display = 'none';
-                document.querySelector('.search-input').value = '';
+                const desktopInput = document.querySelector('.search-input');
+                const mobileInput = document.querySelector('.mobile-search-input');
+                if (desktopInput) desktopInput.value = '';
+                if (mobileInput) mobileInput.value = '';
             });
         });
     }
