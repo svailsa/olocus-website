@@ -62,8 +62,7 @@ const config = {
         title: 'Olocus Protocol',
         logo: {
           alt: 'Olocus Logo',
-          src: '/images/olocus-brandmark-light.svg',
-          srcDark: '/images/olocus-brandmark-dark.svg',
+          src: '/images/fav.ico',
           height: 32,
           width: 32,
         },
