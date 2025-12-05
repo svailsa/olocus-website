@@ -856,7 +856,7 @@ policy:
   storage:
     backend: "database"  # database, file, git, s3
     connection_string: "postgresql://policy:secret@db.company.com/policies"
-    git_repository: "https://github.com/company/policies.git"
+    git_repository: "https://codeberg.org/examples/company-policies.git"
     encryption_enabled: true
     
   # Hierarchy configuration

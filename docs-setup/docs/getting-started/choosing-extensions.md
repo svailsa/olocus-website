@@ -398,7 +398,7 @@ olocus-orchestration = "0.1"
 - [Architecture Guide](../architecture/design-rationale)
 
 ### Community
-- Ask in [Discussions](https://github.com/olocus/protocol/discussions)
+- Ask in [Discussions](https://codeberg.org/olocus/forum/issues)
 - Check existing [Use Cases](../case-studies/supply-chain)
 
 ## Next Steps
@@ -407,4 +407,4 @@ Now that you've chosen your extensions:
 - [Explore extension-specific docs](../extensions/overview)
 - [Follow a tutorial](../tutorials/location-tracker)
 - [Read the API reference](../api/core)
-- [Join the community](https://github.com/olocus/protocol)
+- [Join the community](https://codeberg.org/olocus/protocol)

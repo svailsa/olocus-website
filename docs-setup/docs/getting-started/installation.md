@@ -27,7 +27,7 @@ No C compilers, no system libraries, no complex dependencies. Pure Rust, zero ex
 git clone https://codeberg.org/olocus/protocol.git
 cd protocol
 
-# Or from GitHub mirror
+# Or from GitHub mirror (deprecated)
 git clone https://github.com/olocus/protocol.git
 cd protocol
 
@@ -207,6 +207,6 @@ wasm-pack build --target nodejs
 ## Getting Help
 
 - 📖 [Documentation](https://olocus.com/docs)
-- 💬 [Discussions](https://github.com/olocus/protocol/discussions)
+- 💬 [Discussions](https://codeberg.org/olocus/forum/issues)
 - 🐛 [Issues](https://codeberg.org/olocus/protocol/issues)
 - 📧 [Email](mailto:support@olocus.com)

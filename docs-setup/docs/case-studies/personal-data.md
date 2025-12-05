@@ -949,9 +949,9 @@ DataSafe Personal is expanding their platform to include:
 ## Code Repository
 
 Complete implementation including mobile apps, browser extensions, and organization integrations:
-- [DataSafe Personal Platform](https://github.com/datasafe/personal-vault)
-- [Privacy SDK](https://github.com/datasafe/privacy-sdk)
+- [DataSafe Personal Platform](https://codeberg.org/examples/datasafe-personal-vault)
+- [Privacy SDK](https://codeberg.org/examples/datasafe-privacy-sdk)
 - [Organization Integration Guide](https://docs.datasafe.com/integration)
-- [Compliance Templates](https://github.com/datasafe/compliance-templates)
+- [Compliance Templates](https://codeberg.org/examples/datasafe-compliance-templates)
 
 This case study demonstrates how Olocus Protocol can revolutionize personal data management, giving users unprecedented control over their digital identity while enabling new business models built on trust, transparency, and verified consent.

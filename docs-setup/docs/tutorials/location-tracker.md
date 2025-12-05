@@ -560,7 +560,7 @@ Congratulations! You've built a privacy-preserving location tracker. Here are so
 ## Complete Code
 
 The complete code for this tutorial is available at:
-- [GitHub](https://github.com/olocus/tutorials/location-tracker)
+- [Codeberg](https://codeberg.org/olocus/tutorials/location-tracker)
 - [Codeberg](https://codeberg.org/olocus/tutorials/location-tracker)
 
 ## Resources
@@ -568,4 +568,4 @@ The complete code for this tutorial is available at:
 - [Location Extension Docs](../extensions/location/tracking)
 - [Privacy Extension Docs](../extensions/privacy/techniques)
 - [API Reference](../api/core)
-- [Community Forum](https://github.com/olocus/protocol/discussions)
+- [Community Forum](https://codeberg.org/olocus/forum/issues)

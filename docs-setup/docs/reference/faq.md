@@ -397,6 +397,6 @@ impl MyFunctionality for BuiltInImpl {
 
 - **Documentation**: Comprehensive docs at [docs site]
 - **Examples**: Check the examples directory
-- **Issues**: GitHub issues for bug reports
-- **Discussions**: GitHub discussions for questions
+- **Issues**: [Codeberg issues](https://codeberg.org/olocus/protocol/issues) for bug reports
+- **Discussions**: [Codeberg forum](https://codeberg.org/olocus/forum/issues) for questions
 - **Security**: security@olocus.protocol for vulnerabilities

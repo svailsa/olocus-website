@@ -487,5 +487,5 @@ impl WeatherPayload {
 ## Next Steps
 
 - [Browse Existing Extensions](./overview) - Learn from existing implementations
-- [Join the Community](https://github.com/svailsa/olocus-website/discussions) - Share your extension
+- [Join the Community](https://codeberg.org/olocus/forum/issues) - Share your extension
 - [API Reference](../api/core) - Deep dive into protocol details

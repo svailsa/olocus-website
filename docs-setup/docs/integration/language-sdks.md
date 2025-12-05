@@ -47,7 +47,7 @@ pip install olocus-python
 pip install olocus-python[async,crypto,location]
 
 # Development installation
-git clone https://github.com/olocus-protocol/olocus-python
+git clone https://codeberg.org/olocus/olocus-python
 cd olocus-python
 pip install -e .[dev]
 ```
@@ -236,10 +236,10 @@ The Go SDK uses CGO for FFI binding and provides Go-idiomatic APIs with proper r
 
 ```bash
 go mod init your-project
-go get github.com/olocus-protocol/olocus-go
+go get codeberg.org/olocus/olocus-go
 
 # Or with specific version
-go get github.com/olocus-protocol/olocus-go@v0.1.0
+go get codeberg.org/olocus/olocus-go@v0.1.0
 ```
 
 ### Quick Start
@@ -253,7 +253,7 @@ import (
     "log"
     "time"
 
-    "github.com/olocus-protocol/olocus-go"
+    "codeberg.org/olocus/olocus-go"
 )
 
 func main() {
@@ -341,7 +341,7 @@ import (
     "fmt"
     "time"
 
-    "github.com/olocus-protocol/olocus-go"
+    "codeberg.org/olocus/olocus-go"
 )
 
 func main() {
@@ -388,8 +388,8 @@ func main() {
 package main
 
 import (
-    "github.com/olocus-protocol/olocus-go"
-    "github.com/olocus-protocol/olocus-go/extensions"
+    "codeberg.org/olocus/olocus-go"
+    "codeberg.org/olocus/olocus-go/extensions"
 )
 
 func main() {
@@ -471,7 +471,7 @@ import (
     "errors"
     "fmt"
 
-    "github.com/olocus-protocol/olocus-go"
+    "codeberg.org/olocus/olocus-go"
 )
 
 func main() {
@@ -513,7 +513,7 @@ func main() {
 package main
 
 import (
-    "github.com/olocus-protocol/olocus-go"
+    "codeberg.org/olocus/olocus-go"
 )
 
 // ResourceManager helps track and cleanup resources
@@ -1033,20 +1033,20 @@ async function processLargeDataset(data: any[]) {
 - [TypeScript SDK Documentation](https://docs.olocus.dev/sdk/typescript)
 
 ### Examples
-- [Python Examples](https://github.com/olocus-protocol/olocus-python/tree/main/examples)
-- [Go Examples](https://github.com/olocus-protocol/olocus-go/tree/main/examples)
-- [TypeScript Examples](https://github.com/olocus-protocol/olocus-typescript/tree/main/examples)
+- [Python Examples](https://codeberg.org/olocus/olocus-python/src/branch/main/examples)
+- [Go Examples](https://codeberg.org/olocus/olocus-go/src/branch/main/examples)
+- [TypeScript Examples](https://codeberg.org/olocus/olocus-typescript/src/branch/main/examples)
 
 ### Community
-- [GitHub Discussions](https://github.com/olocus-protocol/olocus/discussions)
+- [Codeberg Forum](https://codeberg.org/olocus/forum/issues)
 - [Discord Community](https://discord.gg/olocus)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/olocus)
 
 ### Getting Help
 
 1. **Check Documentation**: Start with language-specific docs
-2. **Search Issues**: Look for similar problems on GitHub
-3. **Ask Questions**: Use GitHub Discussions or Stack Overflow
+2. **Search Issues**: Look for similar problems on Codeberg
+3. **Ask Questions**: Use Codeberg Forum or Stack Overflow
 4. **Report Bugs**: Create detailed issue reports
 5. **Contribute**: Submit PRs for improvements
 

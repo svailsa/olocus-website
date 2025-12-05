@@ -940,7 +940,7 @@ use olocus_query::reporting::{ReportGenerator, ReportTemplate, ScheduledReport, 
 // Configure enterprise reporting system
 let report_generator = ReportGenerator::new(ReportConfig {
     template_repository: TemplateRepository::Git {
-        repository_url: "https://github.com/company/olocus-reports.git".to_string(),
+        repository_url: "https://codeberg.org/examples/company-olocus-reports.git".to_string(),
         branch: "main".to_string(),
         credentials: GitCredentials::ssh_key("/etc/ssh/report_deploy_key"),
     },
@@ -1147,7 +1147,7 @@ query_engine:
     
   # Reporting
   reporting:
-    template_repository: "https://github.com/company/olocus-reports.git"
+    template_repository: "https://codeberg.org/examples/company-olocus-reports.git"
     output_storage: "s3://company-olocus-reports"
     max_concurrent_reports: 5
     encryption_enabled: true

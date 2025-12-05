@@ -185,7 +185,7 @@ cat > "pkg-$TARGET/package.json" << EOF
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/olocus/olocus-protocol"
+    "url": "https://codeberg.org/olocus/protocol"
   },
   "keywords": ["blockchain", "crypto", "wasm", "olocus"],
   "license": "MIT",
@@ -2248,7 +2248,7 @@ export default App;
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/olocus/olocus-protocol.git"
+    "url": "https://codeberg.org/olocus/protocol.git"
   },
   "keywords": [
     "blockchain",

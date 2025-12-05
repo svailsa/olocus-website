@@ -1195,10 +1195,10 @@ SmartCity Infrastructure is expanding their Olocus Protocol implementation to in
 ## Code Repository
 
 Complete implementation including device firmware, edge processing, and cloud analytics:
-- [SmartCity IoT Platform](https://github.com/smartcity/iot-platform)
-- [Device Firmware SDK](https://github.com/smartcity/device-sdk)  
-- [Edge Processing Framework](https://github.com/smartcity/edge-framework)
-- [Citizen Environmental App](https://github.com/smartcity/citizen-app)
+- [SmartCity IoT Platform](https://codeberg.org/examples/smartcity-iot-platform)
+- [Device Firmware SDK](https://codeberg.org/examples/smartcity-device-sdk)  
+- [Edge Processing Framework](https://codeberg.org/examples/smartcity-edge-framework)
+- [Citizen Environmental App](https://codeberg.org/examples/smartcity-citizen-app)
 - [Deployment Documentation](https://docs.smartcity.gov/iot-deployment)
 
 This case study demonstrates how Olocus Protocol can transform IoT infrastructure into a trustworthy, scalable, and privacy-preserving system that benefits citizens, government, and the environment while maintaining security and regulatory compliance at massive scale.

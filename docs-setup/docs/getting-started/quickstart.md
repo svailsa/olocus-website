@@ -147,7 +147,7 @@ Now that you have the basics working:
 - **Documentation**: You're here! 📚
 - **Source Code**: [Codeberg Repository](https://codeberg.org/olocus/protocol)
 - **Issues**: [Report bugs or request features](https://codeberg.org/olocus/protocol/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/svailsa/olocus-website/discussions)
+- **Discussions**: [Codeberg Forum](https://codeberg.org/olocus/forum/issues)
 
 ## Pro Tips
 

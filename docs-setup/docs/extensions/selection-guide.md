@@ -286,7 +286,7 @@ cargo bench --package olocus-ml
 - [Examples](https://codeberg.org/olocus/protocol/examples) - Code samples
 
 ### Community Support
-- [GitHub Discussions](https://github.com/olocus/protocol/discussions)
+- [Codeberg Discussions](https://codeberg.org/olocus/forum/issues)
 - [Discord Server](https://discord.gg/olocus)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/olocus)
 
@@ -313,4 +313,4 @@ Before finalizing your extension selection:
 1. [Review detailed extension docs](./overview)
 2. [Follow a tutorial](../tutorials/location-tracker)
 3. [Set up your project](../getting-started/installation)
-4. [Join the community](https://github.com/olocus/protocol)
+4. [Join the community](https://codeberg.org/olocus/protocol)

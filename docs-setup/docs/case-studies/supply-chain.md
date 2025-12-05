@@ -668,8 +668,8 @@ TechCorp is now expanding their implementation to include:
 ## Code Repository
 
 The complete implementation including sample data and integration guides is available at:
-- [TechCorp Supply Chain GitHub Repository](https://github.com/techcorp/olocus-supply-chain)
+- [TechCorp Supply Chain Repository](https://codeberg.org/examples/techcorp-olocus-supply-chain)
 - [Integration Documentation](https://docs.techcorp.com/supply-chain/olocus-integration)
-- [Compliance Templates](https://github.com/techcorp/olocus-compliance-templates)
+- [Compliance Templates](https://codeberg.org/examples/techcorp-olocus-compliance-templates)
 
 This case study demonstrates how Olocus Protocol can transform traditional supply chain management into a transparent, verifiable, and efficient system that benefits all stakeholders while maintaining competitive advantages and regulatory compliance.
