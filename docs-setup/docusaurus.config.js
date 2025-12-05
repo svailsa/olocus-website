@@ -114,8 +114,8 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'GitHub Discussions',
-                href: 'https://github.com/svailsa/olocus-website/discussions',
+                label: 'Forum',
+                href: 'https://codeberg.org/olocus/forum/issues',
               },
               {
                 label: 'Codeberg',
@@ -127,8 +127,8 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'Blog',
-                href: 'https://olocus.com/blog',
+                label: 'Terms',
+                href: 'https://olocus.com/terms',
               },
               {
                 label: 'Privacy',
@@ -137,7 +137,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Olocus. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Olocus.`,
       },
       prism: {
         theme: lightCodeTheme,
