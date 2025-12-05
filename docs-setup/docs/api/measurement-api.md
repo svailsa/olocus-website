@@ -12,19 +12,21 @@ The Universal Measurement Foundation provides the core primitives for representi
 
 ### Value Enum
 
-The `Value` enum represents the structural types supported by the protocol. It contains ~25 variants covering all fundamental data types:
+The `Value` enum represents the structural types supported by the protocol. It contains 36 variants covering all fundamental data types across multiple categories:
 
 ```rust
 use olocus_core::measure::Value;
 
-// Primitives
+// === Absence ===
 let none_val = Value::None;
-let bool_val = Value::Bool(true);
-let int_val = Value::Int(42);
-let uint_val = Value::UInt(100);
-let float_val = Value::Float(3.14159);
 
-// Decimal for exact precision
+// === Primitives ===
+let bool_val = Value::Bool(true);
+let int_val = Value::Int(42);              // Signed 64-bit integer
+let uint_val = Value::UInt(100);           // Unsigned 64-bit integer  
+let float_val = Value::Float(3.14159);     // 64-bit floating point
+
+// Decimal for exact precision (value × 10^-scale)
 let price = Value::Decimal {
     value: 1999,    // $19.99 stored as 1999 cents
     scale: 2,       // 2 decimal places
@@ -73,20 +75,29 @@ let datetime = Value::DateTime {
 ### Text and Binary
 
 ```rust
-// Text
+// === Text ===
 let text = Value::String("Hello, Olocus!".to_string());
 
-// Binary data
+// === Binary ===
 let data = Value::Bytes(vec![0x01, 0x02, 0x03, 0x04]);
-let hash = Value::Hash256([0u8; 32]); // SHA-256 hash
+let hash256 = Value::Hash256([0u8; 32]); // SHA-256 hash (common case)
 let hash512 = Value::Hash512([0u8; 64]); // SHA-512 hash
 
-// UUID
-let uuid = Value::UUID([0x12, 0x34, 0x56, 0x78, 0x9A, 0xBC, 0xDE, 0xF0, 
-                       0x12, 0x34, 0x56, 0x78, 0x9A, 0xBC, 0xDE, 0xF0]);
-
-// JSON documents
+// === Structured ===
+// Raw JSON document for maximum flexibility
 let json_doc = Value::Json(br#"{"temperature": 23.5, "unit": "celsius"}"#.to_vec());
+```
+
+### Identifiers
+
+```rust
+// === UUID (Universally Unique Identifier) ===
+let uuid_bytes = Value::UUID([0x12, 0x34, 0x56, 0x78, 0x9A, 0xBC, 0xDE, 0xF0, 
+                              0x12, 0x34, 0x56, 0x78, 0x9A, 0xBC, 0xDE, 0xF0]);
+
+// Helper constructors
+let uuid_from_int = Value::uuid_from_u128(0x123456789ABCDEF0123456789ABCDEF0);
+let uuid_from_array = Value::uuid([1u8; 16]);
 ```
 
 ### Collections
@@ -148,12 +159,53 @@ let multipoint = Value::multipoint(&[
     (37.7749, -122.4194),
     (37.7849, -122.4094),
 ]);
+
+// Multi-geometry collections
+let multilinestring = Value::multilinestring(vec![
+    vec![(377749000, -1224194000), (377849000, -1224094000)], // Line 1 (fixed-point)
+    vec![(378000000, -1224000000), (378100000, -1223900000)], // Line 2 (fixed-point)
+]);
+
+let multipolygon = Value::multipolygon(vec![
+    // Polygon 1: exterior ring, interior holes
+    (vec![(0, 0), (1000000, 0), (1000000, 1000000), (0, 1000000), (0, 0)], vec![]),
+    // Polygon 2: with a hole
+    (vec![(2000000, 0), (3000000, 0), (3000000, 1000000), (2000000, 1000000), (2000000, 0)], 
+     vec![vec![(2200000, 200000), (2800000, 200000), (2800000, 800000), (2200000, 800000), (2200000, 200000)]]),
+]);
+
+let geometry_collection = Value::geometry_collection(vec![
+    Value::point2d(37.7749, -122.4194),
+    Value::linestring(&[(37.7749, -122.4194), (37.7751, -122.4180)]),
+    Value::polygon(&[(0.0, 0.0), (0.0, 1.0), (1.0, 1.0), (1.0, 0.0), (0.0, 0.0)], &[]),
+]);
 ```
 
-### References and Patterns
+### Ranges and Patterns
 
 ```rust
-// Block references
+// === Ranges ===
+// Range with start and end bounds (default: start inclusive, end exclusive)
+let age_range = Value::range(Value::Int(18), Value::Int(65)); // [18, 65)
+let price_range = Value::range_inclusive(Value::Float(10.0), Value::Float(100.0)); // [10.0, 100.0]
+
+// Complex ranges with mixed types
+let time_range = Value::range(
+    Value::Timestamp(1609459200), // 2021-01-01 00:00:00 UTC
+    Value::Timestamp(1640995200), // 2022-01-01 00:00:00 UTC
+);
+
+// === Patterns ===
+// Regular expressions for pattern matching
+let phone_pattern = Value::regex(r"^\d{3}-\d{3}-\d{4}$");
+let email_pattern = Value::regex(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
+let postal_code = Value::regex(r"^\d{5}(-\d{4})?$");
+```
+
+### References and Database Records
+
+```rust
+// === Block References ===
 let block_ref = Value::BlockRef([0u8; 32]); // Hash of another block
 
 // Schema references
@@ -163,15 +215,27 @@ let schema_ref = Value::SchemaRef {
     version: "1.2.0".to_string(),
 };
 
-// Database records
+// === Database Records (SurrealDB-style) ===
 let user_record = Value::record("users", "user_12345");
+let sensor_record = Value::record("sensors", "temp_sensor_001");
+let measurement_record = Value::record("measurements", "measurement_abc123");
+```
 
-// Ranges
-let age_range = Value::range(Value::Int(18), Value::Int(65));
-let inclusive_range = Value::range_inclusive(Value::Int(1), Value::Int(100));
+### Extension Points
 
-// Regular expressions
-let phone_pattern = Value::regex(r"^\d{3}-\d{3}-\d{4}$");
+```rust
+// === Custom Extension Types ===
+// Domain-specific types not covered by core Value variants
+let custom_extension = Value::Extension {
+    type_id: 0x8001,              // Custom type identifier (0x8000-0xFFFF)
+    data: vec![0x01, 0x02, 0x03], // Serialized custom data
+};
+
+// Extensions can register custom serialization for their type_ids
+let biometric_data = Value::Extension {
+    type_id: 0x9001,              // Biometric data type
+    data: custom_biometric_serializer.encode(&fingerprint_data),
+};
 ```
 
 ## Value Type Checking and Conversion
@@ -179,23 +243,108 @@ let phone_pattern = Value::regex(r"^\d{3}-\d{3}-\d{4}$");
 ```rust
 let value = Value::Int(42);
 
-// Type checking
+// Type checking (built-in predicates)
 assert!(value.is_numeric());
 assert!(!value.is_temporal());
 assert!(!value.is_spatial());
+assert!(!value.is_geometry());
+assert!(!value.is_collection());
 assert_eq!(value.type_name(), "Int");
 
-// Safe conversion
+// Safe conversion (extract methods)
 if let Some(i) = value.as_int() {
     println!("Integer value: {}", i);
 }
 
-// Pattern matching
+// New extraction methods for additional types
+let uuid_val = Value::uuid([1u8; 16]);
+if let Some(uuid_bytes) = uuid_val.as_uuid() {
+    println!("UUID: {:?}", uuid_bytes);
+}
+
+let regex_val = Value::regex(r"^\d+$");
+if let Some(pattern) = regex_val.as_regex() {
+    println!("Regex pattern: {}", pattern);
+}
+
+let record_val = Value::record("users", "123");
+if let Some((table, id)) = record_val.as_record() {
+    println!("Record: {}:{}", table, id);
+}
+
+let range_val = Value::range(Value::Int(1), Value::Int(10));
+if let Some((start, end, start_inc, end_inc)) = range_val.as_range() {
+    println!("Range: {}{}{}{}", 
+             if start_inc { "[" } else { "(" },
+             start.as_int().unwrap(),
+             end.as_int().unwrap(),
+             if end_inc { "]" } else { ")" });
+}
+
+let line_val = Value::linestring(&[(37.7749, -122.4194), (37.7751, -122.4180)]);
+if let Some(points) = line_val.as_linestring() {
+    println!("LineString with {} points", points.len());
+}
+
+let poly_val = Value::polygon(&[(0.0, 0.0), (1.0, 0.0), (1.0, 1.0), (0.0, 1.0), (0.0, 0.0)], &[]);
+if let Some((exterior, holes)) = poly_val.as_polygon() {
+    println!("Polygon: {} exterior points, {} holes", exterior.len(), holes.len());
+}
+
+let multipoint_val = Value::multipoint(&[(37.7749, -122.4194), (37.7751, -122.4180)]);
+if let Some(points) = multipoint_val.as_multipoint() {
+    println!("MultiPoint with {} points", points.len());
+}
+
+// Pattern matching (comprehensive example)
 match value {
-    Value::Int(i) => println!("Got integer: {}", i),
-    Value::Float(f) => println!("Got float: {}", f),
-    Value::String(s) => println!("Got string: {}", s),
-    _ => println!("Other type: {}", value.type_name()),
+    Value::None => println!("No value"),
+    Value::Bool(b) => println!("Boolean: {}", b),
+    Value::Int(i) => println!("Integer: {}", i),
+    Value::UInt(u) => println!("Unsigned integer: {}", u),
+    Value::Float(f) => println!("Float: {}", f),
+    Value::Decimal { value, scale } => println!("Decimal: {} × 10^-{}", value, scale),
+    Value::String(s) => println!("String: {}", s),
+    Value::Bytes(b) => println!("Bytes: {} bytes", b.len()),
+    Value::Hash256(h) => println!("Hash256: {:?}", &h[0..4]),
+    Value::Hash512(h) => println!("Hash512: {:?}", &h[0..4]),
+    Value::UUID(u) => println!("UUID: {:?}", u),
+    Value::Timestamp(t) => println!("Timestamp: {}", t),
+    Value::TimestampNanos { seconds, nanos } => println!("Timestamp: {}.{:09}", seconds, nanos),
+    Value::Duration(d) => println!("Duration: {} ns", d),
+    Value::Date { year, month, day } => println!("Date: {}-{:02}-{:02}", year, month, day),
+    Value::Time { hour, minute, second, nanos } => println!("Time: {:02}:{:02}:{:02}.{:09}", hour, minute, second, nanos),
+    Value::DateTime { year, month, day, hour, minute, second, nanos, tz_offset_minutes } => {
+        println!("DateTime: {}-{:02}-{:02}T{:02}:{:02}:{:02}.{:09}+{:02}:{:02}", 
+                 year, month, day, hour, minute, second, nanos, 
+                 tz_offset_minutes / 60, tz_offset_minutes % 60);
+    },
+    Value::Array(a) => println!("Array: {} elements", a.len()),
+    Value::Object(o) => println!("Object: {} fields", o.len()),
+    Value::Set(s) => println!("Set: {} unique values", s.len()),
+    Value::Point2D { lat, lon } => println!("Point2D: ({}, {})", lat, lon),
+    Value::Point3D { lat, lon, alt } => println!("Point3D: ({}, {}, {})", lat, lon, alt),
+    Value::BoundingBox { min_lat, min_lon, max_lat, max_lon } => {
+        println!("BoundingBox: ({},{}) to ({},{})", min_lat, min_lon, max_lat, max_lon);
+    },
+    Value::LineString(points) => println!("LineString: {} points", points.len()),
+    Value::Polygon { exterior, holes } => println!("Polygon: {} exterior, {} holes", exterior.len(), holes.len()),
+    Value::MultiPoint(points) => println!("MultiPoint: {} points", points.len()),
+    Value::MultiLineString(lines) => println!("MultiLineString: {} lines", lines.len()),
+    Value::MultiPolygon(polygons) => println!("MultiPolygon: {} polygons", polygons.len()),
+    Value::GeometryCollection(geoms) => println!("GeometryCollection: {} geometries", geoms.len()),
+    Value::BlockRef(hash) => println!("BlockRef: {:?}", &hash[0..4]),
+    Value::SchemaRef { namespace, name, version } => println!("SchemaRef: {}:{}@{}", namespace, name, version),
+    Value::Record { table, id } => println!("Record: {}:{}", table, id),
+    Value::Range { start, end, start_inclusive, end_inclusive } => {
+        println!("Range: {}{:?},{:?}{}", 
+                 if *start_inclusive { "[" } else { "(" },
+                 start, end,
+                 if *end_inclusive { "]" } else { ")" });
+    },
+    Value::Regex(pattern) => println!("Regex: {}", pattern),
+    Value::Json(data) => println!("JSON: {} bytes", data.len()),
+    Value::Extension { type_id, data } => println!("Extension: type 0x{:04X}, {} bytes", type_id, data.len()),
 }
 ```
 
@@ -504,21 +653,104 @@ fn main() -> Result<(), MeasurementError> {
 Convenience methods for creating common values:
 
 ```rust
-// From Rust primitives
-let v1: Value = 42_i64.into();
-let v2: Value = "hello".into();
-let v3: Value = true.into();
-let v4: Value = vec![1_i64, 2, 3].into();
+// === From Rust Primitives ===
+let v1: Value = 42_i64.into();      // Int
+let v2: Value = "hello".into();     // String
+let v3: Value = true.into();        // Bool
+let v4: Value = 3.14_f64.into();    // Float
+let v5: Value = 100_u64.into();     // UInt
+let v6: Value = vec![1_i64, 2, 3].into(); // Array
 
-// Spatial constructors
+// === Binary Data ===
+let bytes: Value = vec![0x01, 0x02, 0x03].into(); // Bytes
+let hash256: Value = [0u8; 32].into();             // Hash256
+
+// === Temporal Constructors ===
+let timestamp = Value::Timestamp(1609459200);
+let precise_time = Value::TimestampNanos { 
+    seconds: 1609459200, 
+    nanos: 123456789 
+};
+let duration = Value::Duration(3600_000_000_000); // 1 hour in ns
+
+let date = Value::Date { year: 2023, month: 12, day: 25 };
+let time = Value::Time { hour: 14, minute: 30, second: 0, nanos: 0 };
+let datetime = Value::DateTime {
+    year: 2023, month: 12, day: 25,
+    hour: 14, minute: 30, second: 0, nanos: 0,
+    tz_offset_minutes: -480, // PST
+};
+
+// === Spatial Constructors ===
 let point = Value::point2d(37.7749, -122.4194);
 let point3d = Value::point3d(37.7749, -122.4194, 100.0);
-let line = Value::linestring(&[(0.0, 0.0), (1.0, 1.0)]);
 
-// Utility constructors
-let uuid = Value::uuid_from_u128(0x123456789ABCDEF0123456789ABCDEF0);
-let range = Value::range(Value::Int(1), Value::Int(100));
-let record = Value::record("users", "user_123");
+// Simple geometry
+let line = Value::linestring(&[(0.0, 0.0), (1.0, 1.0)]);
+let polygon = Value::polygon(
+    &[(0.0, 0.0), (1.0, 0.0), (1.0, 1.0), (0.0, 1.0), (0.0, 0.0)],
+    &[] // No holes
+);
+let multipoint = Value::multipoint(&[(0.0, 0.0), (1.0, 1.0)]);
+
+// Complex geometry (fixed-point coordinates)
+let multiline = Value::multilinestring(vec![
+    vec![(0, 0), (1000000, 1000000)],        // Line 1
+    vec![(2000000, 0), (3000000, 1000000)],  // Line 2
+]);
+
+let multipoly = Value::multipolygon(vec![
+    (vec![(0, 0), (1000000, 0), (1000000, 1000000), (0, 1000000), (0, 0)], vec![])
+]);
+
+let geom_collection = Value::geometry_collection(vec![
+    Value::point2d(37.7749, -122.4194),
+    Value::linestring(&[(37.7749, -122.4194), (37.7751, -122.4180)]),
+]);
+
+// === Identifier Constructors ===
+let uuid1 = Value::uuid([1u8; 16]);
+let uuid2 = Value::uuid_from_u128(0x123456789ABCDEF0123456789ABCDEF0);
+
+// === Pattern and Range Constructors ===
+let regex = Value::regex(r"^\d{3}-\d{3}-\d{4}$");
+let range = Value::range(Value::Int(1), Value::Int(100));          // [1, 100)
+let range_inc = Value::range_inclusive(Value::Int(1), Value::Int(100)); // [1, 100]
+
+// === Database Reference Constructors ===
+let user_record = Value::record("users", "user_123");
+let sensor_record = Value::record("sensors", "temp_001");
+
+// === Structured Data ===
+let json_doc = Value::Json(br#"{"temperature": 23.5, "unit": "celsius"}"#.to_vec());
+
+// Collections
+let mut object = std::collections::BTreeMap::new();
+object.insert("temperature".to_string(), Value::Float(23.5));
+object.insert("location".to_string(), Value::point2d(37.7749, -122.4194));
+let sensor_reading = Value::Object(object);
+
+let mut tags = std::collections::BTreeSet::new();
+tags.insert(Value::String("outdoor".to_string()));
+tags.insert(Value::String("temperature".to_string()));
+let tag_set = Value::Set(tags);
+
+// === Decimal Constructor ===
+let price = Value::Decimal { value: 1999, scale: 2 }; // $19.99
+
+// === Block and Schema References ===
+let block_ref = Value::BlockRef([0u8; 32]);
+let schema_ref = Value::SchemaRef {
+    namespace: "health".to_string(),
+    name: "heart_rate".to_string(),
+    version: "1.2.0".to_string(),
+};
+
+// === Extension Constructor ===
+let custom_extension = Value::Extension {
+    type_id: 0x8001,
+    data: vec![0x01, 0x02, 0x03, 0x04],
+};
 ```
 
 ## Error Handling

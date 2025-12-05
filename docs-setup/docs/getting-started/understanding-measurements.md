@@ -61,25 +61,67 @@ let gps_reading = Measurement {
 
 ### 1. Value - The What
 
-The actual data, supporting ~40 types:
+The actual data, supporting 36 types across multiple categories:
 
 ```rust
-// Primitives
-Value::Float(22.5)              // Temperature
-Value::Int(42)                   // Count
-Value::String("Hello".to_string()) // Text
+// === Absence and Primitives ===
+Value::None                      // No value present
+Value::Bool(true)                // Boolean
+Value::Int(42)                   // Signed 64-bit integer
+Value::UInt(100)                 // Unsigned 64-bit integer
+Value::Float(22.5)              // 64-bit floating point
+Value::Decimal { value: 1999, scale: 2 } // Exact precision ($19.99)
 
-// Spatial (fixed-point for precision)
-Value::Point2D { lat, lon }     // Location
-Value::Point3D { lat, lon, alt } // With altitude
+// === Text and Binary ===
+Value::String("Hello".to_string()) // UTF-8 string
+Value::Bytes(vec![0x01, 0x02])     // Raw bytes
+Value::Hash256([0u8; 32])          // SHA-256 hash
+Value::Hash512([0u8; 64])          // SHA-512 hash
 
-// Temporal
-Value::Timestamp(1234567890)    // Unix time
-Value::Duration(3600)            // 1 hour
+// === Temporal ===
+Value::Timestamp(1234567890)       // Unix timestamp (seconds)
+Value::TimestampNanos { seconds: 1234567890, nanos: 123456 } // Nanosecond precision
+Value::Duration(3600_000_000_000)  // Duration in nanoseconds
+Value::Date { year: 2023, month: 12, day: 25 }              // Calendar date
+Value::Time { hour: 14, minute: 30, second: 0, nanos: 0 }   // Time of day
+Value::DateTime { year: 2023, month: 12, day: 25, hour: 14, // Full datetime
+                  minute: 30, second: 0, nanos: 0, tz_offset_minutes: -480 }
 
-// Collections
-Value::Array(vec![...])         // Lists
-Value::Object(map)               // Key-value pairs
+// === Collections ===
+Value::Array(vec![...])         // Ordered lists
+Value::Object(map)              // Key-value maps (BTreeMap)
+Value::Set(set)                 // Unique values (BTreeSet)
+
+// === Spatial (fixed-point coordinates) ===
+Value::Point2D { lat, lon }     // 2D location
+Value::Point3D { lat, lon, alt } // 3D location with altitude
+Value::BoundingBox { min_lat, min_lon, max_lat, max_lon } // Rectangular area
+
+// === Extended Geometry (GeoJSON-compatible) ===
+Value::LineString(points)       // Path of connected points
+Value::Polygon { exterior, holes } // Polygon with potential holes
+Value::MultiPoint(points)       // Collection of points
+Value::MultiLineString(lines)   // Collection of line strings
+Value::MultiPolygon(polygons)   // Collection of polygons
+Value::GeometryCollection(geoms) // Mixed geometry types
+
+// === Identifiers ===
+Value::UUID([0u8; 16])          // Universally Unique Identifier
+
+// === Ranges and Patterns ===
+Value::Range { start, end, start_inclusive, end_inclusive } // Value ranges
+Value::Regex("^\d{3}-\d{3}-\d{4}$".to_string()) // Regular expressions
+
+// === References ===
+Value::BlockRef([0u8; 32])      // Reference to another block
+Value::SchemaRef { namespace, name, version } // Schema reference
+Value::Record { table, id }     // Database record reference
+
+// === Structured ===
+Value::Json(bytes)              // Raw JSON document
+
+// === Extension Point ===
+Value::Extension { type_id, data } // Custom domain-specific types
 ```
 
 ### 2. Uncertainty - The How Sure
@@ -223,6 +265,264 @@ let user_report = Measurement {
         attestations: vec![], // Could add witness attestations
     },
     validity: ValidityWindow::new(now, Some(now + 7200)),
+};
+```
+
+### Geographic Data with Extended Geometry
+
+```rust
+// Delivery route using LineString
+let delivery_route = Measurement {
+    value: Value::linestring(&[
+        (37.7749, -122.4194), // Start: San Francisco
+        (37.7849, -122.4094), // Waypoint 1
+        (37.7949, -122.3994), // End: Destination
+    ]),
+    uncertainty: Uncertainty::Interval {
+        lower_bound: -5.0,  // ±5 meter accuracy
+        upper_bound: 5.0,
+        confidence: 0.95,
+    },
+    provenance: Provenance {
+        source: Source::Sensor {
+            device_id: gps_device_id,
+            sensor_type: 0x0001, // GPS
+            calibration_id: Some(gps_calibration_id),
+        },
+        transformations: vec![],
+        attestations: vec![],
+    },
+    validity: ValidityWindow::new(now, Some(now + 3600)), // Valid for 1 hour
+};
+
+// Service area coverage using Polygon
+let service_area = Measurement {
+    value: Value::polygon(
+        &[  // Exterior boundary
+            (37.7000, -122.5000),
+            (37.7000, -122.3000),
+            (37.8000, -122.3000),
+            (37.8000, -122.5000),
+            (37.7000, -122.5000), // Close the ring
+        ],
+        &[  // Holes (excluded areas)
+            &[(37.7300, -122.4300), (37.7300, -122.4100), 
+              (37.7500, -122.4100), (37.7500, -122.4300), (37.7300, -122.4300)]
+        ]
+    ),
+    uncertainty: Uncertainty::Exact, // Defined boundary
+    provenance: Provenance {
+        source: Source::SelfReported {
+            reporter_id: business_id,
+            method: 0x0002, // Geographic tool
+        },
+        transformations: vec![],
+        attestations: vec![],
+    },
+    validity: ValidityWindow::indefinite(), // Service area doesn't change often
+};
+```
+
+### Temporal Event Sequences
+
+```rust
+// Precise event timing with nanosecond accuracy
+let system_event = Measurement {
+    value: Value::TimestampNanos {
+        seconds: 1640995200,    // 2022-01-01 00:00:00 UTC
+        nanos: 123456789,       // Additional nanoseconds
+    },
+    uncertainty: Uncertainty::Interval {
+        lower_bound: -0.001,    // ±1ms accuracy
+        upper_bound: 0.001,
+        confidence: 0.999,
+    },
+    provenance: Provenance {
+        source: Source::Sensor {
+            device_id: atomic_clock_id,
+            sensor_type: 0x0010, // Atomic clock
+            calibration_id: Some(nist_calibration_id),
+        },
+        transformations: vec![],
+        attestations: vec![],
+    },
+    validity: ValidityWindow::new(now, Some(now + 1)), // Valid for 1 second
+};
+
+// Date without time (for events, birthdays, etc.)
+let birth_date = Measurement {
+    value: Value::Date {
+        year: 1990,
+        month: 6,
+        day: 15,
+    },
+    uncertainty: Uncertainty::Exact, // Exact known date
+    provenance: Provenance {
+        source: Source::SelfReported {
+            reporter_id: user_id,
+            method: 0x0001, // Form entry
+        },
+        transformations: vec![],
+        attestations: vec![],
+    },
+    validity: ValidityWindow::indefinite(), // Birth date doesn't change
+};
+```
+
+### Financial and Precise Numeric Data
+
+```rust
+// Financial transaction using Decimal for exact precision
+let transaction_amount = Measurement {
+    value: Value::Decimal {
+        value: 1234567,  // $12,345.67 stored as 1234567 cents
+        scale: 2,        // 2 decimal places
+    },
+    uncertainty: Uncertainty::Exact, // Exact financial amount
+    provenance: Provenance {
+        source: Source::Oracle {
+            oracle_id: payment_processor_id,
+            query_id: Some(transaction_id),
+        },
+        transformations: vec![],
+        attestations: vec![
+            Attestation {
+                attestor: bank_id,
+                claim: AttestationClaim::Verified {
+                    reference_id: bank_record_id,
+                },
+                signature: bank_signature,
+                timestamp: transaction_time,
+            }
+        ],
+    },
+    validity: ValidityWindow::new(transaction_time, Some(transaction_time + 86400 * 7)), // Valid for 1 week
+};
+```
+
+### Structured Data and References
+
+```rust
+// Complex sensor reading using Object
+let environmental_reading = Measurement {
+    value: {
+        let mut readings = std::collections::BTreeMap::new();
+        readings.insert("temperature".to_string(), Value::Float(23.5));
+        readings.insert("humidity".to_string(), Value::Float(65.0));
+        readings.insert("pressure".to_string(), Value::Float(1013.25));
+        readings.insert("location".to_string(), Value::point2d(37.7749, -122.4194));
+        readings.insert("device_id".to_string(), Value::UUID(sensor_uuid));
+        Value::Object(readings)
+    },
+    uncertainty: Uncertainty::Gaussian { std_dev: 1.0 }, // Combined uncertainty
+    provenance: Provenance {
+        source: Source::Sensor {
+            device_id: weather_station_id,
+            sensor_type: 0x0020, // Multi-sensor weather station
+            calibration_id: Some(calibration_id),
+        },
+        transformations: vec![],
+        attestations: vec![],
+    },
+    validity: ValidityWindow::decaying(1800, 600), // Valid for 30 minutes, decays with 10-min half-life
+};
+
+// Reference to related data
+let analysis_result = Measurement {
+    value: Value::Record {
+        table: "analyses".to_string(),
+        id: "weather_analysis_20240101".to_string(),
+    },
+    uncertainty: Uncertainty::confidence(0.92), // 92% confidence in analysis
+    provenance: Provenance {
+        source: Source::Derived {
+            algorithm_id: 0x3001, // Weather analysis algorithm
+            inputs: vec![environmental_reading_hash],
+            parameters: Some(analysis_params),
+        },
+        transformations: vec![],
+        attestations: vec![],
+    },
+    validity: ValidityWindow::new(now, Some(now + 86400)), // Valid for 24 hours
+};
+```
+
+### Pattern Matching and Validation
+
+```rust
+// Data validation using regex patterns
+let phone_validation = Measurement {
+    value: Value::Regex(r"^\+1\d{10}$".to_string()), // US phone number pattern
+    uncertainty: Uncertainty::Exact, // Pattern is exactly defined
+    provenance: Provenance {
+        source: Source::SelfReported {
+            reporter_id: system_admin_id,
+            method: 0x0003, // Configuration
+        },
+        transformations: vec![],
+        attestations: vec![],
+    },
+    validity: ValidityWindow::indefinite(), // Validation rules are stable
+};
+
+// Value range constraints
+let temperature_range = Measurement {
+    value: Value::range_inclusive(
+        Value::Float(-40.0),  // Minimum valid temperature
+        Value::Float(85.0),   // Maximum valid temperature
+    ),
+    uncertainty: Uncertainty::Exact, // Range is exactly defined
+    provenance: Provenance {
+        source: Source::Oracle {
+            oracle_id: equipment_spec_id,
+            query_id: Some(sensor_spec_id),
+        },
+        transformations: vec![],
+        attestations: vec![],
+    },
+    validity: ValidityWindow::indefinite(), // Sensor specs don't change often
+};
+```
+
+### Custom Domain Extensions
+
+```rust
+// Biometric data using Extension type
+let fingerprint_data = Measurement {
+    value: Value::Extension {
+        type_id: 0x8001,                    // Biometric data type
+        data: biometric_encoder.encode(&fingerprint_template),
+    },
+    uncertainty: Uncertainty::confidence(0.999), // Very high confidence
+    provenance: Provenance {
+        source: Source::Sensor {
+            device_id: fingerprint_scanner_id,
+            sensor_type: 0x0030, // Fingerprint scanner
+            calibration_id: Some(fbi_certification_id),
+        },
+        transformations: vec![
+            Transformation {
+                operation: TransformationOp::Custom {
+                    type_id: 0x8001,        // Biometric processing
+                    parameters: privacy_params,
+                },
+                timestamp: scan_time,
+                actor: biometric_processor_id,
+                input_hash: raw_scan_hash,
+            }
+        ],
+        attestations: vec![
+            Attestation {
+                attestor: security_officer_id,
+                claim: AttestationClaim::DeviceCertified {
+                    certification_id: fbi_cert_id,
+                },
+                signature: officer_signature,
+                timestamp: certification_time,
+            }
+        ],
+    },
+    validity: ValidityWindow::new(scan_time, Some(scan_time + 300)), // Valid for 5 minutes
 };
 ```
 
