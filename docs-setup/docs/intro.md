@@ -140,28 +140,28 @@ Open source under MIT/Apache-2.0 license. Contributions welcome on [Codeberg](ht
 ## Next Steps
 
 <div className="extension-grid">
-  <a href="/getting-started/quickstart" className="extension-card">
+  <a href="./getting-started/quickstart" className="extension-card">
     <div className="extension-card__title">📚 Quick Start Guide</div>
     <div className="extension-card__description">
       Get up and running in 5 minutes
     </div>
   </a>
   
-  <a href="/concepts/philosophy" className="extension-card">
-    <div className="extension-card__title">💡 Design Philosophy</div>
+  <a href="./concepts/measurements" className="extension-card">
+    <div className="extension-card__title">📊 Measurements</div>
     <div className="extension-card__description">
-      Understand the principles behind Olocus
+      Universal data representation
     </div>
   </a>
   
-  <a href="/extensions/overview" className="extension-card">
+  <a href="./extensions/overview" className="extension-card">
     <div className="extension-card__title">🧩 Browse Extensions</div>
     <div className="extension-card__description">
       Explore the 23 available extensions
     </div>
   </a>
   
-  <a href="/api/core" className="extension-card">
+  <a href="./api/core" className="extension-card">
     <div className="extension-card__title">📖 API Reference</div>
     <div className="extension-card__description">
       Complete API documentation
@@ -173,7 +173,7 @@ Open source under MIT/Apache-2.0 license. Contributions welcome on [Codeberg](ht
 
 <div style={{textAlign: 'center', marginTop: '3rem'}}>
   <h3>Ready to build something amazing?</h3>
-  <a href="/getting-started/quickstart" className="button button--primary button--lg">
+  <a href="./getting-started/quickstart" className="button button--primary button--lg">
     Get Started →
   </a>
 </div>

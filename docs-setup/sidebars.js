@@ -12,6 +12,21 @@ const sidebars = {
       collapsed: false,
       items: [
         'getting-started/quickstart',
+        'getting-started/first-chain',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Concepts',
+      items: [
+        'concepts/measurements',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'API Reference',
+      items: [
+        'api/core',
       ],
     },
     {
@@ -20,6 +35,7 @@ const sidebars = {
       collapsed: false,
       items: [
         'extensions/overview',
+        'extensions/creating-extensions',
       ],
     },
   ],
