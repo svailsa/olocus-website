@@ -132,7 +132,7 @@ const config = {
               },
               {
                 label: 'Privacy',
-                href: 'https://olocus.com/privacy.html',
+                href: 'https://olocus.com/privacy',
               },
             ],
           },
