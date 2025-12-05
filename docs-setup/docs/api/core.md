@@ -308,5 +308,5 @@ let handle = thread::spawn(move || {
 ## Next Steps
 
 - [Explore Extensions API](../extensions/overview) - Extension-specific APIs
-- [Wire Format Details](./wire-format) - Encoding and compression
-- [Error Handling](./errors) - Complete error reference
+- [Explore Extensions API](../extensions/overview) - Extension-specific APIs
+- [Creating Custom Extensions](../extensions/creating-extensions) - Build your own extensions

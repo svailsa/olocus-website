@@ -3,6 +3,9 @@
  * Professional API documentation styling
  */
 
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
 :root {
   /* Brand Colors */
   --olocus-primary: #2563eb;
@@ -21,9 +24,14 @@
   --ifm-color-primary-lighter: #60a5fa;
   --ifm-color-primary-lightest: #93c5fd;
   
-  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 
+  /* Font families matching main website */
+  --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 
     'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
     'Helvetica Neue', sans-serif;
+  
+  --ifm-heading-font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 
+    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 
+    'Droid Sans', 'Helvetica Neue', sans-serif;
   
   --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', 'Consolas',
     'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;

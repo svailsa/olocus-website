@@ -299,6 +299,6 @@ let bearing = Coordinate::bearing(
 
 ## Next Steps
 
-- [Explore Location Extension](../extensions/location) - GPS tracking with measurements
-- [Learn about Trust](../extensions/trust) - Attestations and verification
-- [Implement ML Extension](../extensions/ml) - Machine learning with uncertainty
+- [Browse Extensions](../extensions/overview) - Available extensions
+- [Creating Extensions](../extensions/creating-extensions) - Build custom extensions  
+- [API Reference](../api/core) - Core API documentation
