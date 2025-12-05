@@ -1,0 +1,68 @@
+name: Sync and Deploy Documentation
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'docs-setup/**'
+      - 'scripts/sync-protocol-docs.js'
+
+jobs:
+  sync-and-build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout website repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: 'docs-setup/package-lock.json'
+      
+      - name: Sync documentation from Codeberg
+        run: |
+          chmod +x scripts/sync-protocol-docs.js
+          node scripts/sync-protocol-docs.js
+      
+      - name: Install dependencies
+        working-directory: ./docs-setup
+        run: npm ci
+      
+      - name: Build documentation
+        working-directory: ./docs-setup
+        run: npm run build
+      
+      - name: Copy built docs to main site
+        run: |
+          # Remove old docs if exists
+          rm -rf docs/
+          # Copy new built docs
+          cp -r docs-setup/build/ docs/
+      
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/
+          git diff --staged --quiet || git commit -m "docs: Auto-sync from Codeberg protocol repo"
+      
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+      
+      # Optional: Deploy to Cloudflare Pages
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy docs --project-name=olocus-docs

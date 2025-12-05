@@ -1,0 +1,382 @@
+/**
+ * Olocus Protocol Documentation Theme
+ * Professional API documentation styling
+ */
+
+:root {
+  /* Brand Colors */
+  --olocus-primary: #2563eb;
+  --olocus-secondary: #7c3aed;
+  --olocus-accent: #06b6d4;
+  --olocus-success: #10b981;
+  --olocus-warning: #f59e0b;
+  --olocus-danger: #ef4444;
+  
+  /* Docusaurus overrides */
+  --ifm-color-primary: var(--olocus-primary);
+  --ifm-color-primary-dark: #1d4ed8;
+  --ifm-color-primary-darker: #1e40af;
+  --ifm-color-primary-darkest: #1e3a8a;
+  --ifm-color-primary-light: #3b82f6;
+  --ifm-color-primary-lighter: #60a5fa;
+  --ifm-color-primary-lightest: #93c5fd;
+  
+  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+  
+  --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', 'Consolas',
+    'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+  
+  --ifm-code-font-size: 95%;
+  --ifm-navbar-height: 64px;
+  --ifm-toc-border-color: #e5e7eb;
+  
+  /* Content widths */
+  --ifm-container-width: 100%;
+  --ifm-container-width-xl: 1440px;
+  
+  /* Spacing */
+  --ifm-spacing-horizontal: 1.5rem;
+  --ifm-paragraph-margin-bottom: 1rem;
+}
+
+/* Dark mode overrides */
+[data-theme='dark'] {
+  --ifm-background-color: #0f172a;
+  --ifm-background-surface-color: #1e293b;
+  --ifm-toc-border-color: #334155;
+  --ifm-color-primary: #60a5fa;
+}
+
+/* Navigation */
+.navbar {
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+  padding: 0.5rem 0;
+}
+
+.navbar__title {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+/* Sidebar */
+.menu {
+  font-weight: 500;
+}
+
+.menu__list-item--collapsed .menu__list {
+  margin-top: 0.25rem;
+}
+
+.menu__link {
+  border-radius: 0.375rem;
+  transition: all 0.2s;
+}
+
+.menu__link:hover {
+  background: var(--ifm-menu-color-background-hover);
+}
+
+.menu__link--sublist::after {
+  transition: transform 0.2s;
+}
+
+/* Main content */
+.markdown {
+  --ifm-h1-font-size: 2.5rem;
+  --ifm-h2-font-size: 2rem;
+  --ifm-h3-font-size: 1.5rem;
+  --ifm-h4-font-size: 1.25rem;
+}
+
+.markdown h1:first-child {
+  margin-top: 0;
+}
+
+.markdown > h2 {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--ifm-toc-border-color);
+}
+
+/* Code blocks */
+.prism-code {
+  font-size: 0.875rem !important;
+  line-height: 1.75 !important;
+  border-radius: 0.5rem;
+  padding: 1rem !important;
+}
+
+div[class*='codeBlockContainer'] {
+  margin-bottom: 1.5rem;
+}
+
+div[class*='codeBlockTitle'] {
+  background: var(--olocus-primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* API Reference styling */
+.api-endpoint {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.375rem;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.api-endpoint--get {
+  background: var(--olocus-success);
+  color: white;
+}
+
+.api-endpoint--post {
+  background: var(--olocus-primary);
+  color: white;
+}
+
+.api-endpoint--put {
+  background: var(--olocus-warning);
+  color: white;
+}
+
+.api-endpoint--delete {
+  background: var(--olocus-danger);
+  color: white;
+}
+
+/* Parameter tables */
+.markdown table {
+  display: table;
+  width: 100%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+}
+
+.markdown table thead {
+  background: var(--ifm-table-head-background);
+  font-weight: 600;
+}
+
+.markdown table th,
+.markdown table td {
+  padding: 0.75rem 1rem;
+}
+
+.markdown table tbody tr {
+  transition: background 0.1s;
+}
+
+.markdown table tbody tr:hover {
+  background: var(--ifm-table-stripe-background);
+}
+
+/* Alerts / Admonitions */
+.alert {
+  border-radius: 0.5rem;
+  border-left-width: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.alert--info {
+  --ifm-alert-background-color: #eff6ff;
+  --ifm-alert-border-color: var(--olocus-primary);
+}
+
+[data-theme='dark'] .alert--info {
+  --ifm-alert-background-color: #1e3a5f;
+}
+
+/* Extension cards */
+.extension-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.extension-card {
+  padding: 1.5rem;
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 0.75rem;
+  transition: all 0.2s;
+  text-decoration: none !important;
+  color: inherit !important;
+  display: block;
+}
+
+.extension-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1);
+  border-color: var(--olocus-primary);
+}
+
+.extension-card__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--ifm-heading-color);
+}
+
+.extension-card__description {
+  color: var(--ifm-font-color-secondary);
+  line-height: 1.6;
+}
+
+.extension-card__badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.extension-card__badge--stable {
+  background: var(--olocus-success);
+  color: white;
+}
+
+.extension-card__badge--beta {
+  background: var(--olocus-warning);
+  color: white;
+}
+
+.extension-card__badge--alpha {
+  background: var(--olocus-primary);
+  color: white;
+}
+
+/* TOC styling */
+.table-of-contents {
+  font-size: 0.875rem;
+}
+
+.table-of-contents__link {
+  padding: 0.375rem 0;
+  color: var(--ifm-toc-link-color);
+  transition: color 0.2s;
+}
+
+.table-of-contents__link:hover,
+.table-of-contents__link--active {
+  color: var(--olocus-primary);
+  text-decoration: none;
+}
+
+/* Search */
+.DocSearch-Button {
+  border-radius: 0.5rem;
+  padding: 0 1rem;
+}
+
+/* Footer */
+.footer {
+  background: var(--ifm-footer-background-color);
+  border-top: 1px solid var(--ifm-toc-border-color);
+}
+
+.footer__title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 996px) {
+  :root {
+    --ifm-font-size-base: 15px;
+  }
+  
+  .markdown {
+    --ifm-h1-font-size: 2rem;
+    --ifm-h2-font-size: 1.5rem;
+    --ifm-h3-font-size: 1.25rem;
+  }
+}
+
+/* Copy button for code blocks */
+.clean-btn.copy-code-button {
+  background: var(--olocus-primary);
+  color: white;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.clean-btn.copy-code-button:hover {
+  opacity: 1;
+}
+
+/* Version badge */
+.version-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--ifm-color-emphasis-200);
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+}
+
+/* Interactive elements */
+.interactive-demo {
+  padding: 1.5rem;
+  background: var(--ifm-background-surface-color);
+  border-radius: 0.75rem;
+  margin: 2rem 0;
+}
+
+.interactive-demo__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Tabs */
+.tabs-container {
+  margin: 1.5rem 0;
+}
+
+.tabs__item {
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  border-radius: 0.5rem 0.5rem 0 0;
+  transition: all 0.2s;
+}
+
+.tabs__item--active {
+  background: var(--ifm-tabs-color-active);
+  border-bottom: 2px solid var(--olocus-primary);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ifm-background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ifm-scrollbar-thumb-background-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ifm-scrollbar-thumb-hover-background-color);
+}
